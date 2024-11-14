@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAAC8ACE-1B98-4724-80DB-A4EAFFDD2DF9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Seoul_Software</RootNamespace>
+    <AssemblyName>Seoul_Software</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Add.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Design">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Docking">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Navigator">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace">
+      <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Workspace.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=6.2.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_Utility\dll\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_Utility\dll\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_Utility\dll\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alarm\AlarmModel.cs" />
+    <Compile Include="Alarm\frmAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alarm\frmAlarm.Designer.cs">
+      <DependentUpon>frmAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clsConfig.cs" />
+    <Compile Include="clsControlPLC.cs" />
+    <Compile Include="frmMachineMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMachineMonitor.Designer.cs">
+      <DependentUpon>frmMachineMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Printer\frmPrinterSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Printer\frmPrinterSetting.Designer.cs">
+      <DependentUpon>frmPrinterSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scanner\clsBarcodeManager.cs" />
+    <Compile Include="Scanner\frmBarcodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scanner\frmBarcodes.Designer.cs">
+      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vision\frmVisionMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vision\frmVisionMonitor.Designer.cs">
+      <DependentUpon>frmVisionMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Log\clsLogger.cs" />
+    <Compile Include="Log\eLogLevel.cs" />
+    <Compile Include="Log\eLogType.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MySetting.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vision\clsFTPServer.cs" />
+    <Compile Include="Scanner\BarcodeModel.cs" />
+    <Compile Include="Scanner\ucBarcode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scanner\ucBarcode.Designer.cs">
+      <DependentUpon>ucBarcode.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Alarm\frmAlarm.resx">
+      <DependentUpon>frmAlarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMachineMonitor.resx">
+      <DependentUpon>frmMachineMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printer\frmPrinterSetting.resx">
+      <DependentUpon>frmPrinterSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scanner\frmBarcodes.resx">
+      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vision\frmVisionMonitor.resx">
+      <DependentUpon>frmVisionMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Scanner\ucBarcode.resx">
+      <DependentUpon>ucBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seoul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconSora.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SettingWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cutreson_PLC\Cutreson_PLC.csproj">
+      <Project>{6d2181f8-4f4c-46b7-8244-5934d7524c03}</Project>
+      <Name>Cutreson_PLC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cutreson_UserControl\Cutreson_UserControl.csproj">
+      <Project>{53708a18-3bec-4b2c-81b1-50dd3f991599}</Project>
+      <Name>Cutreson_UserControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cutreson_Utility\Cutreson_Utility.csproj">
+      <Project>{92bc91f3-df20-4f85-af17-3fc0f445bdc2}</Project>
+      <Name>Cutreson_Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Add.ico" />
+    <None Include="Resources\Printer.ico" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\Layout.jpg" />
+    <None Include="Resources\NG.png" />
+    <None Include="Resources\OK.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
