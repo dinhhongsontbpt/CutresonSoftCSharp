@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cutreson_Utility;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -33,8 +34,39 @@ namespace Seoul_Software
             }
 
             Start();
-        }
-        public void Start()
+
+			Global.PLC.PropertyChanged += PLC_PropertyChanged;
+			UpdateData();
+		}
+
+		private void PLC_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+            if (e.PropertyName == "VisionComplete")
+            {
+                
+            }
+		}
+        private void UpdateData()
+        {
+			int[] data = Global.PLC.ReadVisionData();
+			if (data != null && data.Length >= 6)
+			{
+				if (data[1] == 1)
+				{
+					clsInvokeControl.ControlTextInvoke(btnResult, "OK");
+					clsInvokeControl.ControlBackColorInvoke(btnResult, Color.Lime);
+				}
+				if (data[2] == 1)
+				{
+					clsInvokeControl.ControlTextInvoke(btnResult, "NG");
+					clsInvokeControl.ControlBackColorInvoke(btnResult, Color.Red);
+				}
+				clsInvokeControl.ControlTextInvoke(lbTotal, $"Total: {data[3].ToString()}");
+				clsInvokeControl.ControlTextInvoke(lbOK, $"OK: {data[4].ToString()}");
+				clsInvokeControl.ControlTextInvoke(lbNG, $"NG: {data[5].ToString()}");
+			}
+		}
+		public void Start()
         {
             _listener = new TcpListener(IPAddress.Any, _port);
             _listener.Start();

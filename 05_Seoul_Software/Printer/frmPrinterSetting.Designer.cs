@@ -60,6 +60,7 @@
 			this.btnTest.TabIndex = 7;
 			this.btnTest.Text = "TEST";
 			this.btnTest.UseVisualStyleBackColor = false;
+			this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
 			// 
 			// txtPort
 			// 

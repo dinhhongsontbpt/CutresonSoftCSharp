@@ -1,9 +1,12 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using Cutreson_Utility;
 using Seoul_Software.Alarm;
+using Seoul_Software.OperatingEvent;
+using Seoul_Software.PLC;
 using Seoul_Software.Printer;
 using Seoul_Software.Scanner;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -47,10 +50,11 @@ namespace Seoul_Software
 			Global.PLC = new clsControlPLC();
             Global.PLC.PropertyChanged += ControlPLC_PropertyChanged;
 			Global.PLC.AlarmEvent += PLC_AlarmEvent;
+			Global.PLC.OperatingEvent += PLC_OperatingEvent;
             //Home
             frmMachineMonitor frmMachineMonitor = new frmMachineMonitor();
             clsControlForm.LoadFormInPanel(panelMain, frmMachineMonitor);
-			//Vision Monitor
+			//Vision monitor
 			frmVisionMonitor frmVisionMonitor = new frmVisionMonitor();
 			clsControlForm.LoadFormInPanel(panelVisionMonitor, frmVisionMonitor);
 			//Scanner
@@ -60,6 +64,40 @@ namespace Seoul_Software
             Global.Log.Operation("Open software complete");
         }
 
+		private void PLC_OperatingEvent(object sender, OperatingEventParam e)
+		{
+			OperatingEventModel operatingEvent = Global.OperatingEvents.FirstOrDefault(a => a.Index == e.Index);
+			if (operatingEvent != null)
+			{
+				if (e.IsOn && operatingEvent.MessageOn.ToUpper() != clsConfig.StringNotUse.ToUpper())
+                {
+					if (clsConfig.ShowAlarmDevice)
+					{
+						Global.Log.Operation($"[{clsConfig.OperatingEventDeviceType}{clsConfig.OperatingEventStartAddress + operatingEvent.Index}]{operatingEvent.MessageOn}");
+					}
+					else
+					{
+						Global.Log.Operation($"{operatingEvent.MessageOn}");
+					}
+				}
+				if (!e.IsOn && operatingEvent.MessageOff.ToUpper() != clsConfig.StringNotUse.ToUpper())
+				{
+					if (clsConfig.ShowAlarmDevice)
+					{
+						Global.Log.Operation($"[{clsConfig.OperatingEventDeviceType}{clsConfig.OperatingEventStartAddress + operatingEvent.Index}]{operatingEvent.MessageOff}");
+					}
+					else
+					{
+						Global.Log.Operation($"{operatingEvent.MessageOff}");
+					}
+				}
+			}
+			else
+			{
+				Global.Log.Alarm($"[{clsConfig.OperatingEventDeviceType}{clsConfig.OperatingEventStartAddress + e.Index}]Operating event not definition");
+			}
+		}
+
 		private void PLC_AlarmEvent(object sender, int e)
 		{
             AlarmModel alarm = Global.Alarms.FirstOrDefault(a => a.Index == e);
@@ -67,7 +105,7 @@ namespace Seoul_Software
             {
                 if(clsConfig.ShowAlarmDevice)
                 {
-					Global.Log.Alarm($"[L{4000 + alarm.Index}]{alarm.Text}", alarm.AlarmLevel);
+					Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + alarm.Index}]{alarm.Text}", alarm.AlarmLevel);
 				}
                 else
                 {
@@ -76,9 +114,9 @@ namespace Seoul_Software
 			}
             else
             {
-                Global.Log.Alarm("Alarm not definition");
-                alarm = new AlarmModel();
-                alarm.Text = "Alarm not definition";
+				Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + e}]Alarm not definition");
+				alarm = new AlarmModel();
+                alarm.Text = $"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + e}]Alarm not definition";
                 alarm.AlarmLevel = Log.eLogLevel.ERROR;
 			}
 			frmAlarm.SetAlarm(alarm);
@@ -136,12 +174,51 @@ namespace Seoul_Software
 					ShowAlarm(false);
 				}
 			}
+            if((e.PropertyName == "PlcPrintRequest"))
+            {
+                if(Global.PLC.PlcPrintRequest)
+                {
+                    Global.Log.Operation("PLC send print request");
+                    int[] data = Global.PLC.ReadPrintData();
+                    if(data != null && data.Length == 2 && data[0] != 0 && data[1] != 0)
+                    {
+                        BarcodeModel barcode = Global.Barcodes.FirstOrDefault(a => a.Id == data[0]);
+                        if(barcode == null)
+                        {
+                            Global.Log.Alarm("No barcode data in software, please initial system");
+                        }
+                        else
+                        {
+                            clsPrinter printer = new clsPrinter();
+                            printer.Print(barcode.Data, data[1]);
+                            Global.PLC.WritePrintComplete();
+                        }
+                    }
+                }    
+            }
 		}
 
 		private void btnPrinter_Click(object sender, EventArgs e)
 		{
             frmPrinterSetting frmPrinterSetting = new frmPrinterSetting();
             frmPrinterSetting.ShowDialog();
+		}
+
+		private void btnPlcSetting_Click(object sender, EventArgs e)
+		{
+            FrmPlcSetting frmPlcSetting = new FrmPlcSetting();
+            frmPlcSetting.ShowDialog();
+		}
+
+		private void btnSetting_Click(object sender, EventArgs e)
+		{
+            frmSetting frmSetting = new frmSetting();
+            frmSetting.ShowDialog();
+		}
+
+		private void btnKeyboard_Click(object sender, EventArgs e)
+		{
+			Process.Start(@"c:\Windows\Sysnative\cmd.exe", "/c osk.exe");
 		}
 	}
 }

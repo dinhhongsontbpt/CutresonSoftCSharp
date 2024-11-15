@@ -92,11 +92,19 @@
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </Compile>
     <Compile Include="clsConfig.cs" />
-    <Compile Include="clsControlPLC.cs" />
-    <Compile Include="frmMachineMonitor.cs">
+    <Compile Include="MachineMonitor\ControlMonitorModel.cs" />
+    <Compile Include="MachineMonitor\ucMachineMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MachineMonitor\ucMachineMonitor.Designer.cs">
+      <DependentUpon>ucMachineMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperatingEvent\OperatingEventModel.cs" />
+    <Compile Include="PLC\clsControlPLC.cs" />
+    <Compile Include="MachineMonitor\frmMachineMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMachineMonitor.Designer.cs">
+    <Compile Include="MachineMonitor\frmMachineMonitor.Designer.cs">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSetting.cs">
@@ -105,6 +113,14 @@
     <Compile Include="frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLC\FrmPlcSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLC\FrmPlcSetting.Designer.cs">
+      <DependentUpon>FrmPlcSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Printer\clsPrinter.cs" />
+    <Compile Include="Printer\clsTcpClient.cs" />
     <Compile Include="Printer\frmPrinterSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,11 +165,17 @@
     <EmbeddedResource Include="Alarm\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMachineMonitor.resx">
+    <EmbeddedResource Include="MachineMonitor\frmMachineMonitor.resx">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineMonitor\ucMachineMonitor.resx">
+      <DependentUpon>ucMachineMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLC\FrmPlcSetting.resx">
+      <DependentUpon>FrmPlcSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Printer\frmPrinterSetting.resx">
       <DependentUpon>frmPrinterSetting.cs</DependentUpon>

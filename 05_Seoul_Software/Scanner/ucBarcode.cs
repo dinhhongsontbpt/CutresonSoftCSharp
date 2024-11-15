@@ -76,6 +76,10 @@ namespace Seoul_Software.Scanner
 					if (barcode.Id != 0)
 					{
 						Global.Barcodes.Add(barcode);
+						if(Global.Barcodes.Count >= 100)
+						{
+							Global.Barcodes.RemoveAt(Global.Barcodes.Count - 1);
+						}
 						clsBarcodeManager.Save();
 
 						if (Global.PLC.WriteBarcode(barcode))

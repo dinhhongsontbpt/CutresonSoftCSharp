@@ -38,5 +38,11 @@ namespace Seoul_Software.Printer
 			Global.Log.Operation($"Save printer setting successfully, IP={txtIp.Text}, Port:{txtPort.Value}, Command: {txtCommand.Text}");
 			clsMessageBox.Info("Save printer setting successfully");
 		}
+
+		private void btnTest_Click(object sender, EventArgs e)
+		{
+			clsPrinter printer = new clsPrinter();
+			printer.Print(txtLotNo.Text, (int)txtTotal.Value);
+		}
 	}
 }

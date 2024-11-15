@@ -41,7 +41,6 @@
 			this.btnReset = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStop = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
 			this.panelMenu = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.panelVisionMonitor = new System.Windows.Forms.Panel();
@@ -53,18 +52,20 @@
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.panelTitle = new System.Windows.Forms.Panel();
-			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
 			this.lbCompanyName = new System.Windows.Forms.Label();
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelBuildDate = new System.Windows.Forms.Label();
 			this.tableLayoutPanelFooter = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.panelAlarm = new System.Windows.Forms.Panel();
+			this.btnPlcSetting = new System.Windows.Forms.Button();
 			this.pictureBoxCompanyLogo = new System.Windows.Forms.PictureBox();
 			this.pbLogo = new System.Windows.Forms.PictureBox();
 			this.btnKeyboard = new System.Windows.Forms.Button();
 			this.btnSetting = new System.Windows.Forms.Button();
 			this.btnPrinter = new System.Windows.Forms.Button();
+			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
+			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
 			this.panel.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -124,7 +125,7 @@
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 277F));
+			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 281F));
 			this.tableLayoutPanelMain.Controls.Add(this.groupBoxScanner, 1, 1);
 			this.tableLayoutPanelMain.Controls.Add(this.panel1, 3, 0);
 			this.tableLayoutPanelMain.Controls.Add(this.panelMenu, 0, 0);
@@ -145,7 +146,7 @@
 			this.groupBoxScanner.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBoxScanner.Location = new System.Drawing.Point(65, 614);
 			this.groupBoxScanner.Name = "groupBoxScanner";
-			this.groupBoxScanner.Size = new System.Drawing.Size(1229, 114);
+			this.groupBoxScanner.Size = new System.Drawing.Size(1225, 114);
 			this.groupBoxScanner.TabIndex = 7;
 			this.groupBoxScanner.TabStop = false;
 			this.groupBoxScanner.Text = "Scanner";
@@ -160,10 +161,10 @@
 			this.panel1.Controls.Add(this.btnStart);
 			this.panel1.Controls.Add(this.ucPcInfo);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(1301, 4);
+			this.panel1.Location = new System.Drawing.Point(1297, 4);
 			this.panel1.Name = "panel1";
 			this.tableLayoutPanelMain.SetRowSpan(this.panel1, 2);
-			this.panel1.Size = new System.Drawing.Size(271, 724);
+			this.panel1.Size = new System.Drawing.Size(275, 724);
 			this.panel1.TabIndex = 3;
 			// 
 			// lampPlcAlive
@@ -171,20 +172,20 @@
 			this.lampPlcAlive.AutoSize = true;
 			this.lampPlcAlive.BackColor = System.Drawing.Color.Red;
 			this.lampPlcAlive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lampPlcAlive.Location = new System.Drawing.Point(88, 89);
+			this.lampPlcAlive.Location = new System.Drawing.Point(54, 87);
 			this.lampPlcAlive.Name = "lampPlcAlive";
-			this.lampPlcAlive.Size = new System.Drawing.Size(24, 20);
+			this.lampPlcAlive.Size = new System.Drawing.Size(159, 20);
 			this.lampPlcAlive.TabIndex = 42;
-			this.lampPlcAlive.Text = "   ";
+			this.lampPlcAlive.Text = "                              ";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(7, 92);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(65, 16);
+			this.label1.Size = new System.Drawing.Size(37, 16);
 			this.label1.TabIndex = 41;
-			this.label1.Text = "PLC Alive";
+			this.label1.Text = "Alive";
 			// 
 			// btnOrigin
 			// 
@@ -193,7 +194,7 @@
 			this.btnOrigin.Location = new System.Drawing.Point(10, 680);
 			this.btnOrigin.Name = "btnOrigin";
 			this.btnOrigin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnOrigin.Size = new System.Drawing.Size(251, 38);
+			this.btnOrigin.Size = new System.Drawing.Size(255, 38);
 			this.btnOrigin.StateNormal.Back.Color1 = System.Drawing.Color.Blue;
 			this.btnOrigin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
 			this.btnOrigin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,7 +214,7 @@
 			this.btnReset.Location = new System.Drawing.Point(10, 636);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnReset.Size = new System.Drawing.Size(252, 38);
+			this.btnReset.Size = new System.Drawing.Size(256, 38);
 			this.btnReset.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,7 +234,7 @@
 			this.btnStop.Location = new System.Drawing.Point(10, 592);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnStop.Size = new System.Drawing.Size(252, 38);
+			this.btnStop.Size = new System.Drawing.Size(256, 38);
 			this.btnStop.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnStop.StateNormal.Back.Color2 = System.Drawing.Color.Maroon;
 			this.btnStop.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -253,7 +254,7 @@
 			this.btnStart.Location = new System.Drawing.Point(10, 548);
 			this.btnStart.Name = "btnStart";
 			this.btnStart.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnStart.Size = new System.Drawing.Size(252, 38);
+			this.btnStart.Size = new System.Drawing.Size(256, 38);
 			this.btnStart.StateNormal.Back.Color1 = System.Drawing.Color.SeaGreen;
 			this.btnStart.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnStart.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -266,22 +267,13 @@
 			this.btnStart.TabIndex = 37;
 			this.btnStart.Values.Text = "START";
 			// 
-			// ucPcInfo
-			// 
-			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
-			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ucPcInfo.IsRun = false;
-			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
-			this.ucPcInfo.Name = "ucPcInfo";
-			this.ucPcInfo.Size = new System.Drawing.Size(271, 82);
-			this.ucPcInfo.TabIndex = 0;
-			// 
 			// panelMenu
 			// 
 			this.panelMenu.BackColor = System.Drawing.SystemColors.Control;
 			this.panelMenu.Controls.Add(this.btnKeyboard);
 			this.panelMenu.Controls.Add(this.btnSetting);
 			this.panelMenu.Controls.Add(this.btnPrinter);
+			this.panelMenu.Controls.Add(this.btnPlcSetting);
 			this.panelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelMenu.Location = new System.Drawing.Point(1, 1);
 			this.panelMenu.Margin = new System.Windows.Forms.Padding(0);
@@ -377,7 +369,7 @@
 			this.tableLayoutMachineMobitor.RowCount = 2;
 			this.tableLayoutMachineMobitor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutMachineMobitor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-			this.tableLayoutMachineMobitor.Size = new System.Drawing.Size(834, 609);
+			this.tableLayoutMachineMobitor.Size = new System.Drawing.Size(830, 609);
 			this.tableLayoutMachineMobitor.TabIndex = 8;
 			// 
 			// panelMain
@@ -386,7 +378,7 @@
 			this.panelMain.Location = new System.Drawing.Point(0, 0);
 			this.panelMain.Margin = new System.Windows.Forms.Padding(0);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(834, 559);
+			this.panelMain.Size = new System.Drawing.Size(830, 559);
 			this.panelMain.TabIndex = 7;
 			// 
 			// lbTitle
@@ -413,17 +405,6 @@
 			this.panelTitle.Name = "panelTitle";
 			this.panelTitle.Size = new System.Drawing.Size(1576, 69);
 			this.panelTitle.TabIndex = 4;
-			// 
-			// ucDateTime
-			// 
-			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
-			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ucDateTime.IsRun = false;
-			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
-			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
-			this.ucDateTime.Name = "ucDateTime";
-			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
-			this.ucDateTime.TabIndex = 2;
 			// 
 			// lbCompanyName
 			// 
@@ -511,8 +492,25 @@
 			this.panelAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelAlarm.Location = new System.Drawing.Point(3, 562);
 			this.panelAlarm.Name = "panelAlarm";
-			this.panelAlarm.Size = new System.Drawing.Size(828, 44);
+			this.panelAlarm.Size = new System.Drawing.Size(824, 44);
 			this.panelAlarm.TabIndex = 8;
+			// 
+			// btnPlcSetting
+			// 
+			this.btnPlcSetting.BackColor = System.Drawing.Color.Teal;
+			this.btnPlcSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnPlcSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPlcSetting.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnPlcSetting.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnPlcSetting.ForeColor = System.Drawing.Color.White;
+			this.btnPlcSetting.Location = new System.Drawing.Point(0, 0);
+			this.btnPlcSetting.Margin = new System.Windows.Forms.Padding(0);
+			this.btnPlcSetting.Name = "btnPlcSetting";
+			this.btnPlcSetting.Size = new System.Drawing.Size(60, 55);
+			this.btnPlcSetting.TabIndex = 42;
+			this.btnPlcSetting.Text = "PLC";
+			this.btnPlcSetting.UseVisualStyleBackColor = false;
+			this.btnPlcSetting.Click += new System.EventHandler(this.btnPlcSetting_Click);
 			// 
 			// pictureBoxCompanyLogo
 			// 
@@ -544,12 +542,13 @@
 			this.btnKeyboard.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnKeyboard.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnKeyboard.ForeColor = System.Drawing.Color.White;
-			this.btnKeyboard.Location = new System.Drawing.Point(0, 110);
+			this.btnKeyboard.Location = new System.Drawing.Point(0, 165);
 			this.btnKeyboard.Margin = new System.Windows.Forms.Padding(0);
 			this.btnKeyboard.Name = "btnKeyboard";
 			this.btnKeyboard.Size = new System.Drawing.Size(60, 55);
-			this.btnKeyboard.TabIndex = 41;
+			this.btnKeyboard.TabIndex = 47;
 			this.btnKeyboard.UseVisualStyleBackColor = false;
+			this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
 			// 
 			// btnSetting
 			// 
@@ -558,12 +557,13 @@
 			this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnSetting.Location = new System.Drawing.Point(0, 55);
+			this.btnSetting.Location = new System.Drawing.Point(0, 110);
 			this.btnSetting.Margin = new System.Windows.Forms.Padding(0);
 			this.btnSetting.Name = "btnSetting";
 			this.btnSetting.Size = new System.Drawing.Size(60, 55);
-			this.btnSetting.TabIndex = 40;
+			this.btnSetting.TabIndex = 46;
 			this.btnSetting.UseVisualStyleBackColor = false;
+			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
 			// 
 			// btnPrinter
 			// 
@@ -574,13 +574,34 @@
 			this.btnPrinter.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnPrinter.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnPrinter.ForeColor = System.Drawing.Color.White;
-			this.btnPrinter.Location = new System.Drawing.Point(0, 0);
+			this.btnPrinter.Location = new System.Drawing.Point(0, 55);
 			this.btnPrinter.Margin = new System.Windows.Forms.Padding(0);
 			this.btnPrinter.Name = "btnPrinter";
 			this.btnPrinter.Size = new System.Drawing.Size(60, 55);
-			this.btnPrinter.TabIndex = 38;
+			this.btnPrinter.TabIndex = 45;
 			this.btnPrinter.UseVisualStyleBackColor = false;
 			this.btnPrinter.Click += new System.EventHandler(this.btnPrinter_Click);
+			// 
+			// ucDateTime
+			// 
+			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
+			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ucDateTime.IsRun = false;
+			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
+			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
+			this.ucDateTime.Name = "ucDateTime";
+			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
+			this.ucDateTime.TabIndex = 2;
+			// 
+			// ucPcInfo
+			// 
+			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
+			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ucPcInfo.IsRun = false;
+			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
+			this.ucPcInfo.Name = "ucPcInfo";
+			this.ucPcInfo.Size = new System.Drawing.Size(275, 82);
+			this.ucPcInfo.TabIndex = 0;
 			// 
 			// MainWindow
 			// 
@@ -630,9 +651,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFooter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button btnKeyboard;
-        private System.Windows.Forms.Button btnSetting;
-        private System.Windows.Forms.Button btnPrinter;
         private System.Windows.Forms.Panel panel1;
         private Cutreson_UserControl.UcDateTime ucDateTime;
         private Cutreson_UserControl.UspcInfor ucPcInfo;
@@ -652,6 +670,10 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutMachineMobitor;
 		private System.Windows.Forms.Panel panelMain;
 		private System.Windows.Forms.Panel panelAlarm;
+		private System.Windows.Forms.Button btnPlcSetting;
+		private System.Windows.Forms.Button btnKeyboard;
+		private System.Windows.Forms.Button btnSetting;
+		private System.Windows.Forms.Button btnPrinter;
 	}
 }
 

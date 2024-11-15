@@ -622,7 +622,13 @@ namespace Cutreson_PLC.McProtocol
 			int[] dataRead = clsRadixTransformation.ByteArrayToInt16Array(byteArr);
             return dataRead;
 		}
-        public bool ReadBit(PlcDeviceType iType, int iAddress)
+		public int ReadWord(PlcDeviceType iType, int iAddress)
+		{
+			byte[] byteArr = ReadDeviceBlock(iType, iAddress, 1);
+			int[] dataRead = clsRadixTransformation.ByteArrayToInt16Array(byteArr);
+			return dataRead[0];
+		}
+		public bool ReadBit(PlcDeviceType iType, int iAddress)
         {
 			int[] bitDevice;
 			GetBitDevice(iType, iAddress, 1, out bitDevice);
