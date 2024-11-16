@@ -68,11 +68,19 @@ namespace Seoul_Software
 		}
 		public void Start()
         {
-            _listener = new TcpListener(IPAddress.Any, _port);
-            _listener.Start();
-            Console.WriteLine($"FTP server started on port {_port}...");
+            try
+            {
+				_listener = new TcpListener(IPAddress.Any, _port);
+				_listener.Server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+				_listener.Start();
+				Console.WriteLine($"FTP server started on port {_port}...");
 
-            Task.Run(() => ListenForClients());
+				Task.Run(() => ListenForClients());
+			}
+            catch(Exception ex)
+            {
+                Global.Log.Alarm($"Ftp server: " + ex.Message);
+            }
         }
 
         private async Task ListenForClients()

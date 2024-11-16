@@ -38,6 +38,7 @@
     <ApplicationIcon>ArrowRight.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="ComponentFactory.Krypton.Design">
       <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Design.dll</HintPath>
     </Reference>
@@ -55,6 +56,18 @@
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Workspace">
       <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Workspace.dll</HintPath>
+    </Reference>
+    <Reference Include="Cutreson_PLC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_PLC\bin\Release\netstandard2.0\Cutreson_PLC.dll</HintPath>
+    </Reference>
+    <Reference Include="Cutreson_UserControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_UserControl\bin\Release\Cutreson_UserControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Cutreson_Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cutreson_UserControl\bin\Release\Cutreson_Utility.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=6.2.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -238,20 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Keyboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cutreson_PLC\Cutreson_PLC.csproj">
-      <Project>{6d2181f8-4f4c-46b7-8244-5934d7524c03}</Project>
-      <Name>Cutreson_PLC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cutreson_UserControl\Cutreson_UserControl.csproj">
-      <Project>{53708a18-3bec-4b2c-81b1-50dd3f991599}</Project>
-      <Name>Cutreson_UserControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cutreson_Utility\Cutreson_Utility.csproj">
-      <Project>{92bc91f3-df20-4f85-af17-3fc0f445bdc2}</Project>
-      <Name>Cutreson_Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Add.ico" />

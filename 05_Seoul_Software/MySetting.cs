@@ -48,7 +48,7 @@ namespace Seoul_Software
 			PrinterIp = "192.168.3.123";
 			PrinterPort = 6101;
 			PrinterCommand = "^XA^FO20,20^ADN,30,25^FDLot:_lot_^FS^FO20,80^ADN,30,25^FDTotal:_total_pcs^FS^XZ";
-			FtpPort = 21;
+			FtpPort = 22;
 			FtpUserName = "son";
 			FtpPassword = "son@123";
 			FtpFolderPath = "ftp_uploads";
