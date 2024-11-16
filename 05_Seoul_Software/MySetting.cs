@@ -25,11 +25,19 @@ namespace Seoul_Software
 		public string PrinterIp;
 		public int PrinterPort;
 		public string PrinterCommand;
+		public bool ShowIdBarcode;
+		//FTP smart cam Cognex IS2000
+		public int FtpPort;
+		public string FtpUserName;
+		public string FtpPassword;
+		public string FtpFolderPath;
+		public string FtpImageFileName;
+		public bool IsSaveImageLog;
 		public static MySetting Setting = new MySetting();
 
 		public MySetting()
 		{
-			Title = "Vision Edition Software";
+			Title = "Auto UV Tape Mount Machine";
 			CompanyName = "Cutreson Co., Ltd";
 			LogOperationFileName = "operation.txt";
 			LogAlarmFileName = "alarm.txt";
@@ -40,6 +48,13 @@ namespace Seoul_Software
 			PrinterIp = "192.168.3.123";
 			PrinterPort = 6101;
 			PrinterCommand = "^XA^FO20,20^ADN,30,25^FDLot:_lot_^FS^FO20,80^ADN,30,25^FDTotal:_total_pcs^FS^XZ";
+			FtpPort = 21;
+			FtpUserName = "son";
+			FtpPassword = "son@123";
+			FtpFolderPath = "ftp_uploads";
+			FtpImageFileName = "image.bmp";
+			IsSaveImageLog = true;
+			ShowIdBarcode = false;
 	}
 
 		public void SaveSetting()

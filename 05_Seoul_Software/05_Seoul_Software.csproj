@@ -7,7 +7,7 @@
     <ProjectGuid>{EAAC8ACE-1B98-4724-80DB-A4EAFFDD2DF9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Seoul_Software</RootNamespace>
-    <AssemblyName>Seoul_Software</AssemblyName>
+    <AssemblyName>Auto UV Tape Mount Machine</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Add.ico</ApplicationIcon>
+    <ApplicationIcon>ArrowRight.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Design">
@@ -92,6 +92,12 @@
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </Compile>
     <Compile Include="clsConfig.cs" />
+    <Compile Include="frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfo.Designer.cs">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineMonitor\ControlMonitorModel.cs" />
     <Compile Include="MachineMonitor\ucMachineMonitor.cs">
       <SubType>UserControl</SubType>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="Alarm\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MachineMonitor\frmMachineMonitor.resx">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +211,9 @@
     <EmbeddedResource Include="Scanner\ucBarcode.resx">
       <DependentUpon>ucBarcode.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Dotmatrx.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Add.ico" />
+    <Content Include="ArrowRight.ico" />
     <None Include="Resources\Printer.ico" />
     <None Include="Resources\Printer.png" />
     <None Include="Resources\Layout.jpg" />

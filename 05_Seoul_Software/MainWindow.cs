@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Cutreson_PLC.McProtocol;
 using Cutreson_Utility;
 using Seoul_Software.Alarm;
 using Seoul_Software.OperatingEvent;
@@ -6,9 +7,12 @@ using Seoul_Software.PLC;
 using Seoul_Software.Printer;
 using Seoul_Software.Scanner;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Seoul_Software
 {
@@ -25,8 +29,10 @@ namespace Seoul_Software
             //Info
             ucDateTime.IsRun = true;
             ucPcInfo.IsRun = true;
-            //Load setting
-            MySetting.Setting.LoadSetting();
+			labelBuildDate.Text = "Built: " + File.GetLastWriteTime(Application.ProductName + ".exe").ToString("yyyy/MM/dd");
+			//Load setting
+			MySetting.Setting.LoadSetting();
+			lbTitle.Text = MySetting.Setting.Title;
             //Log
             Global.Log.ListBoxViewOperation = listBoxEventLog;
             Global.Log.ListBoxViewAlarm = listBoxAlarm;
@@ -60,10 +66,12 @@ namespace Seoul_Software
 			//Scanner
 			frmBarcodes frmScanner = new frmBarcodes();
             clsControlForm.LoadFormInControl(groupBoxScanner, frmScanner);
+			//Info
+			frmInfo frmInfo = new frmInfo();
+			clsControlForm.LoadFormInPanel(panelInfo, frmInfo);
             //////////////////////////////////////////////////////////////////////////
             Global.Log.Operation("Open software complete");
         }
-
 		private void PLC_OperatingEvent(object sender, OperatingEventParam e)
 		{
 			OperatingEventModel operatingEvent = Global.OperatingEvents.FirstOrDefault(a => a.Index == e.Index);
@@ -219,6 +227,31 @@ namespace Seoul_Software
 		private void btnKeyboard_Click(object sender, EventArgs e)
 		{
 			Process.Start(@"c:\Windows\Sysnative\cmd.exe", "/c osk.exe");
+		}
+
+		private void btnStart_Click(object sender, EventArgs e)
+		{
+			Global.PLC.Setbit(PlcDeviceType.M, 23, true);
+		}
+
+		private void btnStop_Click(object sender, EventArgs e)
+		{
+			Global.PLC.Setbit(PlcDeviceType.M, 24, true);
+		}
+
+		private void btnReset_Click(object sender, EventArgs e)
+		{
+			Global.PLC.Setbit(PlcDeviceType.M, 25, true);
+		}
+
+		private void btnOrigin_Click(object sender, EventArgs e)
+		{
+			Global.PLC.Setbit(PlcDeviceType.M, 26, true);
+		}
+
+		private void btnInitial_Click(object sender, EventArgs e)
+		{
+			Global.PLC.Setbit(PlcDeviceType.M, 27, true);
 		}
 	}
 }

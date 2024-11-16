@@ -23,10 +23,10 @@ namespace Seoul_Software
         public frmVisionMonitor()
         {
             InitializeComponent();
-            _port = clsConfig.FtpPort;
-            _username = clsConfig.FtpUserName;
-            _password = clsConfig.FtpPassword;
-            _uploadDirectory = clsConfig.FtpFolderPath;
+            _port = MySetting.Setting.FtpPort;
+            _username = MySetting.Setting.FtpUserName;
+            _password = MySetting.Setting.FtpPassword;
+            _uploadDirectory = MySetting.Setting.FtpFolderPath;
 
             if (!Directory.Exists(_uploadDirectory))
             {
@@ -150,7 +150,7 @@ namespace Seoul_Software
                     {
                         await dataStream.CopyToAsync(memoryStream);
 
-                        if (clsConfig.IsSaveImageLog)
+                        if (MySetting.Setting.IsSaveImageLog)
                         {
                             using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                             {

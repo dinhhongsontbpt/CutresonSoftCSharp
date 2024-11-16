@@ -71,6 +71,13 @@ namespace Seoul_Software
 			get { return _alarmSignal; }
 			set { Set(ref _alarmSignal, value); }
 		}
+		//Auto running
+		private bool _autoRunning;
+		public bool AutoRunning
+		{
+			get { return _autoRunning; }
+			set { Set(ref _autoRunning, value); }
+		}
 		private bool[] ref_AlarmArr = new bool[clsConfig.AlarmCount];		
 		public event EventHandler<int> AlarmEvent;
 		//Operating event
@@ -98,6 +105,7 @@ namespace Seoul_Software
                         bool[] m0_m299 = client.ReadBits(PlcDeviceType.M, 0, 300);
 						Initial = m0_m299[107];
                         AlarmSignal = m0_m299[113];
+						AutoRunning = m0_m299[103];
                         //-----------------------Alarm----------------------------------------------------
                         bool[] b_arrALarm = client.ReadBits(clsConfig.AlarmDeviceType, clsConfig.AlarmStartAddress, clsConfig.AlarmCount);
                         for (int i = 0; i < b_arrALarm.Length; i++)
@@ -242,7 +250,31 @@ namespace Seoul_Software
 				{
 					if (client.IsConnect())
 					{
-						bool b = client.WriteDeviceBlock(PlcDeviceType.L, 16021, 1, new int[]{ 1});
+						bool b = client.SetBit(PlcDeviceType.L, 16021, true);
+						return b;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				catch (Exception ex)
+				{
+					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+				}
+				return false;
+			}
+
+		}
+		public bool Setbit(PlcDeviceType iType, int iAddress, bool value)
+		{
+			lock (_Lock)
+			{
+				try
+				{
+					if (client.IsConnect())
+					{
+						bool b = client.SetBit(iType, iAddress, value);
 						return b;
 					}
 					else

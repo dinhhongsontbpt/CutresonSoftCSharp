@@ -654,6 +654,10 @@ namespace Cutreson_PLC.McProtocol
             }
             return outBits;
 		}
+        public bool SetBit(PlcDeviceType iType, int iAddress, bool value)
+        {
+            return SetBitDevice(iType, iAddress, 1, new int[] { value == true ? 1 : 0 });
+        }
 	}
 
 }

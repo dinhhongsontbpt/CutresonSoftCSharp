@@ -56,7 +56,7 @@
 			// lbIndex
 			// 
 			this.lbIndex.AutoSize = true;
-			this.lbIndex.BackColor = System.Drawing.Color.Gold;
+			this.lbIndex.BackColor = System.Drawing.Color.DarkOrange;
 			this.lbIndex.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbIndex.Location = new System.Drawing.Point(4, 1);

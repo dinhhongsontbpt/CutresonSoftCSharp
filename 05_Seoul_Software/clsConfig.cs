@@ -13,14 +13,7 @@ using System.Drawing;
 namespace Seoul_Software
 {
     public class clsConfig
-    {
-        //FTP smart cam Cognex IS2000
-        public static int FtpPort = 21;
-        public static string FtpUserName = "son";
-        public static string FtpPassword = "son@123";
-        public static string FtpFolderPath = "ftp_uploads";
-		public static string FtpImageFileName = "image.bmp";
-        public static bool IsSaveImageLog = true;
+    {        
         //Log
         public static bool IsSaveLog = true;
 		public static int ListBoxLogMaxRow = 100;
@@ -34,14 +27,23 @@ namespace Seoul_Software
 		//Alarm
 		public static PlcDeviceType AlarmDeviceType = PlcDeviceType.L;
 		public static int AlarmStartAddress = 4000;
-		public static int AlarmCount = 1000;
+		public static int AlarmCount = 500;
+#if DEBUG 
 		public static bool ShowAlarmDevice = true;
+#else
+		public static bool ShowAlarmDevice = false;
+#endif
 		//Event log
 		public static string StringNotUse = "not use";
-		public static PlcDeviceType OperatingEventDeviceType = PlcDeviceType.M;
-		public static int OperatingEventStartAddress = 0;
-		public static int OperatingEventCount = 400;
+		public static PlcDeviceType OperatingEventDeviceType = PlcDeviceType.L;
+		public static int OperatingEventStartAddress = 4500;
+		public static int OperatingEventCount = 4999;
+#if DEBUG
 		public static bool ShowOperatingEventDevice = true;
+#else
+		public static bool ShowOperatingEventDevice = false;
+#endif
+
 		//Control monitor
 		public static PlcDeviceType ControlDeviceType = PlcDeviceType.D;
 		public static int ControlStartAddress = 100;
@@ -56,7 +58,7 @@ namespace Seoul_Software
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		#region Load config
-        public static bool LoadExcelConfig()
+		public static bool LoadExcelConfig()
         {
             try
             {

@@ -35,13 +35,20 @@
 			this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
 			this.groupBoxScanner = new System.Windows.Forms.GroupBox();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.panelInfo = new System.Windows.Forms.Panel();
+			this.btnInitial = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.lampPlcAlive = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnOrigin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnReset = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStop = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
 			this.panelMenu = new System.Windows.Forms.Panel();
+			this.btnKeyboard = new System.Windows.Forms.Button();
+			this.btnSetting = new System.Windows.Forms.Button();
+			this.btnPrinter = new System.Windows.Forms.Button();
+			this.btnPlcSetting = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.panelVisionMonitor = new System.Windows.Forms.Panel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -50,22 +57,17 @@
 			this.listBoxEventLog = new System.Windows.Forms.ListBox();
 			this.tableLayoutMachineMobitor = new System.Windows.Forms.TableLayoutPanel();
 			this.panelMain = new System.Windows.Forms.Panel();
+			this.panelAlarm = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.panelTitle = new System.Windows.Forms.Panel();
-			this.lbCompanyName = new System.Windows.Forms.Label();
-			this.labelVersion = new System.Windows.Forms.Label();
+			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
+			this.pbLogo = new System.Windows.Forms.PictureBox();
 			this.labelBuildDate = new System.Windows.Forms.Label();
 			this.tableLayoutPanelFooter = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.panelAlarm = new System.Windows.Forms.Panel();
-			this.btnPlcSetting = new System.Windows.Forms.Button();
 			this.pictureBoxCompanyLogo = new System.Windows.Forms.PictureBox();
-			this.pbLogo = new System.Windows.Forms.PictureBox();
-			this.btnKeyboard = new System.Windows.Forms.Button();
-			this.btnSetting = new System.Windows.Forms.Button();
-			this.btnPrinter = new System.Windows.Forms.Button();
-			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
-			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
+			this.lbCompanyName = new System.Windows.Forms.Label();
+			this.labelVersion = new System.Windows.Forms.Label();
 			this.panel.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -75,10 +77,10 @@
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutMachineMobitor.SuspendLayout();
 			this.panelTitle.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.tableLayoutPanelFooter.SuspendLayout();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxCompanyLogo)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainPalette
@@ -125,7 +127,7 @@
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 281F));
+			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 285F));
 			this.tableLayoutPanelMain.Controls.Add(this.groupBoxScanner, 1, 1);
 			this.tableLayoutPanelMain.Controls.Add(this.panel1, 3, 0);
 			this.tableLayoutPanelMain.Controls.Add(this.panelMenu, 0, 0);
@@ -146,13 +148,15 @@
 			this.groupBoxScanner.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBoxScanner.Location = new System.Drawing.Point(65, 614);
 			this.groupBoxScanner.Name = "groupBoxScanner";
-			this.groupBoxScanner.Size = new System.Drawing.Size(1225, 114);
+			this.groupBoxScanner.Size = new System.Drawing.Size(1221, 114);
 			this.groupBoxScanner.TabIndex = 7;
 			this.groupBoxScanner.TabStop = false;
 			this.groupBoxScanner.Text = "Scanner";
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.panelInfo);
+			this.panel1.Controls.Add(this.btnInitial);
 			this.panel1.Controls.Add(this.lampPlcAlive);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.btnOrigin);
@@ -161,11 +165,42 @@
 			this.panel1.Controls.Add(this.btnStart);
 			this.panel1.Controls.Add(this.ucPcInfo);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(1297, 4);
+			this.panel1.Location = new System.Drawing.Point(1293, 4);
 			this.panel1.Name = "panel1";
 			this.tableLayoutPanelMain.SetRowSpan(this.panel1, 2);
-			this.panel1.Size = new System.Drawing.Size(275, 724);
+			this.panel1.Size = new System.Drawing.Size(279, 724);
 			this.panel1.TabIndex = 3;
+			// 
+			// panelInfo
+			// 
+			this.panelInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelInfo.Location = new System.Drawing.Point(10, 127);
+			this.panelInfo.Name = "panelInfo";
+			this.panelInfo.Size = new System.Drawing.Size(259, 282);
+			this.panelInfo.TabIndex = 44;
+			// 
+			// btnInitial
+			// 
+			this.btnInitial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnInitial.Location = new System.Drawing.Point(10, 659);
+			this.btnInitial.Name = "btnInitial";
+			this.btnInitial.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+			this.btnInitial.Size = new System.Drawing.Size(260, 55);
+			this.btnInitial.StateNormal.Back.Color1 = System.Drawing.Color.Teal;
+			this.btnInitial.StateNormal.Back.Color2 = System.Drawing.Color.Violet;
+			this.btnInitial.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnInitial.StatePressed.Back.Color1 = System.Drawing.Color.Teal;
+			this.btnInitial.StatePressed.Back.Color2 = System.Drawing.Color.Yellow;
+			this.btnInitial.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold);
+			this.btnInitial.StateTracking.Back.Color1 = System.Drawing.Color.Yellow;
+			this.btnInitial.StateTracking.Back.Color2 = System.Drawing.Color.Teal;
+			this.btnInitial.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnInitial.TabIndex = 43;
+			this.btnInitial.Values.Text = "INITIAL";
+			this.btnInitial.Click += new System.EventHandler(this.btnInitial_Click);
 			// 
 			// lampPlcAlive
 			// 
@@ -191,10 +226,10 @@
 			// 
 			this.btnOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnOrigin.Location = new System.Drawing.Point(10, 680);
+			this.btnOrigin.Location = new System.Drawing.Point(10, 598);
 			this.btnOrigin.Name = "btnOrigin";
 			this.btnOrigin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnOrigin.Size = new System.Drawing.Size(255, 38);
+			this.btnOrigin.Size = new System.Drawing.Size(260, 55);
 			this.btnOrigin.StateNormal.Back.Color1 = System.Drawing.Color.Blue;
 			this.btnOrigin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
 			this.btnOrigin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,15 +241,16 @@
 			this.btnOrigin.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnOrigin.TabIndex = 40;
 			this.btnOrigin.Values.Text = "RETURN";
+			this.btnOrigin.Click += new System.EventHandler(this.btnOrigin_Click);
 			// 
 			// btnReset
 			// 
 			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnReset.Location = new System.Drawing.Point(10, 636);
+			this.btnReset.Location = new System.Drawing.Point(10, 537);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnReset.Size = new System.Drawing.Size(256, 38);
+			this.btnReset.Size = new System.Drawing.Size(260, 55);
 			this.btnReset.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,15 +262,16 @@
 			this.btnReset.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnReset.TabIndex = 39;
 			this.btnReset.Values.Text = "RESET";
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
 			// btnStop
 			// 
 			this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnStop.Location = new System.Drawing.Point(10, 592);
+			this.btnStop.Location = new System.Drawing.Point(10, 476);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnStop.Size = new System.Drawing.Size(256, 38);
+			this.btnStop.Size = new System.Drawing.Size(260, 55);
 			this.btnStop.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnStop.StateNormal.Back.Color2 = System.Drawing.Color.Maroon;
 			this.btnStop.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,15 +283,16 @@
 			this.btnStop.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnStop.TabIndex = 38;
 			this.btnStop.Values.Text = "STOP";
+			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
 			// 
 			// btnStart
 			// 
 			this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnStart.Location = new System.Drawing.Point(10, 548);
+			this.btnStart.Location = new System.Drawing.Point(10, 415);
 			this.btnStart.Name = "btnStart";
 			this.btnStart.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnStart.Size = new System.Drawing.Size(256, 38);
+			this.btnStart.Size = new System.Drawing.Size(260, 55);
 			this.btnStart.StateNormal.Back.Color1 = System.Drawing.Color.SeaGreen;
 			this.btnStart.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnStart.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -266,6 +304,17 @@
 			this.btnStart.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnStart.TabIndex = 37;
 			this.btnStart.Values.Text = "START";
+			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+			// 
+			// ucPcInfo
+			// 
+			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
+			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ucPcInfo.IsRun = false;
+			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
+			this.ucPcInfo.Name = "ucPcInfo";
+			this.ucPcInfo.Size = new System.Drawing.Size(279, 82);
+			this.ucPcInfo.TabIndex = 0;
 			// 
 			// panelMenu
 			// 
@@ -281,6 +330,72 @@
 			this.tableLayoutPanelMain.SetRowSpan(this.panelMenu, 2);
 			this.panelMenu.Size = new System.Drawing.Size(60, 730);
 			this.panelMenu.TabIndex = 2;
+			// 
+			// btnKeyboard
+			// 
+			this.btnKeyboard.BackColor = System.Drawing.Color.Teal;
+			this.btnKeyboard.BackgroundImage = global::Seoul_Software.Properties.Resources.Keyboard;
+			this.btnKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnKeyboard.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnKeyboard.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnKeyboard.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnKeyboard.ForeColor = System.Drawing.Color.White;
+			this.btnKeyboard.Location = new System.Drawing.Point(0, 165);
+			this.btnKeyboard.Margin = new System.Windows.Forms.Padding(0);
+			this.btnKeyboard.Name = "btnKeyboard";
+			this.btnKeyboard.Size = new System.Drawing.Size(60, 55);
+			this.btnKeyboard.TabIndex = 47;
+			this.btnKeyboard.UseVisualStyleBackColor = false;
+			this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
+			// 
+			// btnSetting
+			// 
+			this.btnSetting.BackColor = System.Drawing.Color.Teal;
+			this.btnSetting.BackgroundImage = global::Seoul_Software.Properties.Resources.SettingWhite;
+			this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnSetting.Location = new System.Drawing.Point(0, 110);
+			this.btnSetting.Margin = new System.Windows.Forms.Padding(0);
+			this.btnSetting.Name = "btnSetting";
+			this.btnSetting.Size = new System.Drawing.Size(60, 55);
+			this.btnSetting.TabIndex = 46;
+			this.btnSetting.UseVisualStyleBackColor = false;
+			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+			// 
+			// btnPrinter
+			// 
+			this.btnPrinter.BackColor = System.Drawing.Color.Teal;
+			this.btnPrinter.BackgroundImage = global::Seoul_Software.Properties.Resources.Printer1;
+			this.btnPrinter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnPrinter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPrinter.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnPrinter.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnPrinter.ForeColor = System.Drawing.Color.White;
+			this.btnPrinter.Location = new System.Drawing.Point(0, 55);
+			this.btnPrinter.Margin = new System.Windows.Forms.Padding(0);
+			this.btnPrinter.Name = "btnPrinter";
+			this.btnPrinter.Size = new System.Drawing.Size(60, 55);
+			this.btnPrinter.TabIndex = 45;
+			this.btnPrinter.UseVisualStyleBackColor = false;
+			this.btnPrinter.Click += new System.EventHandler(this.btnPrinter_Click);
+			// 
+			// btnPlcSetting
+			// 
+			this.btnPlcSetting.BackColor = System.Drawing.Color.Teal;
+			this.btnPlcSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnPlcSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPlcSetting.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnPlcSetting.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnPlcSetting.ForeColor = System.Drawing.Color.White;
+			this.btnPlcSetting.Location = new System.Drawing.Point(0, 0);
+			this.btnPlcSetting.Margin = new System.Windows.Forms.Padding(0);
+			this.btnPlcSetting.Name = "btnPlcSetting";
+			this.btnPlcSetting.Size = new System.Drawing.Size(60, 55);
+			this.btnPlcSetting.TabIndex = 42;
+			this.btnPlcSetting.Text = "PLC";
+			this.btnPlcSetting.UseVisualStyleBackColor = false;
+			this.btnPlcSetting.Click += new System.EventHandler(this.btnPlcSetting_Click);
 			// 
 			// tableLayoutPanel2
 			// 
@@ -369,7 +484,7 @@
 			this.tableLayoutMachineMobitor.RowCount = 2;
 			this.tableLayoutMachineMobitor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutMachineMobitor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-			this.tableLayoutMachineMobitor.Size = new System.Drawing.Size(830, 609);
+			this.tableLayoutMachineMobitor.Size = new System.Drawing.Size(826, 609);
 			this.tableLayoutMachineMobitor.TabIndex = 8;
 			// 
 			// panelMain
@@ -378,8 +493,16 @@
 			this.panelMain.Location = new System.Drawing.Point(0, 0);
 			this.panelMain.Margin = new System.Windows.Forms.Padding(0);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(830, 559);
+			this.panelMain.Size = new System.Drawing.Size(826, 559);
 			this.panelMain.TabIndex = 7;
+			// 
+			// panelAlarm
+			// 
+			this.panelAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelAlarm.Location = new System.Drawing.Point(3, 562);
+			this.panelAlarm.Name = "panelAlarm";
+			this.panelAlarm.Size = new System.Drawing.Size(820, 44);
+			this.panelAlarm.TabIndex = 8;
 			// 
 			// lbTitle
 			// 
@@ -406,33 +529,26 @@
 			this.panelTitle.Size = new System.Drawing.Size(1576, 69);
 			this.panelTitle.TabIndex = 4;
 			// 
-			// lbCompanyName
+			// ucDateTime
 			// 
-			this.lbCompanyName.AutoSize = true;
-			this.lbCompanyName.BackColor = System.Drawing.SystemColors.Control;
-			this.lbCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbCompanyName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lbCompanyName.Location = new System.Drawing.Point(976, 0);
-			this.lbCompanyName.Name = "lbCompanyName";
-			this.lbCompanyName.Size = new System.Drawing.Size(550, 34);
-			this.lbCompanyName.TabIndex = 15;
-			this.lbCompanyName.Text = "SORA.Co, Ltd";
-			this.lbCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
+			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ucDateTime.IsRun = false;
+			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
+			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
+			this.ucDateTime.Name = "ucDateTime";
+			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
+			this.ucDateTime.TabIndex = 2;
 			// 
-			// labelVersion
+			// pbLogo
 			// 
-			this.labelVersion.AutoSize = true;
-			this.labelVersion.BackColor = System.Drawing.SystemColors.Control;
-			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.labelVersion.Location = new System.Drawing.Point(559, 0);
-			this.labelVersion.Name = "labelVersion";
-			this.labelVersion.Size = new System.Drawing.Size(411, 34);
-			this.labelVersion.TabIndex = 14;
-			this.labelVersion.Text = "Version: V1.0";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.pbLogo.Image = global::Seoul_Software.Properties.Resources.Seoul;
+			this.pbLogo.Location = new System.Drawing.Point(9, 9);
+			this.pbLogo.Name = "pbLogo";
+			this.pbLogo.Size = new System.Drawing.Size(100, 50);
+			this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbLogo.TabIndex = 0;
+			this.pbLogo.TabStop = false;
 			// 
 			// labelBuildDate
 			// 
@@ -443,7 +559,7 @@
 			this.labelBuildDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.labelBuildDate.Location = new System.Drawing.Point(3, 0);
 			this.labelBuildDate.Name = "labelBuildDate";
-			this.labelBuildDate.Size = new System.Drawing.Size(550, 34);
+			this.labelBuildDate.Size = new System.Drawing.Size(299, 34);
 			this.labelBuildDate.TabIndex = 13;
 			this.labelBuildDate.Text = "Built: 2024/10/18";
 			this.labelBuildDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -452,9 +568,9 @@
 			// 
 			this.tableLayoutPanelFooter.BackColor = System.Drawing.SystemColors.Control;
 			this.tableLayoutPanelFooter.ColumnCount = 4;
-			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
-			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.27273F));
-			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
+			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
 			this.tableLayoutPanelFooter.Controls.Add(this.lbCompanyName, 2, 0);
 			this.tableLayoutPanelFooter.Controls.Add(this.labelVersion, 0, 0);
@@ -487,121 +603,44 @@
 			this.tableLayoutPanel.Size = new System.Drawing.Size(1582, 853);
 			this.tableLayoutPanel.TabIndex = 1;
 			// 
-			// panelAlarm
-			// 
-			this.panelAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelAlarm.Location = new System.Drawing.Point(3, 562);
-			this.panelAlarm.Name = "panelAlarm";
-			this.panelAlarm.Size = new System.Drawing.Size(824, 44);
-			this.panelAlarm.TabIndex = 8;
-			// 
-			// btnPlcSetting
-			// 
-			this.btnPlcSetting.BackColor = System.Drawing.Color.Teal;
-			this.btnPlcSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnPlcSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPlcSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnPlcSetting.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnPlcSetting.ForeColor = System.Drawing.Color.White;
-			this.btnPlcSetting.Location = new System.Drawing.Point(0, 0);
-			this.btnPlcSetting.Margin = new System.Windows.Forms.Padding(0);
-			this.btnPlcSetting.Name = "btnPlcSetting";
-			this.btnPlcSetting.Size = new System.Drawing.Size(60, 55);
-			this.btnPlcSetting.TabIndex = 42;
-			this.btnPlcSetting.Text = "PLC";
-			this.btnPlcSetting.UseVisualStyleBackColor = false;
-			this.btnPlcSetting.Click += new System.EventHandler(this.btnPlcSetting_Click);
-			// 
 			// pictureBoxCompanyLogo
 			// 
 			this.pictureBoxCompanyLogo.BackgroundImage = global::Seoul_Software.Properties.Resources.IconSora;
 			this.pictureBoxCompanyLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBoxCompanyLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBoxCompanyLogo.Location = new System.Drawing.Point(1532, 3);
+			this.pictureBoxCompanyLogo.Location = new System.Drawing.Point(1530, 3);
 			this.pictureBoxCompanyLogo.Name = "pictureBoxCompanyLogo";
-			this.pictureBoxCompanyLogo.Size = new System.Drawing.Size(41, 28);
+			this.pictureBoxCompanyLogo.Size = new System.Drawing.Size(43, 28);
 			this.pictureBoxCompanyLogo.TabIndex = 16;
 			this.pictureBoxCompanyLogo.TabStop = false;
 			// 
-			// pbLogo
+			// lbCompanyName
 			// 
-			this.pbLogo.Image = global::Seoul_Software.Properties.Resources.Seoul;
-			this.pbLogo.Location = new System.Drawing.Point(9, 9);
-			this.pbLogo.Name = "pbLogo";
-			this.pbLogo.Size = new System.Drawing.Size(100, 50);
-			this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pbLogo.TabIndex = 0;
-			this.pbLogo.TabStop = false;
+			this.lbCompanyName.AutoSize = true;
+			this.lbCompanyName.BackColor = System.Drawing.SystemColors.Control;
+			this.lbCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbCompanyName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lbCompanyName.Location = new System.Drawing.Point(1225, 0);
+			this.lbCompanyName.Name = "lbCompanyName";
+			this.lbCompanyName.Size = new System.Drawing.Size(299, 34);
+			this.lbCompanyName.TabIndex = 15;
+			this.lbCompanyName.Text = "SORA.Co, Ltd";
+			this.lbCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// btnKeyboard
+			// labelVersion
 			// 
-			this.btnKeyboard.BackColor = System.Drawing.Color.Teal;
-			this.btnKeyboard.BackgroundImage = global::Seoul_Software.Properties.Resources.Keyboard;
-			this.btnKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnKeyboard.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnKeyboard.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnKeyboard.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnKeyboard.ForeColor = System.Drawing.Color.White;
-			this.btnKeyboard.Location = new System.Drawing.Point(0, 165);
-			this.btnKeyboard.Margin = new System.Windows.Forms.Padding(0);
-			this.btnKeyboard.Name = "btnKeyboard";
-			this.btnKeyboard.Size = new System.Drawing.Size(60, 55);
-			this.btnKeyboard.TabIndex = 47;
-			this.btnKeyboard.UseVisualStyleBackColor = false;
-			this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
-			// 
-			// btnSetting
-			// 
-			this.btnSetting.BackColor = System.Drawing.Color.Teal;
-			this.btnSetting.BackgroundImage = global::Seoul_Software.Properties.Resources.SettingWhite;
-			this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnSetting.Location = new System.Drawing.Point(0, 110);
-			this.btnSetting.Margin = new System.Windows.Forms.Padding(0);
-			this.btnSetting.Name = "btnSetting";
-			this.btnSetting.Size = new System.Drawing.Size(60, 55);
-			this.btnSetting.TabIndex = 46;
-			this.btnSetting.UseVisualStyleBackColor = false;
-			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
-			// 
-			// btnPrinter
-			// 
-			this.btnPrinter.BackColor = System.Drawing.Color.Teal;
-			this.btnPrinter.BackgroundImage = global::Seoul_Software.Properties.Resources.Printer1;
-			this.btnPrinter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnPrinter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPrinter.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnPrinter.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnPrinter.ForeColor = System.Drawing.Color.White;
-			this.btnPrinter.Location = new System.Drawing.Point(0, 55);
-			this.btnPrinter.Margin = new System.Windows.Forms.Padding(0);
-			this.btnPrinter.Name = "btnPrinter";
-			this.btnPrinter.Size = new System.Drawing.Size(60, 55);
-			this.btnPrinter.TabIndex = 45;
-			this.btnPrinter.UseVisualStyleBackColor = false;
-			this.btnPrinter.Click += new System.EventHandler(this.btnPrinter_Click);
-			// 
-			// ucDateTime
-			// 
-			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
-			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ucDateTime.IsRun = false;
-			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
-			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
-			this.ucDateTime.Name = "ucDateTime";
-			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
-			this.ucDateTime.TabIndex = 2;
-			// 
-			// ucPcInfo
-			// 
-			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
-			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ucPcInfo.IsRun = false;
-			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
-			this.ucPcInfo.Name = "ucPcInfo";
-			this.ucPcInfo.Size = new System.Drawing.Size(275, 82);
-			this.ucPcInfo.TabIndex = 0;
+			this.labelVersion.AutoSize = true;
+			this.labelVersion.BackColor = System.Drawing.SystemColors.Control;
+			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.labelVersion.Location = new System.Drawing.Point(308, 0);
+			this.labelVersion.Name = "labelVersion";
+			this.labelVersion.Size = new System.Drawing.Size(911, 34);
+			this.labelVersion.TabIndex = 14;
+			this.labelVersion.Text = "Version: V1.0";
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// MainWindow
 			// 
@@ -614,7 +653,6 @@
 			this.Palette = this.MainPalette;
 			this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Software";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.panel.ResumeLayout(false);
 			this.tableLayoutPanelMain.ResumeLayout(false);
@@ -627,11 +665,11 @@
 			this.tableLayoutMachineMobitor.ResumeLayout(false);
 			this.panelTitle.ResumeLayout(false);
 			this.panelTitle.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.tableLayoutPanelFooter.ResumeLayout(false);
 			this.tableLayoutPanelFooter.PerformLayout();
 			this.tableLayoutPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxCompanyLogo)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -644,10 +682,7 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Panel panelTitle;
-        private System.Windows.Forms.Label lbCompanyName;
-        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelBuildDate;
-        private System.Windows.Forms.PictureBox pictureBoxCompanyLogo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFooter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Panel panelMenu;
@@ -674,6 +709,11 @@
 		private System.Windows.Forms.Button btnKeyboard;
 		private System.Windows.Forms.Button btnSetting;
 		private System.Windows.Forms.Button btnPrinter;
+		private ComponentFactory.Krypton.Toolkit.KryptonButton btnInitial;
+		private System.Windows.Forms.Panel panelInfo;
+		private System.Windows.Forms.Label lbCompanyName;
+		private System.Windows.Forms.PictureBox pictureBoxCompanyLogo;
+		private System.Windows.Forms.Label labelVersion;
 	}
 }
 

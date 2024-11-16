@@ -19,6 +19,14 @@ namespace Seoul_Software.Scanner
 		public ucBarcode()
 		{
 			InitializeComponent();
+			if(MySetting.Setting.ShowIdBarcode)
+			{
+				tableLayoutPanel1.ColumnStyles[1].Width = 40;
+			}
+			else
+			{
+				tableLayoutPanel1.ColumnStyles[1].Width = 0;
+			}
 		}
 		public void SetModel(BarcodeModel barcode)
 		{
@@ -55,6 +63,7 @@ namespace Seoul_Software.Scanner
 			if (e.KeyCode == Keys.Enter)
 			{
 				string enteredText = txtBarcode.Text;
+				if (string.IsNullOrEmpty(enteredText)) return;
 				Global.Log.Operation("Scan: " + enteredText);
 				if (MySetting.Setting.CheckBarcodeOverlap)
 				{
@@ -98,6 +107,6 @@ namespace Seoul_Software.Scanner
 		protected virtual void OnBarcodeWritten()
 		{
 			BarcodeWritten?.Invoke(this, index);
-		}
+		}	
 	}
 }

@@ -29,62 +29,77 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSetting));
-			this.tabControl = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tabControl.SuspendLayout();
+			this.label1 = new System.Windows.Forms.Label();
+			this.txtPath = new System.Windows.Forms.TextBox();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.btnSelect = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// tabControl
+			// label1
 			// 
-			this.tabControl.Controls.Add(this.tabPage1);
-			this.tabControl.Controls.Add(this.tabPage2);
-			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl.Location = new System.Drawing.Point(0, 0);
-			this.tabControl.Name = "tabControl";
-			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(809, 407);
-			this.tabControl.TabIndex = 0;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(12, 30);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(67, 16);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Log folder";
 			// 
-			// tabPage1
+			// txtPath
 			// 
-			this.tabPage1.Location = new System.Drawing.Point(4, 25);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(801, 378);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "System";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.txtPath.Location = new System.Drawing.Point(85, 27);
+			this.txtPath.Name = "txtPath";
+			this.txtPath.Size = new System.Drawing.Size(608, 22);
+			this.txtPath.TabIndex = 1;
 			// 
-			// tabPage2
+			// btnSave
 			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 25);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(801, 378);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Printer";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.btnSave.BackColor = System.Drawing.Color.Teal;
+			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnSave.Location = new System.Drawing.Point(628, 65);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(106, 35);
+			this.btnSave.TabIndex = 12;
+			this.btnSave.Text = "SAVE";
+			this.btnSave.UseVisualStyleBackColor = false;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
+			// btnSelect
+			// 
+			this.btnSelect.BackColor = System.Drawing.Color.Teal;
+			this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnSelect.Location = new System.Drawing.Point(699, 21);
+			this.btnSelect.Name = "btnSelect";
+			this.btnSelect.Size = new System.Drawing.Size(35, 35);
+			this.btnSelect.TabIndex = 13;
+			this.btnSelect.Text = "...";
+			this.btnSelect.UseVisualStyleBackColor = false;
+			this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
 			// 
 			// frmSetting
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(809, 407);
-			this.Controls.Add(this.tabControl);
+			this.ClientSize = new System.Drawing.Size(753, 116);
+			this.Controls.Add(this.btnSelect);
+			this.Controls.Add(this.btnSave);
+			this.Controls.Add(this.txtPath);
+			this.Controls.Add(this.label1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "frmSetting";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Setting";
-			this.tabControl.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TabControl tabControl;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txtPath;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.Button btnSelect;
 	}
 }
