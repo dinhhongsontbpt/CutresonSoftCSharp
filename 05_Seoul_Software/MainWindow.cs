@@ -2,10 +2,12 @@
 using Cutreson_PLC.McProtocol;
 using Cutreson_Utility;
 using Seoul_Software.Alarm;
+using Seoul_Software.Data;
 using Seoul_Software.OperatingEvent;
 using Seoul_Software.PLC;
 using Seoul_Software.Printer;
 using Seoul_Software.Scanner;
+using Seoul_Software.SQL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +21,7 @@ namespace Seoul_Software
 	public partial class MainWindow : KryptonForm
     {
         private frmAlarm frmAlarm;
+		private frmInfo frmInfo;
 		public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +38,8 @@ namespace Seoul_Software
 			lbTitle.Text = MySetting.Setting.Title;
             //Log
             Global.Log.ListBoxViewOperation = listBoxEventLog;
-            Global.Log.ListBoxViewAlarm = listBoxAlarm;
+            Global.Log.ListBoxViewError = listBoxError;
+			Global.Log.ListBoxViewAlarm = listBoxAlarm;
 			Global.Log.Operation("Open software");
 			//Load excel config
             if(clsConfig.LoadExcelConfig())
@@ -44,13 +48,13 @@ namespace Seoul_Software
             }
             else
             {
-                Global.Log.Alarm($"Can't load {clsConfig.ConfigExcelFile}");
+                Global.Log.Error($"Can't load {clsConfig.ConfigExcelFile}");
             }
             //Alarm
             frmAlarm = new frmAlarm();
 			clsControlForm.LoadFormInPanel(panelAlarm, frmAlarm);
 			ShowAlarm(false);
-			//Load data
+			//Database
 			clsBarcodeManager.Load();
 			//PLC
 			Global.PLC = new clsControlPLC();
@@ -59,20 +63,21 @@ namespace Seoul_Software
 			Global.PLC.OperatingEvent += PLC_OperatingEvent;
             //Home
             frmMachineMonitor frmMachineMonitor = new frmMachineMonitor();
-            clsControlForm.LoadFormInPanel(panelMain, frmMachineMonitor);
+			LoadForm(frmMachineMonitor);
 			//Vision monitor
 			frmVisionMonitor frmVisionMonitor = new frmVisionMonitor();
 			clsControlForm.LoadFormInPanel(panelVisionMonitor, frmVisionMonitor);
-			//Scanner
-			frmBarcodes frmScanner = new frmBarcodes();
-            clsControlForm.LoadFormInControl(groupBoxScanner, frmScanner);
 			//Info
-			frmInfo frmInfo = new frmInfo();
+			frmInfo = new frmInfo();
+			//Scanner
+			frmBarcodes frmScanner = new frmBarcodes(frmInfo);
+			//
+            clsControlForm.LoadFormInControl(groupBoxScanner, frmScanner);
 			clsControlForm.LoadFormInPanel(panelInfo, frmInfo);
             //////////////////////////////////////////////////////////////////////////
             Global.Log.Operation("Open software complete");
         }
-		private void PLC_OperatingEvent(object sender, OperatingEventParam e)
+		private void PLC_OperatingEvent(object sender, EventParam e)
 		{
 			OperatingEventModel operatingEvent = Global.OperatingEvents.FirstOrDefault(a => a.Index == e.Index);
 			if (operatingEvent != null)
@@ -102,59 +107,84 @@ namespace Seoul_Software
 			}
 			else
 			{
-				Global.Log.Alarm($"[{clsConfig.OperatingEventDeviceType}{clsConfig.OperatingEventStartAddress + e.Index}]Operating event not definition");
+				Global.Log.Error($"[{clsConfig.OperatingEventDeviceType}{clsConfig.OperatingEventStartAddress + e.Index}]Operating event not definition");
 			}
 		}
 
-		private void PLC_AlarmEvent(object sender, int e)
+		private void PLC_AlarmEvent(object sender, EventParam e)
 		{
-            AlarmModel alarm = Global.Alarms.FirstOrDefault(a => a.Index == e);
+            AlarmModel alarm = Global.Alarms.FirstOrDefault(a => a.Index == e.Index);
             if(alarm != null)
             {
                 if(clsConfig.ShowAlarmDevice)
                 {
-					Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + alarm.Index}]{alarm.Text}", alarm.AlarmLevel);
+					if(alarm.AlarmLevel == Log.eLogLevel.WARNING)
+					{
+						Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + alarm.Index}]{alarm.Text}", alarm.AlarmLevel, true, e.IsOn);
+					}
+					else
+					{
+						Global.Log.Error($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + alarm.Index}]{alarm.Text}", alarm.AlarmLevel, true, e.IsOn);
+					}
 				}
                 else
                 {
-					Global.Log.Alarm(alarm.Text, alarm.AlarmLevel);
+					if (alarm.AlarmLevel == Log.eLogLevel.WARNING)
+					{
+						Global.Log.Alarm(alarm.Text, alarm.AlarmLevel, true, e.IsOn);
+					}
+					else
+					{
+						Global.Log.Error(alarm.Text, alarm.AlarmLevel, true, e.IsOn);
+					}					
 				}
+				if(e.IsOn && !Global.CurrentAlarms.Contains(alarm))
+				{
+					Global.CurrentAlarms.Insert(0, alarm);
+				}
+				else if(!e.IsOn && Global.CurrentAlarms.Contains(alarm))
+				{
+					Global.CurrentAlarms.Remove(alarm);
+				}
+
+				frmAlarm.UpdateList();
+				frmAlarm.ViewAlarm(0);
 			}
             else
             {
-				Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + e}]Alarm not definition");
-				alarm = new AlarmModel();
-                alarm.Text = $"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + e}]Alarm not definition";
-                alarm.AlarmLevel = Log.eLogLevel.ERROR;
+				Global.Log.Error($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + e.Index}]Alarm not definition");
 			}
-			frmAlarm.SetAlarm(alarm);
 		}
 
         private void ShowAlarm(bool show)
         {
-            if(tableLayoutMachineMobitor.InvokeRequired)
+            if(tabControl.InvokeRequired)
             {
-                tableLayoutMachineMobitor.Invoke((Action)delegate
-                {
-					if (show)
-					{
-						tableLayoutMachineMobitor.RowStyles[1].Height = 40;
-					}
-					else
-					{
-						tableLayoutMachineMobitor.RowStyles[1].Height = 0;
-					}
-				});
+				tabControl.Invoke(new Action(() => { ShowAlarm(show); }));
             }
            else
             {
 				if (show)
 				{
-					tableLayoutMachineMobitor.RowStyles[1].Height = 40;
+					tabControl.SelectTab(1);
 				}
 				else
 				{
-					tableLayoutMachineMobitor.RowStyles[1].Height = 0;
+					tabControl.SelectTab(0);
+					if (clsConfig.ClearAlarm)
+					{
+						if (listBoxError.InvokeRequired)
+						{
+							listBoxError.Invoke((Action)delegate
+							{
+								listBoxError.Items.Clear();
+							});
+						}
+						else
+						{
+							listBoxError.Items.Clear();
+						}
+					}
 				}
 			}
         }
@@ -187,25 +217,180 @@ namespace Seoul_Software
                 if(Global.PLC.PlcPrintRequest)
                 {
                     Global.Log.Operation("PLC send print request");
-                    int[] data = Global.PLC.ReadPrintData();
-                    if(data != null && data.Length == 2 && data[0] != 0 && data[1] != 0)
-                    {
-                        BarcodeModel barcode = Global.Barcodes.FirstOrDefault(a => a.Id == data[0]);
-                        if(barcode == null)
-                        {
-                            Global.Log.Alarm("No barcode data in software, please initial system");
-                        }
-                        else
-                        {
-                            clsPrinter printer = new clsPrinter();
-                            printer.Print(barcode.Data, data[1]);
-                            Global.PLC.WritePrintComplete();
-                        }
-                    }
+                    int[] data = Global.PLC.ReadPrintData();					
+					if(data != null && data.Length == 5)
+					{
+						bool checkData = true;
+						int id1 = 0, id2 = 0, total1 = 0, total2 = 0;
+						if (data[0] != 0) id1 = data[0];
+						for (int i = 0; i < 5; i++)
+						{
+							if (data[i] != 0 && data[i] != id1) id2 = data[i];
+							if (data[i] != 0 && data[i] != id2 && id2 != 0) checkData = false;
+							if (id1 != 0 && data[i] == id1) total1++;
+							if (id2 != 0 && data[i] == id2) total2++;
+						}
+
+						if(!checkData || (total1 == 0 && total2 == 0))
+						{
+							Global.Log.Error("Data print error");
+							return;
+						}
+						else
+						{
+							if(id2 == 0)
+							{
+								if (id1 == 32000)
+								{
+									clsPrinter printer = new clsPrinter();
+									printer.Print("Print Demo", 5);
+									Global.PLC.WritePrintComplete();
+									return;
+								}
+
+								BarcodeModel barcode = Global.Barcodes.FirstOrDefault(a => a.Id == id1);
+								if (barcode == null)
+								{
+									Global.Log.Error("No barcode data in software, please initial system");
+									return;
+								}
+								else
+								{
+									clsPrinter printer = new clsPrinter();
+									printer.Print(barcode.Data, total1);
+									Global.PLC.WritePrintComplete();
+								}
+							}
+							else
+							{
+								BarcodeModel barcode1 = Global.Barcodes.FirstOrDefault(a => a.Id == id1);
+								BarcodeModel barcode2 = Global.Barcodes.FirstOrDefault(a => a.Id == id1);
+								if (barcode1 == null || barcode2 == null)
+								{
+									Global.Log.Error("No barcode data in software, please initial system");
+									return;
+								}
+								else
+								{
+									clsPrinter printer = new clsPrinter();
+									printer.Print(barcode1.Data, total1, barcode2.Data, total2);
+									Global.PLC.WritePrintComplete();
+								}
+							}
+						}
+					} 
                 }    
             }
+
+			if ((e.PropertyName == "PlcOutRingRequest"))
+			{
+				if (Global.PLC.PlcOutRingRequest)
+				{
+					Global.Log.Operation("PLC send output ring request");
+					int[] data = Global.PLC.ReadPrintData();
+					if (data != null && data.Length == 5)
+					{
+						bool checkData = true;
+						int id1 = 0, id2 = 0, total1 = 0, total2 = 0;
+						if (data[0] != 0) id1 = data[0];
+						for (int i = 0; i < 5; i++)
+						{
+							if (data[i] != id1) id2 = data[i];
+							if (data[i] != id2 && id2 != 0) checkData = false;
+							if (id1 != 0 && data[i] == id1) total1++;
+							if (id2 != 0 && data[i] == id2) total2++;
+						}
+
+						if (!checkData || (total1 == 0 && total2 == 0))
+						{
+							Global.Log.Error("Data output ring error");
+							return;
+						}
+						else
+						{
+							if (id2 == 0)
+							{
+								BarcodeModel barcode1 = Global.Barcodes.FirstOrDefault(a => a.Id == id1);
+								if (barcode1 == null)
+								{
+									Global.Log.Error("No barcode data in software, please initial system");
+									return;
+								}
+								string lotNo1 = barcode1.Data;
+								using (SeoulDbContext db = new SeoulDbContext())
+								{
+									RingModel ringModel = new RingModel();
+									ringModel.LotNo = lotNo1;
+									ringModel.Total = total1;
+									ringModel.TimeOutput = DateTime.Now;
+									db.Rings.Add(ringModel);
+									//
+									LotModel lot = db.Lots.FirstOrDefault(l => l.LotNo == lotNo1);
+									if (lot != null)
+									{
+										lot.TimeOutput = DateTime.Now;
+										lot.Total += total1;
+									}
+									db.SaveChanges();
+									Global.PLC.WriteOutRingComplete();
+									Global.Log.Operation($"Output ring lotNo:{lotNo1}, total:{total1}");
+									//
+									Global.TotalRing++;
+									Global.TotalChipLed += total1;
+									frmInfo.UpdateData();
+								}
+							}
+							else
+							{
+								BarcodeModel barcode1 = Global.Barcodes.FirstOrDefault(a => a.Id == id1);
+								BarcodeModel barcode2 = Global.Barcodes.FirstOrDefault(a => a.Id == id2);
+								if (barcode1 == null || barcode2 == null)
+								{
+									Global.Log.Error("No barcode data in software, please initial system");
+									return;
+								}
+								string lotNo1 = barcode1.Data;
+								string lotNo2 = barcode2.Data;
+								using (SeoulDbContext db = new SeoulDbContext())
+								{
+									RingModel ringModel = new RingModel();
+									ringModel.LotNo = $"{lotNo1}; {lotNo2}" ;
+									ringModel.Total = total1 + total2;
+									ringModel.TimeOutput = DateTime.Now;
+									db.Rings.Add(ringModel);
+									//
+									LotModel lot1 = db.Lots.FirstOrDefault(l => l.LotNo == lotNo1);
+									LotModel lot2 = db.Lots.FirstOrDefault(l => l.LotNo == lotNo1);
+									if (lot1 != null)
+									{
+										lot1.TimeOutput = DateTime.Now;
+										lot1.Total += total1;
+									}
+									if (lot2 != null)
+									{
+										lot2.TimeOutput = DateTime.Now;
+										lot2.Total += total2;
+									}
+									db.SaveChanges();
+									Global.PLC.WriteOutRingComplete();
+									Global.Log.Operation($"Output ring lot1:{lotNo1}, total:{total1}; lot1:{lotNo2}, total:{total2}");
+									//
+									Global.TotalRing++;
+									Global.TotalChipLed += total1 + total2;
+									frmInfo.UpdateData();
+								}
+							}
+						}
+					}				
+				}
+			}
 		}
 
+		private void LoadForm(Form form)
+		{
+			clsControlForm.LoadFormInPanel(panelMain, form);
+			tabPage1.Text = form.Text;
+		}
 		private void btnPrinter_Click(object sender, EventArgs e)
 		{
             frmPrinterSetting frmPrinterSetting = new frmPrinterSetting();
@@ -231,7 +416,7 @@ namespace Seoul_Software
 
 		private void btnStart_Click(object sender, EventArgs e)
 		{
-			Global.PLC.Setbit(PlcDeviceType.M, 23, true);
+			Global.PLC.Setbit(PlcDeviceType.M, 23, true);			
 		}
 
 		private void btnStop_Click(object sender, EventArgs e)
@@ -252,6 +437,27 @@ namespace Seoul_Software
 		private void btnInitial_Click(object sender, EventArgs e)
 		{
 			Global.PLC.Setbit(PlcDeviceType.M, 27, true);
+		}
+
+		private void btnData_Click(object sender, EventArgs e)
+		{
+			contextMenuStrip.Show(btnData, btnData.Location);
+		}
+
+		private void btnHome_Click(object sender, EventArgs e)
+		{
+			frmMachineMonitor frmMachineMonitor = new frmMachineMonitor();
+			LoadForm(frmMachineMonitor);
+		}
+
+		private void lotDataToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LoadForm(new frmLotData());
+		}
+
+		private void ringDataToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LoadForm(new frmRingData());
 		}
 	}
 }

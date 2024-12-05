@@ -18,13 +18,15 @@ namespace Seoul_Software
 		public string CompanyName;
 		public string LogPathFolder;
 		public string LogOperationFileName;
+		public string LogErrorFileName;
 		public string LogAlarmFileName;
 		public string PlcIpAddress;
 		public int PlcPort;
 		public bool CheckBarcodeOverlap;
 		public string PrinterIp;
 		public int PrinterPort;
-		public string PrinterCommand;
+		public string PrinterCommand1;
+		public string PrinterCommand2;
 		public bool ShowIdBarcode;
 		//FTP smart cam Cognex IS2000
 		public int FtpPort;
@@ -33,6 +35,8 @@ namespace Seoul_Software
 		public string FtpFolderPath;
 		public string FtpImageFileName;
 		public bool IsSaveImageLog;
+		//SQL
+		public string ConnectionString;
 		public static MySetting Setting = new MySetting();
 
 		public MySetting()
@@ -40,6 +44,7 @@ namespace Seoul_Software
 			Title = "Auto UV Tape Mount Machine";
 			CompanyName = "Cutreson Co., Ltd";
 			LogOperationFileName = "operation.txt";
+			LogErrorFileName = "error.txt";
 			LogAlarmFileName = "alarm.txt";
 			LogPathFolder = "log";
 			PlcIpAddress = "192.168.3.28";
@@ -47,7 +52,8 @@ namespace Seoul_Software
 			CheckBarcodeOverlap = true;
 			PrinterIp = "192.168.3.123";
 			PrinterPort = 6101;
-			PrinterCommand = "^XA^FO20,20^ADN,30,25^FDLot:_lot_^FS^FO20,80^ADN,30,25^FDTotal:_total_pcs^FS^XZ";
+			PrinterCommand1 = "^XA^FO20,20^ADN,30,20^FDLot:_lot_^FS^FO20,80^ADN,30,20^FDTotal:_total_pcs^FS^XZ";
+			PrinterCommand2 = "^XA^FO20,20^ADN,30,15^FD 1 2 |_index1_ _lot1_^FS^FO20,80^ADN,30,15^FD3 4 5|_index2_ _lot2_^FS^XZ";
 			FtpPort = 22;
 			FtpUserName = "son";
 			FtpPassword = "son@123";
@@ -55,6 +61,7 @@ namespace Seoul_Software
 			FtpImageFileName = "image.bmp";
 			IsSaveImageLog = true;
 			ShowIdBarcode = false;
+			ConnectionString = "Server=CUTRESON;Database=Seoul_01;Trusted_Connection=True;";
 	}
 
 		public void SaveSetting()

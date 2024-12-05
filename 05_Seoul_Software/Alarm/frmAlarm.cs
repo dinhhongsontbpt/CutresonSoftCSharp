@@ -18,6 +18,54 @@ namespace Seoul_Software.Alarm
 			thread.IsBackground = true;
 			thread.Start();
 		}
+		public void ViewAlarm(int index)
+		{
+			if(Global.CurrentAlarms.Count > index)
+			{
+				ViewAlarm(Global.CurrentAlarms[index]);
+			}
+		}
+		public void ViewAlarm(AlarmModel _alarm)
+		{
+			this.alarm = _alarm;
+			clsInvokeControl.ControlTextInvoke(txtErrorCode, alarm.ErrorCode);
+			clsInvokeControl.ControlTextInvoke(txtUnit, alarm.Unit);
+			clsInvokeControl.ControlTextInvoke(txtDescription, alarm.Description);
+			clsInvokeControl.ControlTextInvoke(lbErrorHelp, alarm.ErrorHelp);
+			clsInvokeControl.ControlTextInvoke(lbAlarm, alarm.Text);
+			if (imageBox.InvokeRequired)
+			{
+				imageBox.Invoke(new Action(() => {
+					imageBox.Image = alarm.Image;
+					imageBox.SizeMode = Cutreson_UserControl.ImageBox.ImageBoxSizeMode.Fit;
+					imageBox.SizeMode = Cutreson_UserControl.ImageBox.ImageBoxSizeMode.Normal;
+				}));
+			}
+			else
+			{
+				imageBox.Image = alarm.Image;
+				imageBox.SizeMode = Cutreson_UserControl.ImageBox.ImageBoxSizeMode.Fit;
+				imageBox.SizeMode = Cutreson_UserControl.ImageBox.ImageBoxSizeMode.Normal;
+			}
+		}
+		public void UpdateList()
+		{
+			if(listBox.InvokeRequired) listBox.Invoke(new Action(() => UpdateList())); 
+			else
+			{
+				listBox.Items.Clear();
+				foreach(var item in Global.CurrentAlarms)
+				{
+					listBox.Items.Add($"[{item.ErrorCode}]{item.Text}");
+				}
+			}
+			if(Global.CurrentAlarms.Count == 0)
+			{
+				ViewAlarm(new AlarmModel());
+			}
+			clsInvokeControl.ControlTextInvoke(lbAlarmCount, $"Current Error{'\n'}Total: {Global.CurrentAlarms.Count}");
+		}
+
 		private bool blink;
 		private void Blink()
 		{
@@ -52,6 +100,11 @@ namespace Seoul_Software.Alarm
 			if (alarm == null) return;
 			this.alarm = alarm;
 			clsInvokeControl.ControlTextInvoke(lbAlarm, alarm.Text);
+		}
+
+		private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			ViewAlarm(listBox.SelectedIndex);
 		}
 	}
 }

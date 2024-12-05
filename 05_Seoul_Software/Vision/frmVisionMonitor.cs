@@ -43,8 +43,8 @@ namespace Seoul_Software
 		{
             if (e.PropertyName == "VisionComplete")
             {
-                
-            }
+                UpdateData();
+			}
 		}
         private void UpdateData()
         {
@@ -79,7 +79,7 @@ namespace Seoul_Software
 			}
             catch(Exception ex)
             {
-                Global.Log.Alarm($"Ftp server: " + ex.Message);
+                Global.Log.Error($"Ftp server: " + ex.Message);
             }
         }
 

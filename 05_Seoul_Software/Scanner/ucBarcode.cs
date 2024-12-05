@@ -19,14 +19,11 @@ namespace Seoul_Software.Scanner
 		public ucBarcode()
 		{
 			InitializeComponent();
-			if(MySetting.Setting.ShowIdBarcode)
-			{
-				tableLayoutPanel1.ColumnStyles[1].Width = 40;
-			}
-			else
-			{
-				tableLayoutPanel1.ColumnStyles[1].Width = 0;
-			}
+#if DEBUG
+			tableLayoutPanel1.ColumnStyles[1].Width = 40;
+#else
+			tableLayoutPanel1.ColumnStyles[1].Width = 0;
+#endif
 		}
 		public void SetModel(BarcodeModel barcode)
 		{
@@ -70,7 +67,7 @@ namespace Seoul_Software.Scanner
 					BarcodeModel check = Global.Barcodes.Find(f => f.Data == enteredText && f.Index != index);
 					if (check != null)
 					{
-						Global.Log.Alarm($"Barcode {enteredText} overlap", Log.eLogLevel.WARNING);
+						Global.Log.Alarm($"Barcode {enteredText} overlap");
 						FocusAndSelectAll();
 						clsMessageBox.Warning($"Barcode {enteredText} overlap");
 						return;
@@ -98,7 +95,7 @@ namespace Seoul_Software.Scanner
 						}
 						else
 						{
-							Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}", Log.eLogLevel.WARNING);
+							Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}");
 						}
 					}
 				}

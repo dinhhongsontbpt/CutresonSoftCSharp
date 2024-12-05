@@ -43,7 +43,7 @@ namespace Seoul_Software
 			}
 			catch (Exception ex) 
 			{ 
-				Global.Log.Alarm("Control monitor: " + ex.Message);
+				Global.Log.Error("Control monitor: " + ex.Message);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,6 +58,12 @@
     <Reference Include="ComponentFactory.Krypton.Workspace">
       <HintPath>..\..\Software\Cutreson_MES_Utility\dll\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=6.2.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Cutreson_Utility\dll\EPPlus.dll</HintPath>
@@ -93,6 +100,18 @@
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </Compile>
     <Compile Include="clsConfig.cs" />
+    <Compile Include="Data\frmLotData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\frmLotData.Designer.cs">
+      <DependentUpon>frmLotData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\frmRingData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\frmRingData.Designer.cs">
+      <DependentUpon>frmRingData.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +160,9 @@
     <Compile Include="Scanner\frmBarcodes.Designer.cs">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQL\DbManager.cs" />
+    <Compile Include="SQL\LotModel.cs" />
+    <Compile Include="SQL\SeoulDbContext.cs" />
     <Compile Include="Vision\frmVisionMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +193,12 @@
     </Compile>
     <EmbeddedResource Include="Alarm\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\frmLotData.resx">
+      <DependentUpon>frmLotData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\frmRingData.resx">
+      <DependentUpon>frmRingData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfo.resx">
       <DependentUpon>frmInfo.cs</DependentUpon>
@@ -215,6 +243,7 @@
     <None Include="Dotmatrx.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,6 +272,9 @@
   <ItemGroup>
     <Content Include="Add.ico" />
     <Content Include="ArrowRight.ico" />
+    <None Include="Resources\DatabaseView.ico" />
+    <None Include="Resources\Home.ico" />
+    <None Include="Resources\Chart.ico" />
     <None Include="Resources\Printer.ico" />
     <None Include="Resources\Printer.png" />
     <None Include="Resources\Layout.jpg" />
@@ -263,5 +295,14 @@
       <Name>Cutreson_Utility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

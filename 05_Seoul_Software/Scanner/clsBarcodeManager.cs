@@ -17,7 +17,7 @@ namespace Seoul_Software.Scanner
 			}
 			catch (Exception ex)
 			{
-				Global.Log.Alarm("Save barcode: " + ex.Message);
+				Global.Log.Error("Save barcode: " + ex.Message);
 			}
 		}
 		public static void Load()
@@ -40,7 +40,7 @@ namespace Seoul_Software.Scanner
 			}
 			catch (Exception ex)
 			{
-				Global.Log.Alarm("Save barcode: " + ex.Message);
+				Global.Log.Error("Save barcode: " + ex.Message);
 			}
 		}
 	}

@@ -25,7 +25,7 @@ namespace Seoul_Software.Printer
 			}
 			catch (Exception e)
 			{
-				Global.Log.Alarm("Can't connect to printer: " + e.Message, Log.eLogLevel.FATAL);
+				Global.Log.Error("Can't connect to printer: " + e.Message, Log.eLogLevel.FATAL);
 				return false;
 			}
 		}
@@ -43,7 +43,7 @@ namespace Seoul_Software.Printer
 			}
 			catch (Exception e)
 			{
-				Global.Log.Alarm("Can't disconnect printer: " + e.Message, Log.eLogLevel.FATAL);
+				Global.Log.Error("Can't disconnect printer: " + e.Message, Log.eLogLevel.FATAL);
 				return false;
 			}
 		}
@@ -53,7 +53,7 @@ namespace Seoul_Software.Printer
 			{
 				if (stream == null || !client.Connected)
 				{
-					Global.Log.Alarm("Please connect to printer");
+					Global.Log.Error("Please connect to printer");
 					return false;
 				}
 
@@ -63,7 +63,7 @@ namespace Seoul_Software.Printer
 			}
 			catch (Exception e)
 			{
-				Global.Log.Alarm("Send data to printer error: " + e.Message, Log.eLogLevel.FATAL);
+				Global.Log.Error("Send data to printer error: " + e.Message, Log.eLogLevel.FATAL);
 				return false;
 			}
 		}

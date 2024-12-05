@@ -25,6 +25,8 @@ namespace Seoul_Software
         //Excel config
         public static string ConfigExcelFile = "config/config.xlsx";
 		//Alarm
+		public static string AlarmImageFolder = "alarm_image";
+		public static bool ClearAlarm = false;
 		public static PlcDeviceType AlarmDeviceType = PlcDeviceType.L;
 		public static int AlarmStartAddress = 4000;
 		public static int AlarmCount = 500;
@@ -37,7 +39,7 @@ namespace Seoul_Software
 		public static string StringNotUse = "not use";
 		public static PlcDeviceType OperatingEventDeviceType = PlcDeviceType.L;
 		public static int OperatingEventStartAddress = 4500;
-		public static int OperatingEventCount = 4999;
+		public static int OperatingEventCount = 500;
 #if DEBUG
 		public static bool ShowOperatingEventDevice = true;
 #else
@@ -53,9 +55,12 @@ namespace Seoul_Software
 		public static int VisionStartAddress = 0;
 		public static int VisionCount = 10;
 		//Printer
-		public static string PrinterLotKey = "_lot_";
-		public static string PrinterTotalKey = "_total_";
-
+		public static string Cmd1PrinterLotKey = "_lot_";
+		public static string Cmd1PrinterTotalKey = "_total_";
+		public static string Cmd2PrinterLotKey1 = "_lot1_";
+		public static string Cmd2PrinterIndexKey1 = "_index1_";
+		public static string Cmd2PrinterLotKey2 = "_lot2_";
+		public static string Cmd2PrinterIndexKey2 = "_index2_";
 		//////////////////////////////////////////////////////////////////////////////////////
 		#region Load config
 		public static bool LoadExcelConfig()
@@ -71,6 +76,10 @@ namespace Seoul_Software
 						return false;
 					}
 					//Alarm-----------------------------------------------------------------------
+					if (!Directory.Exists(AlarmImageFolder))
+					{
+						Directory.CreateDirectory(AlarmImageFolder);
+					}
 					ExcelWorksheet worksheetAlarm = excelPackage.Workbook.Worksheets[0];
 					List<AlarmModel> alarms = new List<AlarmModel>();
 					if (worksheetAlarm == null)
@@ -89,7 +98,16 @@ namespace Seoul_Software
 						alarmModel.No = Convert.ToInt32(worksheetAlarm.Cells[i, 1].Text);
 						alarmModel.AlarmLevel = worksheetAlarm.Cells[i, 2].Text == "Light" ? eLogLevel.WARNING : eLogLevel.ERROR;
 						alarmModel.Index = Convert.ToInt32(worksheetAlarm.Cells[i, 3].Text);
-						alarmModel.Text = worksheetAlarm.Cells[i, 4].Text;
+						alarmModel.Unit = worksheetAlarm.Cells[i, 4].Text;
+						alarmModel.Description = worksheetAlarm.Cells[i, 5].Text;
+						alarmModel.Text = worksheetAlarm.Cells[i, 6].Text;
+						string imageFile = worksheetAlarm.Cells[i, 7].Text;
+						string path = Path.Combine(clsConfig.AlarmImageFolder, $"{imageFile}.png");
+						if(File.Exists(path))
+						{
+							alarmModel.Image = Image.FromFile(path);
+						}
+						alarmModel.ErrorHelp = worksheetAlarm.Cells[i, 8].Text;
 						alarms.Add(alarmModel);
 						Global.Alarms = alarms;
 					}
@@ -146,7 +164,7 @@ namespace Seoul_Software
             catch(Exception ex)
             {
                 string message = "Load config.xlsx: " + ex.Message;
-                Global.Log.Alarm(message);
+                Global.Log.Error(message);
                 clsMessageBox.Error(message);
             }
 

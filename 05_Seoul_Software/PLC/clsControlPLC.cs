@@ -32,7 +32,7 @@ namespace Seoul_Software
                 }
                 else
                 {
-                    Global.Log.Alarm("Can't connect to PLC");
+                    Global.Log.Error("Can't connect to PLC");
                 }
             }
             catch(Exception ex)
@@ -58,6 +58,12 @@ namespace Seoul_Software
 			get { return _plcPrintRequest; }
 			set { Set(ref _plcPrintRequest, value); }
 		}
+		private bool _plcOutRing;
+		public bool PlcOutRingRequest
+		{
+			get { return _plcOutRing; }
+			set { Set(ref _plcOutRing, value); }
+		}
 		private bool _initial;
 		public bool Initial
 		{
@@ -79,10 +85,10 @@ namespace Seoul_Software
 			set { Set(ref _autoRunning, value); }
 		}
 		private bool[] ref_AlarmArr = new bool[clsConfig.AlarmCount];		
-		public event EventHandler<int> AlarmEvent;
+		public event EventHandler<EventParam> AlarmEvent;
 		//Operating event
 		private bool[] ref_OperatingEventArr = new bool[clsConfig.OperatingEventCount];
-		public event EventHandler<OperatingEventParam> OperatingEvent;
+		public event EventHandler<EventParam> OperatingEvent;
 		//COntrol monitor
 		private int[] ref_ControlMonitorArr = new int[clsConfig.ControlMonitorCount];
 		public event EventHandler<ControlMonitorParam> ControlMonitorEvent;
@@ -110,9 +116,9 @@ namespace Seoul_Software
                         bool[] b_arrALarm = client.ReadBits(clsConfig.AlarmDeviceType, clsConfig.AlarmStartAddress, clsConfig.AlarmCount);
                         for (int i = 0; i < b_arrALarm.Length; i++)
                         {
-                            if(b_arrALarm[i] && !ref_AlarmArr[i])
+                            if(b_arrALarm[i] != ref_AlarmArr[i])
                             {
-								AlarmEvent?.Invoke(this, i);
+								AlarmEvent?.Invoke(this, new EventParam(i, b_arrALarm[i]));
 							}
                             ref_AlarmArr[i] = b_arrALarm[i];
                         }
@@ -123,7 +129,7 @@ namespace Seoul_Software
 						{
 							if (b_arrOprratingEvent[i] != ref_OperatingEventArr[i])
 							{
-								OperatingEvent?.Invoke(this, new OperatingEventParam(i, b_arrOprratingEvent[i]));
+								OperatingEvent?.Invoke(this, new EventParam(i, b_arrOprratingEvent[i]));
 							}
 							ref_OperatingEventArr[i] = b_arrOprratingEvent[i];
 						}
@@ -140,11 +146,13 @@ namespace Seoul_Software
 						}
 						//---------------------------------------------------------------------------------
 						//Alive
-						PlcAlive = client.ReadBit(PlcDeviceType.B, 0);
+						PlcAlive = m0_m299[10];
                         //Barcode
                         PlcGetCvBarcode = client.ReadBit(PlcDeviceType.L, 10000);
 						//Printer
 						PlcPrintRequest = client.ReadBit(PlcDeviceType.L, 16020);
+						//Out Ring
+						PlcOutRingRequest = client.ReadBit(PlcDeviceType.L, 17050);
 						//Vision
 						VisionComplete = client.ReadWord(clsConfig.VisionDeviceType, clsConfig.VisionStartAddress);
 					}
@@ -156,7 +164,7 @@ namespace Seoul_Software
                 }
                 catch (Exception ex)
                 {
-                    Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+                    Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
                 }
                 Thread.Sleep(1);
             }
@@ -179,7 +187,7 @@ namespace Seoul_Software
                 }
                 catch(Exception ex) 
                 {
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 				return false;
 			} 
@@ -198,7 +206,7 @@ namespace Seoul_Software
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
                 return null;
 			}
@@ -212,12 +220,12 @@ namespace Seoul_Software
 				{
 					if (client.IsConnect())
 					{
-						return client.ReadWords(PlcDeviceType.ZR, 16000, 2);
+						return client.ReadWords(PlcDeviceType.ZR, 16051, 5);
 					}
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 				return null;
 			}
@@ -236,7 +244,7 @@ namespace Seoul_Software
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 				return null;
 			}
@@ -260,7 +268,55 @@ namespace Seoul_Software
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
+				}
+				return false;
+			}
+
+		}
+		public bool WriteOutRingComplete()
+		{
+			lock (_Lock)
+			{
+				try
+				{
+					if (client.IsConnect())
+					{
+						bool b = client.SetBit(PlcDeviceType.L, 17051, true);
+						return b;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				catch (Exception ex)
+				{
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
+				}
+				return false;
+			}
+
+		}
+		public bool WriteGetBarcodeComplete()
+		{
+			lock (_Lock)
+			{
+				try
+				{
+					if (client.IsConnect())
+					{
+						bool b = client.SetBit(PlcDeviceType.L, 10001, true);
+						return b;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				catch (Exception ex)
+				{
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 				return false;
 			}
@@ -284,7 +340,7 @@ namespace Seoul_Software
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 				return false;
 			}
@@ -308,16 +364,56 @@ namespace Seoul_Software
 				}
 				catch (Exception ex)
 				{
-					Global.Log.Alarm(ex.Message, Log.eLogLevel.FATAL);
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
 				}
 			}
 		}
+		public bool WriteCounter()
+		{
+			lock (_Lock)
+			{
+				try
+				{
+					if (client.IsConnect())
+					{
+						int[] arr1 = SplitLongToIntArray(Global.TotalLot);
+						int[] arr2 = SplitLongToIntArray(Global.TotalRing);
+						int[] arr3 = SplitLongToIntArray(Global.TotalChipLed);
+						int[] result = new int[arr1.Length + arr2.Length + arr3.Length];
+						Array.Copy(arr1, 0, result, 0, arr1.Length);
+						Array.Copy(arr2, 0, result, arr1.Length, arr2.Length);
+						Array.Copy(arr3, 0, result, arr1.Length + arr2.Length, arr3.Length);
+						bool b = client.WriteWords(PlcDeviceType.ZR, 10, 12, result);
+						return b;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				catch (Exception ex)
+				{
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
+				}
+				return false;
+			}
+
+		}
+		private int[] SplitLongToIntArray(long number)
+		{
+			int[] result = new int[4];
+			result[3] = (int)((number >> 48) & 0xFFFF); 
+			result[2] = (int)((number >> 32) & 0xFFFF);
+			result[1] = (int)((number >> 16) & 0xFFFF);
+			result[0] = (int)(number & 0xFFFF);
+			return result;
+		}
 	}
-	public class OperatingEventParam
+	public class EventParam
 	{
 		public int Index;
 		public bool IsOn;
-		public OperatingEventParam(int index, bool isOn)
+		public EventParam(int index, bool isOn)
 		{
 			Index = index;
 			IsOn = isOn;

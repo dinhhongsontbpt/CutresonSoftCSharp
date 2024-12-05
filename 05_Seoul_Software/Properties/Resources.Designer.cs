@@ -61,6 +61,26 @@ namespace Seoul_Software.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Chart {
+            get {
+                object obj = ResourceManager.GetObject("Chart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DatabaseView {
+            get {
+                object obj = ResourceManager.GetObject("DatabaseView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0�OS/2x�i�L�Ncmapݼ�E��cvt 
         ///DXL�2fpgm��^�8dglyf#����&lt;rhdmx�p��M head�1,&lt;�6hhea��$$hmtx%h�I��locap�8A�maxp@7H nameP巊h�post&quot;�&quot;�D�prep��-]�&apos;_&lt;����OG��OG�����##�� ������6@
         ///9l:`yT�&quot;@X&quot;�	Wr*� [rest of string was truncated]&quot;;.
@@ -68,6 +88,16 @@ namespace Seoul_Software.Properties {
         internal static string Dotmatrx {
             get {
                 return ResourceManager.GetString("Dotmatrx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Home {
+            get {
+                object obj = ResourceManager.GetObject("Home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

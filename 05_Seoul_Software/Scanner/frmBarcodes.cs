@@ -1,4 +1,5 @@
 ﻿using Seoul_Software.Scanner;
+using Seoul_Software.SQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,12 @@ namespace Seoul_Software
     public partial class frmBarcodes : Form
     {
         private List<ucBarcode> ucBarcodeDisplays = new List<ucBarcode>();
-        public frmBarcodes()
+        private SeoulDbContext db = new SeoulDbContext();
+        frmInfo frmInfo;
+		public frmBarcodes(frmInfo frmInfo)
         {
             InitializeComponent();
+            this.frmInfo = frmInfo;
             Init();
 
 		}
@@ -44,7 +48,7 @@ namespace Seoul_Software
                     {
 						if (!BarcodeModel.IsIdExist(idBarcodesIP[i]))
 						{
-							Global.Log.Alarm($"Barcode Id={idBarcodesIP[i]} is not exist in software. Please initial system");
+							Global.Log.Error($"Barcode Id={idBarcodesIP[i]} is not exist in software. Please initial system");
                             tableLayoutPanel1.Visible = false;
                             return;
 						}
@@ -52,7 +56,11 @@ namespace Seoul_Software
                         {
                             BarcodeModel barcode = Global.Barcodes.Find(b => b.Id == idBarcodesIP[i]);
                             ucBarcode uc = ucBarcodeDisplays.Find(b => b.barcode.Index == barcode.Index);
-                            uc.SetModel(barcode);
+							uc.SetModel(barcode);
+							if (barcode.Index != 0)
+                            {
+								
+							}
                             //Global.Log.Operation($"Load barcode: {barcode.Data},Id={barcode.Id} in history data");
                         }
 					}
@@ -70,7 +78,7 @@ namespace Seoul_Software
 			//Event
 			Global.PLC.PropertyChanged += PLC_PropertyChanged;
         }
-
+        
 		private void PLC_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			if(e.PropertyName == "PlcGetCvBarcode")
@@ -79,7 +87,28 @@ namespace Seoul_Software
                 {
                     if (!string.IsNullOrEmpty(ucBarcodeDisplays[0].barcode.Data))
                     {
-						Global.Log.Operation("PLC get Barcode: " + ucBarcodeDisplays[0].barcode.ToString());
+                        
+						Global.Log.Operation("Get CV input lot: " + ucBarcodeDisplays[0].barcode.Data.ToString());
+                        string lotNo = ucBarcodeDisplays[0].barcode.Data.ToString();
+						LotModel lot = db.Lots.FirstOrDefault(l => l.LotNo == lotNo);
+						if (lot == null)
+						{
+							LotModel addNew = new LotModel();
+							addNew.LotNo = lotNo;
+							addNew.TimeInput = DateTime.Now;
+							addNew.TimeOutput = DateTime.Now;
+							addNew.Total = 0;
+							db.Lots.Add(addNew);
+							db.SaveChanges();
+							Global.TotalLot++;
+							frmInfo.UpdateData();
+							Global.PLC.WriteGetBarcodeComplete();
+						}
+                        else
+                        {
+							Global.PLC.WriteGetBarcodeComplete();
+						}
+                       
 						for (int i = 0; i < 9; i++)
 						{
 							ucBarcodeDisplays[i].SetModel(ucBarcodeDisplays[i + 1].barcode);
@@ -87,7 +116,7 @@ namespace Seoul_Software
 							BarcodeModel bc = Global.Barcodes.Find(b => b.Id == id);
 							if (bc != null)
 							{
-								bc.Index = i;
+								bc.Index = i;      
 							}
 						}
 						clsBarcodeManager.Save();
@@ -111,14 +140,16 @@ namespace Seoul_Software
                 {
 					Global.Barcodes.Clear();
                     clsBarcodeManager.Save();
+                    int i = 1;
 					foreach (var item in ucBarcodeDisplays)
 					{
 						BarcodeModel barcode = new BarcodeModel();
-						barcode.Id = GenerateId();
+						barcode.Id = i;
 						item.SetModel(barcode);
+                        i++;
 					}
                     ucBarcodeDisplays[0].FocusAndSelectAll();
-                    Global.Log.Operation("Clear all barcode data");
+                    //Global.Log.Operation("Clear all barcode data");
 				}
             }
 		}

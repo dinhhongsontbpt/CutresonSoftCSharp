@@ -1,10 +1,12 @@
 ﻿using Cutreson_Utility;
+using Seoul_Software.SQL;
 using System;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 namespace Seoul_Software
@@ -30,38 +32,47 @@ namespace Seoul_Software
 			//lbAlarmDate.Font = dotMatrixFont;
 			//lbAlarmTime.Font = dotMatrixFont;
 			//Time open
-			lbStartupDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-			lbStartupTime.Text = DateTime.Now.ToString("HH:mm:ss");
-			lbStartDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-			lbStartTime.Text = DateTime.Now.ToString("HH:mm:ss");
-			lbStopDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-			lbStopTime.Text = DateTime.Now.ToString("HH:mm:ss"); ;
+			lbStartupDate.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+			lbStartDate.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+			lbStopDate.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+
+			using (SeoulDbContext db = new SeoulDbContext())
+			{
+				Global.TotalLot = db.Lots.LongCount();
+				Global.TotalRing = db.Rings.LongCount();
+				Global.TotalChipLed = db.Rings.Any() ? db.Rings.Sum(r => (long)r.Total) : 0;
+				UpdateData();
+			}
+
 
 			Global.PLC.PropertyChanged += PLC_PropertyChanged;
 		}
-
+		public void UpdateData()
+		{
+			clsInvokeControl.ControlTextInvoke(lbTotalLot, Global.TotalLot.ToString());
+			clsInvokeControl.ControlTextInvoke(lbTotalRing, Global.TotalRing.ToString());
+			clsInvokeControl.ControlTextInvoke(lbTotalChipLed, Global.TotalChipLed.ToString());
+			Global.PLC.WriteCounter();
+		}
 		private void PLC_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			if(e.PropertyName == "AutoRunning")
 			{
 				if(Global.PLC.AutoRunning)
 				{
-					clsInvokeControl.ControlTextInvoke(lbStartDate, DateTime.Now.ToString("yyyy/MM/dd"));
-					clsInvokeControl.ControlTextInvoke(lbStartTime, DateTime.Now.ToString("HH:mm:ss"));
+					clsInvokeControl.ControlTextInvoke(lbStartDate, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 
 				}
 				else
 				{
-					clsInvokeControl.ControlTextInvoke(lbStopDate, DateTime.Now.ToString("yyyy/MM/dd"));
-					clsInvokeControl.ControlTextInvoke(lbStopTime, DateTime.Now.ToString("HH:mm:ss"));
+					clsInvokeControl.ControlTextInvoke(lbStopDate, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 				}
 			}
 			if (e.PropertyName == "AlarmSignal")
 			{
 				if (Global.PLC.AutoRunning)
 				{
-					clsInvokeControl.ControlTextInvoke(lbAlarmDate, DateTime.Now.ToString("yyyy/MM/dd"));
-					clsInvokeControl.ControlTextInvoke(lbAlarmTime, DateTime.Now.ToString("HH:mm:ss"));
+					clsInvokeControl.ControlTextInvoke(lbAlarmDate, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 
 				}
 			}

@@ -212,30 +212,48 @@ namespace Cutreson_Utility
 
         public static int[] ByteArrayToInt16Array(byte[] data)
         {
-            if (data.Length % 2 != 0)
+			if ((data == null))
+			{
+                return new int[data.Length / 2];
+			}
+			try
             {
-                throw new ArgumentException("Byte array length must be a multiple of 4 to convert to int array.");
-            }
-            int[] intArray = new int[data.Length / 2];
-            for (int i = 0; i < data.Length; i += 2)
+				if (data.Length % 2 != 0)
+				{
+					throw new ArgumentException("Byte array length must be a multiple of 4 to convert to int array.");
+				}
+				int[] intArray = new int[data.Length / 2];
+				for (int i = 0; i < data.Length; i += 2)
+				{
+					intArray[i / 2] = BitConverter.ToInt16(data, i);
+				}
+				return intArray;
+			}
+            catch
             {
-                intArray[i / 2] = BitConverter.ToInt16(data, i);
+                return new int[data.Length / 2];
             }
-            return intArray;
         }
 
         public static bool[] ByteArrayToBoolArray(byte[] byteArray)
         {
-            bool[] boolArray = new bool[byteArray.Length * 8];
-            for (int i = 0; i < byteArray.Length; i++)
+            try
             {
-                for (int bit = 0; bit < 8; bit++)
-                {
-                    boolArray[i * 8 + bit] = (byteArray[i] & (1 << bit)) != 0;
-                }
-            }
+				bool[] boolArray = new bool[byteArray.Length * 8];
+				for (int i = 0; i < byteArray.Length; i++)
+				{
+					for (int bit = 0; bit < 8; bit++)
+					{
+						boolArray[i * 8 + bit] = (byteArray[i] & (1 << bit)) != 0;
+					}
+				}
 
-            return boolArray;
+				return boolArray;
+			}
+            catch
+            {
+                return new bool[byteArray.Length * 8];
+            }
         }
 
     }
