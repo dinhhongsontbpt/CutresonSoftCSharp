@@ -3,6 +3,7 @@ using Cutreson_PLC.McProtocol;
 using Cutreson_Utility;
 using Seoul_Software.Alarm;
 using Seoul_Software.Data;
+using Seoul_Software.Log;
 using Seoul_Software.OperatingEvent;
 using Seoul_Software.PLC;
 using Seoul_Software.Printer;
@@ -360,7 +361,7 @@ namespace Seoul_Software
 									db.Rings.Add(ringModel);
 									//
 									LotModel lot1 = db.Lots.FirstOrDefault(l => l.LotNo == lotNo1);
-									LotModel lot2 = db.Lots.FirstOrDefault(l => l.LotNo == lotNo1);
+									LotModel lot2 = db.Lots.FirstOrDefault(l => l.LotNo == lotNo2);
 									if (lot1 != null)
 									{
 										lot1.TimeOutput = DateTime.Now;
@@ -458,6 +459,27 @@ namespace Seoul_Software
 		private void ringDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LoadForm(new frmRingData());
+		}
+
+		private void listBoxError_DoubleClick(object sender, EventArgs e)
+		{
+			frmViewLog frmViewLog = new frmViewLog(listBoxError);
+			frmViewLog.Text = "Error";
+			frmViewLog.ShowDialog();
+		}
+
+		private void listBoxEventLog_DoubleClick(object sender, EventArgs e)
+		{
+			frmViewLog frmViewLog = new frmViewLog(listBoxEventLog);
+			frmViewLog.Text = "Operation & Event Log";
+			frmViewLog.ShowDialog();
+		}
+
+		private void listBoxAlarm_DoubleClick(object sender, EventArgs e)
+		{
+			frmViewLog frmViewLog = new frmViewLog(listBoxAlarm);
+			frmViewLog.Text = "Alarm";
+			frmViewLog.ShowDialog();
 		}
 	}
 }

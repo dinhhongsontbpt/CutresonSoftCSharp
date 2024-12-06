@@ -43,6 +43,7 @@
 			this.btnReset = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStop = new ComponentFactory.Krypton.Toolkit.KryptonButton();
 			this.btnStart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
 			this.panelMenu = new System.Windows.Forms.Panel();
 			this.btnKeyboard = new System.Windows.Forms.Button();
 			this.btnPrinter = new System.Windows.Forms.Button();
@@ -54,6 +55,10 @@
 			this.ringDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnHome = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.listBoxAlarm = new System.Windows.Forms.ListBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.listBoxEventLog = new System.Windows.Forms.ListBox();
 			this.panelVisionMonitor = new System.Windows.Forms.Panel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.listBoxError = new System.Windows.Forms.ListBox();
@@ -64,6 +69,7 @@
 			this.panelAlarm = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.panelTitle = new System.Windows.Forms.Panel();
+			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
 			this.pbLogo = new System.Windows.Forms.PictureBox();
 			this.labelBuildDate = new System.Windows.Forms.Label();
 			this.tableLayoutPanelFooter = new System.Windows.Forms.TableLayoutPanel();
@@ -71,18 +77,14 @@
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.pictureBoxCompanyLogo = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.ucDateTime = new Cutreson_UserControl.UcDateTime();
-			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.listBoxEventLog = new System.Windows.Forms.ListBox();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.listBoxAlarm = new System.Windows.Forms.ListBox();
 			this.panel.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panelMenu.SuspendLayout();
 			this.contextMenuStrip.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			this.groupBox3.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -92,8 +94,6 @@
 			this.tableLayoutPanelFooter.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxCompanyLogo)).BeginInit();
 			this.tableLayoutPanel.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainPalette
@@ -140,7 +140,7 @@
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299F));
+			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
 			this.tableLayoutPanelMain.Controls.Add(this.groupBoxScanner, 1, 1);
 			this.tableLayoutPanelMain.Controls.Add(this.panel1, 3, 0);
 			this.tableLayoutPanelMain.Controls.Add(this.panelMenu, 0, 0);
@@ -161,7 +161,7 @@
 			this.groupBoxScanner.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBoxScanner.Location = new System.Drawing.Point(65, 614);
 			this.groupBoxScanner.Name = "groupBoxScanner";
-			this.groupBoxScanner.Size = new System.Drawing.Size(1207, 114);
+			this.groupBoxScanner.Size = new System.Drawing.Size(1206, 114);
 			this.groupBoxScanner.TabIndex = 7;
 			this.groupBoxScanner.TabStop = false;
 			this.groupBoxScanner.Text = "Scanner";
@@ -178,10 +178,10 @@
 			this.panel1.Controls.Add(this.btnStart);
 			this.panel1.Controls.Add(this.ucPcInfo);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(1279, 4);
+			this.panel1.Location = new System.Drawing.Point(1278, 4);
 			this.panel1.Name = "panel1";
 			this.tableLayoutPanelMain.SetRowSpan(this.panel1, 2);
-			this.panel1.Size = new System.Drawing.Size(293, 724);
+			this.panel1.Size = new System.Drawing.Size(294, 724);
 			this.panel1.TabIndex = 3;
 			// 
 			// panelInfo
@@ -191,7 +191,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panelInfo.Location = new System.Drawing.Point(10, 127);
 			this.panelInfo.Name = "panelInfo";
-			this.panelInfo.Size = new System.Drawing.Size(273, 338);
+			this.panelInfo.Size = new System.Drawing.Size(274, 338);
 			this.panelInfo.TabIndex = 44;
 			// 
 			// btnInitial
@@ -201,7 +201,7 @@
 			this.btnInitial.Location = new System.Drawing.Point(10, 667);
 			this.btnInitial.Name = "btnInitial";
 			this.btnInitial.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnInitial.Size = new System.Drawing.Size(274, 44);
+			this.btnInitial.Size = new System.Drawing.Size(275, 44);
 			this.btnInitial.StateNormal.Back.Color1 = System.Drawing.Color.Teal;
 			this.btnInitial.StateNormal.Back.Color2 = System.Drawing.Color.Violet;
 			this.btnInitial.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -242,7 +242,7 @@
 			this.btnOrigin.Location = new System.Drawing.Point(10, 618);
 			this.btnOrigin.Name = "btnOrigin";
 			this.btnOrigin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnOrigin.Size = new System.Drawing.Size(274, 44);
+			this.btnOrigin.Size = new System.Drawing.Size(275, 44);
 			this.btnOrigin.StateNormal.Back.Color1 = System.Drawing.Color.Blue;
 			this.btnOrigin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
 			this.btnOrigin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -263,7 +263,7 @@
 			this.btnReset.Location = new System.Drawing.Point(10, 569);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnReset.Size = new System.Drawing.Size(274, 44);
+			this.btnReset.Size = new System.Drawing.Size(275, 44);
 			this.btnReset.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,7 +284,7 @@
 			this.btnStop.Location = new System.Drawing.Point(10, 520);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnStop.Size = new System.Drawing.Size(274, 44);
+			this.btnStop.Size = new System.Drawing.Size(275, 44);
 			this.btnStop.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnStop.StateNormal.Back.Color2 = System.Drawing.Color.Maroon;
 			this.btnStop.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,7 +305,7 @@
 			this.btnStart.Location = new System.Drawing.Point(10, 471);
 			this.btnStart.Name = "btnStart";
 			this.btnStart.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnStart.Size = new System.Drawing.Size(274, 44);
+			this.btnStart.Size = new System.Drawing.Size(275, 44);
 			this.btnStart.StateNormal.Back.Color1 = System.Drawing.Color.SeaGreen;
 			this.btnStart.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnStart.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,6 +318,16 @@
 			this.btnStart.TabIndex = 37;
 			this.btnStart.Values.Text = "START";
 			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+			// 
+			// ucPcInfo
+			// 
+			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
+			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ucPcInfo.IsRun = false;
+			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
+			this.ucPcInfo.Name = "ucPcInfo";
+			this.ucPcInfo.Size = new System.Drawing.Size(294, 82);
+			this.ucPcInfo.TabIndex = 0;
 			// 
 			// panelMenu
 			// 
@@ -483,6 +493,58 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(394, 603);
 			this.tableLayoutPanel2.TabIndex = 5;
 			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.listBoxAlarm);
+			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox3.Location = new System.Drawing.Point(3, 454);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(388, 69);
+			this.groupBox3.TabIndex = 5;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Alarm";
+			// 
+			// listBoxAlarm
+			// 
+			this.listBoxAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+			this.listBoxAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBoxAlarm.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listBoxAlarm.ForeColor = System.Drawing.Color.Yellow;
+			this.listBoxAlarm.FormattingEnabled = true;
+			this.listBoxAlarm.HorizontalScrollbar = true;
+			this.listBoxAlarm.ItemHeight = 18;
+			this.listBoxAlarm.Location = new System.Drawing.Point(3, 18);
+			this.listBoxAlarm.Name = "listBoxAlarm";
+			this.listBoxAlarm.Size = new System.Drawing.Size(382, 48);
+			this.listBoxAlarm.TabIndex = 0;
+			this.listBoxAlarm.DoubleClick += new System.EventHandler(this.listBoxAlarm_DoubleClick);
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.listBoxEventLog);
+			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox1.Location = new System.Drawing.Point(3, 353);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(388, 95);
+			this.groupBox1.TabIndex = 4;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Operating & Event Log";
+			// 
+			// listBoxEventLog
+			// 
+			this.listBoxEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+			this.listBoxEventLog.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBoxEventLog.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listBoxEventLog.ForeColor = System.Drawing.SystemColors.Window;
+			this.listBoxEventLog.FormattingEnabled = true;
+			this.listBoxEventLog.HorizontalScrollbar = true;
+			this.listBoxEventLog.ItemHeight = 18;
+			this.listBoxEventLog.Location = new System.Drawing.Point(3, 18);
+			this.listBoxEventLog.Name = "listBoxEventLog";
+			this.listBoxEventLog.Size = new System.Drawing.Size(382, 74);
+			this.listBoxEventLog.TabIndex = 0;
+			this.listBoxEventLog.DoubleClick += new System.EventHandler(this.listBoxEventLog_DoubleClick);
+			// 
 			// panelVisionMonitor
 			// 
 			this.panelVisionMonitor.Location = new System.Drawing.Point(3, 3);
@@ -514,6 +576,7 @@
 			this.listBoxError.Name = "listBoxError";
 			this.listBoxError.Size = new System.Drawing.Size(382, 50);
 			this.listBoxError.TabIndex = 0;
+			this.listBoxError.DoubleClick += new System.EventHandler(this.listBoxError_DoubleClick);
 			// 
 			// tabControl
 			// 
@@ -523,7 +586,7 @@
 			this.tabControl.Location = new System.Drawing.Point(466, 4);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(806, 603);
+			this.tabControl.Size = new System.Drawing.Size(805, 603);
 			this.tabControl.TabIndex = 8;
 			// 
 			// tabPage1
@@ -532,7 +595,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 25);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(798, 574);
+			this.tabPage1.Size = new System.Drawing.Size(797, 574);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Operation";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -543,7 +606,7 @@
 			this.panelMain.Location = new System.Drawing.Point(3, 3);
 			this.panelMain.Margin = new System.Windows.Forms.Padding(0);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(792, 568);
+			this.panelMain.Size = new System.Drawing.Size(791, 568);
 			this.panelMain.TabIndex = 8;
 			// 
 			// tabPage2
@@ -590,6 +653,17 @@
 			this.panelTitle.Name = "panelTitle";
 			this.panelTitle.Size = new System.Drawing.Size(1576, 69);
 			this.panelTitle.TabIndex = 4;
+			// 
+			// ucDateTime
+			// 
+			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
+			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ucDateTime.IsRun = false;
+			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
+			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
+			this.ucDateTime.Name = "ucDateTime";
+			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
+			this.ucDateTime.TabIndex = 2;
 			// 
 			// pbLogo
 			// 
@@ -693,77 +767,6 @@
 			this.tableLayoutPanel.Size = new System.Drawing.Size(1582, 853);
 			this.tableLayoutPanel.TabIndex = 1;
 			// 
-			// ucDateTime
-			// 
-			this.ucDateTime.BackColor = System.Drawing.Color.Transparent;
-			this.ucDateTime.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ucDateTime.IsRun = false;
-			this.ucDateTime.Location = new System.Drawing.Point(1139, 0);
-			this.ucDateTime.Margin = new System.Windows.Forms.Padding(4);
-			this.ucDateTime.Name = "ucDateTime";
-			this.ucDateTime.Size = new System.Drawing.Size(437, 69);
-			this.ucDateTime.TabIndex = 2;
-			// 
-			// ucPcInfo
-			// 
-			this.ucPcInfo.BackColor = System.Drawing.Color.Transparent;
-			this.ucPcInfo.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ucPcInfo.IsRun = false;
-			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
-			this.ucPcInfo.Name = "ucPcInfo";
-			this.ucPcInfo.Size = new System.Drawing.Size(293, 82);
-			this.ucPcInfo.TabIndex = 0;
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.listBoxEventLog);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(3, 353);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(388, 95);
-			this.groupBox1.TabIndex = 4;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Operating & Event Log";
-			// 
-			// listBoxEventLog
-			// 
-			this.listBoxEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-			this.listBoxEventLog.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBoxEventLog.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listBoxEventLog.ForeColor = System.Drawing.SystemColors.Window;
-			this.listBoxEventLog.FormattingEnabled = true;
-			this.listBoxEventLog.HorizontalScrollbar = true;
-			this.listBoxEventLog.ItemHeight = 18;
-			this.listBoxEventLog.Location = new System.Drawing.Point(3, 18);
-			this.listBoxEventLog.Name = "listBoxEventLog";
-			this.listBoxEventLog.Size = new System.Drawing.Size(382, 74);
-			this.listBoxEventLog.TabIndex = 0;
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.listBoxAlarm);
-			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox3.Location = new System.Drawing.Point(3, 454);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(388, 69);
-			this.groupBox3.TabIndex = 5;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Alarm";
-			// 
-			// listBoxAlarm
-			// 
-			this.listBoxAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-			this.listBoxAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBoxAlarm.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listBoxAlarm.ForeColor = System.Drawing.Color.Yellow;
-			this.listBoxAlarm.FormattingEnabled = true;
-			this.listBoxAlarm.HorizontalScrollbar = true;
-			this.listBoxAlarm.ItemHeight = 18;
-			this.listBoxAlarm.Location = new System.Drawing.Point(3, 18);
-			this.listBoxAlarm.Name = "listBoxAlarm";
-			this.listBoxAlarm.Size = new System.Drawing.Size(382, 48);
-			this.listBoxAlarm.TabIndex = 0;
-			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -783,6 +786,8 @@
 			this.panelMenu.ResumeLayout(false);
 			this.contextMenuStrip.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.tabControl.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
@@ -794,8 +799,6 @@
 			this.tableLayoutPanelFooter.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxCompanyLogo)).EndInit();
 			this.tableLayoutPanel.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }

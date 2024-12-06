@@ -40,8 +40,8 @@
 			this.D104 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
 			this.D106 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
 			this.D107 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
-			this.D108 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
 			this.D109 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
+			this.D108 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
 			this.D105 = new Seoul_Software.MachineMonitor.ucMachineMonitor();
 			this.tableLayoutPanel.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -99,11 +99,11 @@
 			this.tableLayoutPanelMain.Controls.Add(this.D110, 13, 1);
 			this.tableLayoutPanelMain.Controls.Add(this.D102, 4, 18);
 			this.tableLayoutPanelMain.Controls.Add(this.D101, 6, 1);
-			this.tableLayoutPanelMain.Controls.Add(this.D104, 0, 19);
+			this.tableLayoutPanelMain.Controls.Add(this.D104, 0, 18);
 			this.tableLayoutPanelMain.Controls.Add(this.D106, 14, 18);
 			this.tableLayoutPanelMain.Controls.Add(this.D107, 18, 15);
-			this.tableLayoutPanelMain.Controls.Add(this.D108, 18, 12);
-			this.tableLayoutPanelMain.Controls.Add(this.D109, 18, 9);
+			this.tableLayoutPanelMain.Controls.Add(this.D109, 18, 12);
+			this.tableLayoutPanelMain.Controls.Add(this.D108, 18, 9);
 			this.tableLayoutPanelMain.Controls.Add(this.D105, 9, 18);
 			this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
@@ -137,7 +137,7 @@
 			this.panelMachine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.panelMachine.BackgroundImage = global::Seoul_Software.Properties.Resources.Layout;
+			this.panelMachine.BackgroundImage = global::Seoul_Software.Properties.Resources.Layout2;
 			this.panelMachine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.tableLayoutPanelMain.SetColumnSpan(this.panelMachine, 16);
 			this.panelMachine.Location = new System.Drawing.Point(111, 85);
@@ -224,16 +224,16 @@
 			// D104
 			// 
 			this.D104.BackColor = System.Drawing.Color.DarkOrange;
-			this.tableLayoutPanelMain.SetColumnSpan(this.D104, 4);
+			this.tableLayoutPanelMain.SetColumnSpan(this.D104, 3);
 			this.D104.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.D104.ForeColor = System.Drawing.SystemColors.WindowText;
 			this.D104.LabelBackColor = System.Drawing.Color.DarkOrange;
 			this.D104.LabelFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.D104.LabelForeColor = System.Drawing.SystemColors.WindowText;
-			this.D104.Location = new System.Drawing.Point(3, 782);
+			this.D104.Location = new System.Drawing.Point(3, 741);
 			this.D104.MaximumSize = new System.Drawing.Size(300, 40);
 			this.D104.Name = "D104";
-			this.D104.Size = new System.Drawing.Size(210, 40);
+			this.D104.Size = new System.Drawing.Size(156, 35);
 			this.D104.TabIndex = 10;
 			// 
 			// D106
@@ -266,21 +266,6 @@
 			this.D107.Size = new System.Drawing.Size(113, 35);
 			this.D107.TabIndex = 13;
 			// 
-			// D108
-			// 
-			this.D108.BackColor = System.Drawing.Color.DarkOrange;
-			this.tableLayoutPanelMain.SetColumnSpan(this.D108, 2);
-			this.D108.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.D108.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.D108.LabelBackColor = System.Drawing.Color.DarkOrange;
-			this.D108.LabelFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.D108.LabelForeColor = System.Drawing.SystemColors.WindowText;
-			this.D108.Location = new System.Drawing.Point(975, 495);
-			this.D108.MaximumSize = new System.Drawing.Size(300, 40);
-			this.D108.Name = "D108";
-			this.D108.Size = new System.Drawing.Size(113, 35);
-			this.D108.TabIndex = 14;
-			// 
 			// D109
 			// 
 			this.D109.BackColor = System.Drawing.Color.DarkOrange;
@@ -290,11 +275,26 @@
 			this.D109.LabelBackColor = System.Drawing.Color.DarkOrange;
 			this.D109.LabelFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.D109.LabelForeColor = System.Drawing.SystemColors.WindowText;
-			this.D109.Location = new System.Drawing.Point(975, 372);
+			this.D109.Location = new System.Drawing.Point(975, 495);
 			this.D109.MaximumSize = new System.Drawing.Size(300, 40);
 			this.D109.Name = "D109";
 			this.D109.Size = new System.Drawing.Size(113, 35);
-			this.D109.TabIndex = 15;
+			this.D109.TabIndex = 14;
+			// 
+			// D108
+			// 
+			this.D108.BackColor = System.Drawing.Color.DarkOrange;
+			this.tableLayoutPanelMain.SetColumnSpan(this.D108, 2);
+			this.D108.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.D108.ForeColor = System.Drawing.SystemColors.WindowText;
+			this.D108.LabelBackColor = System.Drawing.Color.DarkOrange;
+			this.D108.LabelFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.D108.LabelForeColor = System.Drawing.SystemColors.WindowText;
+			this.D108.Location = new System.Drawing.Point(975, 372);
+			this.D108.MaximumSize = new System.Drawing.Size(300, 40);
+			this.D108.Name = "D108";
+			this.D108.Size = new System.Drawing.Size(113, 35);
+			this.D108.TabIndex = 15;
 			// 
 			// D105
 			// 
@@ -341,7 +341,7 @@
 		private MachineMonitor.ucMachineMonitor D105;
 		private MachineMonitor.ucMachineMonitor D106;
 		private MachineMonitor.ucMachineMonitor D107;
-		private MachineMonitor.ucMachineMonitor D108;
 		private MachineMonitor.ucMachineMonitor D109;
+		private MachineMonitor.ucMachineMonitor D108;
 	}
 }

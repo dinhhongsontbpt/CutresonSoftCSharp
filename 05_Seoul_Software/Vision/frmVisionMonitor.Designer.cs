@@ -59,7 +59,7 @@
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
 			this.tableLayoutPanel1.Controls.Add(this.lbNG, 2, 1);
 			this.tableLayoutPanel1.Controls.Add(this.lbOK, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.imageBox, 0, 0);
@@ -80,9 +80,9 @@
 			this.lbNG.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbNG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbNG.ForeColor = System.Drawing.Color.Red;
-			this.lbNG.Location = new System.Drawing.Point(378, 264);
+			this.lbNG.Location = new System.Drawing.Point(376, 264);
 			this.lbNG.Name = "lbNG";
-			this.lbNG.Size = new System.Drawing.Size(169, 50);
+			this.lbNG.Size = new System.Drawing.Size(168, 50);
 			this.lbNG.TabIndex = 6;
 			this.lbNG.Text = "NG: 1000";
 			this.lbNG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,9 +93,9 @@
 			this.lbOK.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbOK.ForeColor = System.Drawing.Color.Green;
-			this.lbOK.Location = new System.Drawing.Point(202, 264);
+			this.lbOK.Location = new System.Drawing.Point(201, 264);
 			this.lbOK.Name = "lbOK";
-			this.lbOK.Size = new System.Drawing.Size(169, 50);
+			this.lbOK.Size = new System.Drawing.Size(168, 50);
 			this.lbOK.TabIndex = 5;
 			this.lbOK.Text = "OK: 9000";
 			this.lbOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,6 +112,7 @@
 			this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.imageBox.TabIndex = 3;
 			this.imageBox.TabStop = false;
+			this.imageBox.DoubleClick += new System.EventHandler(this.imageBox_DoubleClick);
 			// 
 			// lbTotal
 			// 
@@ -121,7 +122,7 @@
 			this.lbTotal.ForeColor = System.Drawing.Color.DarkViolet;
 			this.lbTotal.Location = new System.Drawing.Point(4, 264);
 			this.lbTotal.Name = "lbTotal";
-			this.lbTotal.Size = new System.Drawing.Size(191, 50);
+			this.lbTotal.Size = new System.Drawing.Size(190, 50);
 			this.lbTotal.TabIndex = 4;
 			this.lbTotal.Text = "Total: 10000";
 			this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,10 +132,10 @@
 			this.btnResult.BackColor = System.Drawing.Color.Lime;
 			this.btnResult.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnResult.Location = new System.Drawing.Point(551, 264);
+			this.btnResult.Location = new System.Drawing.Point(548, 264);
 			this.btnResult.Margin = new System.Windows.Forms.Padding(0);
 			this.btnResult.Name = "btnResult";
-			this.btnResult.Size = new System.Drawing.Size(56, 50);
+			this.btnResult.Size = new System.Drawing.Size(59, 50);
 			this.btnResult.TabIndex = 7;
 			this.btnResult.Text = "OK";
 			this.btnResult.UseVisualStyleBackColor = false;

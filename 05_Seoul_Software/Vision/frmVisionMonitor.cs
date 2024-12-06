@@ -1,4 +1,5 @@
 ﻿using Cutreson_Utility;
+using Seoul_Software.Vision;
 using System;
 using System.Drawing;
 using System.IO;
@@ -198,5 +199,11 @@ namespace Seoul_Software
             if (imageBox.Image != null) imageBox.Image.Dispose();
             imageBox.Image = image;
         }
-    }
+
+		private void imageBox_DoubleClick(object sender, EventArgs e)
+		{
+            frmVisionViewer frmVisionViewer = new frmVisionViewer(imageBox.Image);
+            frmVisionViewer.ShowDialog();
+		}
+	}
 }

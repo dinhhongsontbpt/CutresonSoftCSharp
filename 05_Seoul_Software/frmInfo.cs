@@ -70,7 +70,7 @@ namespace Seoul_Software
 			}
 			if (e.PropertyName == "AlarmSignal")
 			{
-				if (Global.PLC.AutoRunning)
+				if (Global.PLC.AlarmSignal)
 				{
 					clsInvokeControl.ControlTextInvoke(lbAlarmDate, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 

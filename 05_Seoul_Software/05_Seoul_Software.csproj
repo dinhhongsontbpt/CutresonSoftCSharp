@@ -118,6 +118,12 @@
     <Compile Include="frmInfo.Designer.cs">
       <DependentUpon>frmInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log\frmViewLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\frmViewLog.Designer.cs">
+      <DependentUpon>frmViewLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineMonitor\ControlMonitorModel.cs" />
     <Compile Include="MachineMonitor\ucMachineMonitor.cs">
       <SubType>UserControl</SubType>
@@ -191,6 +197,12 @@
     <Compile Include="Scanner\ucBarcode.Designer.cs">
       <DependentUpon>ucBarcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vision\frmVisionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vision\frmVisionViewer.Designer.cs">
+      <DependentUpon>frmVisionViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Alarm\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfo.resx">
       <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\frmViewLog.resx">
+      <DependentUpon>frmViewLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MachineMonitor\frmMachineMonitor.resx">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
@@ -240,6 +255,9 @@
     <EmbeddedResource Include="Scanner\ucBarcode.resx">
       <DependentUpon>ucBarcode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vision\frmVisionViewer.resx">
+      <DependentUpon>frmVisionViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Dotmatrx.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -272,6 +290,8 @@
   <ItemGroup>
     <Content Include="Add.ico" />
     <Content Include="ArrowRight.ico" />
+    <None Include="Resources\Layout2.jpg" />
+    <None Include="Resources\Layout1.jpg" />
     <None Include="Resources\DatabaseView.ico" />
     <None Include="Resources\Home.ico" />
     <None Include="Resources\Chart.ico" />
