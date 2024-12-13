@@ -9,6 +9,7 @@ using Seoul_Software.PLC;
 using Seoul_Software.Printer;
 using Seoul_Software.Scanner;
 using Seoul_Software.SQL;
+using Seoul_Software.User;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,6 +38,10 @@ namespace Seoul_Software
 			//Load setting
 			MySetting.Setting.LoadSetting();
 			lbTitle.Text = MySetting.Setting.Title;
+			//Login
+			Global.Role = MySetting.Setting.AutoLoginAs;
+			contextMenuStripData.Visible = false;
+			contextMenuStripSetting.Visible = false;
             //Log
             Global.Log.ListBoxViewOperation = listBoxEventLog;
             Global.Log.ListBoxViewError = listBoxError;
@@ -119,7 +124,7 @@ namespace Seoul_Software
             {
                 if(clsConfig.ShowAlarmDevice)
                 {
-					if(alarm.AlarmLevel == Log.eLogLevel.WARNING)
+					if(alarm.AlarmLevel == Log.eLogLevel.ALARM)
 					{
 						Global.Log.Alarm($"[{clsConfig.AlarmDeviceType}{clsConfig.AlarmStartAddress + alarm.Index}]{alarm.Text}", alarm.AlarmLevel, true, e.IsOn);
 					}
@@ -130,7 +135,7 @@ namespace Seoul_Software
 				}
                 else
                 {
-					if (alarm.AlarmLevel == Log.eLogLevel.WARNING)
+					if (alarm.AlarmLevel == Log.eLogLevel.ALARM)
 					{
 						Global.Log.Alarm(alarm.Text, alarm.AlarmLevel, true, e.IsOn);
 					}
@@ -392,22 +397,28 @@ namespace Seoul_Software
 			clsControlForm.LoadFormInPanel(panelMain, form);
 			tabPage1.Text = form.Text;
 		}
-		private void btnPrinter_Click(object sender, EventArgs e)
-		{
-            frmPrinterSetting frmPrinterSetting = new frmPrinterSetting();
-            frmPrinterSetting.ShowDialog();
-		}
-
-		private void btnPlcSetting_Click(object sender, EventArgs e)
-		{
-            FrmPlcSetting frmPlcSetting = new FrmPlcSetting();
-            frmPlcSetting.ShowDialog();
-		}
 
 		private void btnSetting_Click(object sender, EventArgs e)
 		{
-            frmSetting frmSetting = new frmSetting();
-            frmSetting.ShowDialog();
+			if (Global.Role == eRole.NONE || Global.Role == eRole.OPRERATOR)
+			{
+				contextMenuStripSetting.Visible = false;
+				clsMessageBox.Warning("You need login as engineer or admin..!!");
+				return;
+			}
+			else
+			{
+				contextMenuStripSetting.Visible = true;
+			}
+			if(Global.Role == eRole.ADMIN)
+			{
+				contextMenuStripSetting.Items[3].Visible = true;
+			}
+			else
+			{
+				contextMenuStripSetting.Items[3].Visible = false;
+			}
+			contextMenuStripSetting.Show(btnSetting, new Point(btnSetting.Width,btnSetting.Height / 2));
 		}
 
 		private void btnKeyboard_Click(object sender, EventArgs e)
@@ -417,32 +428,73 @@ namespace Seoul_Software
 
 		private void btnStart_Click(object sender, EventArgs e)
 		{
+			if (Global.Role == eRole.NONE)
+			{
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
 			Global.PLC.Setbit(PlcDeviceType.M, 23, true);			
 		}
 
 		private void btnStop_Click(object sender, EventArgs e)
 		{
+			if (Global.Role == eRole.NONE)
+			{
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
 			Global.PLC.Setbit(PlcDeviceType.M, 24, true);
 		}
 
 		private void btnReset_Click(object sender, EventArgs e)
 		{
+			if (Global.Role == eRole.NONE)
+			{
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
 			Global.PLC.Setbit(PlcDeviceType.M, 25, true);
 		}
 
 		private void btnOrigin_Click(object sender, EventArgs e)
 		{
+			if (Global.Role == eRole.NONE)
+			{
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
 			Global.PLC.Setbit(PlcDeviceType.M, 26, true);
 		}
 
 		private void btnInitial_Click(object sender, EventArgs e)
 		{
+			if (Global.Role == eRole.NONE)
+			{
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
 			Global.PLC.Setbit(PlcDeviceType.M, 27, true);
 		}
 
 		private void btnData_Click(object sender, EventArgs e)
 		{
-			contextMenuStrip.Show(btnData, btnData.Location);
+			if(Global.Role == eRole.NONE)
+			{
+				contextMenuStripData.Visible = false;
+				Global.Log.Alarm("You not login, login please..!!");
+				clsMessageBox.Warning("Login please..!!");
+				return;
+			}
+			else
+			{
+				contextMenuStripData.Visible = true;
+			}
+			contextMenuStripData.Show(btnData, new Point(btnData.Width, btnData.Height / 2));
 		}
 
 		private void btnHome_Click(object sender, EventArgs e)
@@ -480,6 +532,40 @@ namespace Seoul_Software
 			frmViewLog frmViewLog = new frmViewLog(listBoxAlarm);
 			frmViewLog.Text = "Alarm";
 			frmViewLog.ShowDialog();
+		}
+
+		private void printerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmPrinterSetting frmPrinterSetting = new frmPrinterSetting();
+			frmPrinterSetting.ShowDialog();
+		}
+
+		private void pLCToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FrmPlcSetting frmPlcSetting = new FrmPlcSetting();
+			frmPlcSetting.ShowDialog();
+		}
+
+		private void systemToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmSetting frmSetting = new frmSetting();
+			frmSetting.ShowDialog();
+		}
+
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
+			frmLogin frmLogin = new frmLogin();
+			frmLogin.ShowDialog();
+			contextMenuStripData.Visible = false;
+			contextMenuStripSetting.Visible = false;
+		}
+
+		private void userManagerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmUserManager frmUserManager = new frmUserManager();
+			frmUserManager.ShowDialog();
+			contextMenuStripData.Visible = false;
+			contextMenuStripSetting.Visible = false;
 		}
 	}
 }

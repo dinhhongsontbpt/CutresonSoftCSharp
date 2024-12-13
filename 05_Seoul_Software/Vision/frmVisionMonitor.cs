@@ -37,7 +37,7 @@ namespace Seoul_Software
             Start();
 
 			Global.PLC.PropertyChanged += PLC_PropertyChanged;
-			UpdateData();
+			//UpdateData();
 		}
 
 		private void PLC_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

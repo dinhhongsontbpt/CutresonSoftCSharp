@@ -46,13 +46,16 @@
 			this.ucPcInfo = new Cutreson_UserControl.UspcInfor();
 			this.panelMenu = new System.Windows.Forms.Panel();
 			this.btnKeyboard = new System.Windows.Forms.Button();
-			this.btnPrinter = new System.Windows.Forms.Button();
-			this.btnPlcSetting = new System.Windows.Forms.Button();
 			this.btnSetting = new System.Windows.Forms.Button();
+			this.contextMenuStripSetting = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pLCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnData = new System.Windows.Forms.Button();
-			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.contextMenuStripData = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.lotDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ringDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btnLogin = new System.Windows.Forms.Button();
 			this.btnHome = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -77,11 +80,13 @@
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.pictureBoxCompanyLogo = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.userManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panelMenu.SuspendLayout();
-			this.contextMenuStrip.SuspendLayout();
+			this.contextMenuStripSetting.SuspendLayout();
+			this.contextMenuStripData.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -140,7 +145,7 @@
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
 			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+			this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 312F));
 			this.tableLayoutPanelMain.Controls.Add(this.groupBoxScanner, 1, 1);
 			this.tableLayoutPanelMain.Controls.Add(this.panel1, 3, 0);
 			this.tableLayoutPanelMain.Controls.Add(this.panelMenu, 0, 0);
@@ -161,7 +166,7 @@
 			this.groupBoxScanner.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBoxScanner.Location = new System.Drawing.Point(65, 614);
 			this.groupBoxScanner.Name = "groupBoxScanner";
-			this.groupBoxScanner.Size = new System.Drawing.Size(1206, 114);
+			this.groupBoxScanner.Size = new System.Drawing.Size(1194, 114);
 			this.groupBoxScanner.TabIndex = 7;
 			this.groupBoxScanner.TabStop = false;
 			this.groupBoxScanner.Text = "Scanner";
@@ -178,10 +183,10 @@
 			this.panel1.Controls.Add(this.btnStart);
 			this.panel1.Controls.Add(this.ucPcInfo);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(1278, 4);
+			this.panel1.Location = new System.Drawing.Point(1266, 4);
 			this.panel1.Name = "panel1";
 			this.tableLayoutPanelMain.SetRowSpan(this.panel1, 2);
-			this.panel1.Size = new System.Drawing.Size(294, 724);
+			this.panel1.Size = new System.Drawing.Size(306, 724);
 			this.panel1.TabIndex = 3;
 			// 
 			// panelInfo
@@ -191,7 +196,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panelInfo.Location = new System.Drawing.Point(10, 127);
 			this.panelInfo.Name = "panelInfo";
-			this.panelInfo.Size = new System.Drawing.Size(274, 338);
+			this.panelInfo.Size = new System.Drawing.Size(286, 338);
 			this.panelInfo.TabIndex = 44;
 			// 
 			// btnInitial
@@ -201,7 +206,7 @@
 			this.btnInitial.Location = new System.Drawing.Point(10, 667);
 			this.btnInitial.Name = "btnInitial";
 			this.btnInitial.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnInitial.Size = new System.Drawing.Size(275, 44);
+			this.btnInitial.Size = new System.Drawing.Size(287, 44);
 			this.btnInitial.StateNormal.Back.Color1 = System.Drawing.Color.Teal;
 			this.btnInitial.StateNormal.Back.Color2 = System.Drawing.Color.Violet;
 			this.btnInitial.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -242,7 +247,7 @@
 			this.btnOrigin.Location = new System.Drawing.Point(10, 618);
 			this.btnOrigin.Name = "btnOrigin";
 			this.btnOrigin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnOrigin.Size = new System.Drawing.Size(275, 44);
+			this.btnOrigin.Size = new System.Drawing.Size(287, 44);
 			this.btnOrigin.StateNormal.Back.Color1 = System.Drawing.Color.Blue;
 			this.btnOrigin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
 			this.btnOrigin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -263,7 +268,7 @@
 			this.btnReset.Location = new System.Drawing.Point(10, 569);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnReset.Size = new System.Drawing.Size(275, 44);
+			this.btnReset.Size = new System.Drawing.Size(287, 44);
 			this.btnReset.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.btnReset.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,7 +289,7 @@
 			this.btnStop.Location = new System.Drawing.Point(10, 520);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-			this.btnStop.Size = new System.Drawing.Size(275, 44);
+			this.btnStop.Size = new System.Drawing.Size(287, 44);
 			this.btnStop.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnStop.StateNormal.Back.Color2 = System.Drawing.Color.Maroon;
 			this.btnStop.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,7 +310,7 @@
 			this.btnStart.Location = new System.Drawing.Point(10, 471);
 			this.btnStart.Name = "btnStart";
 			this.btnStart.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-			this.btnStart.Size = new System.Drawing.Size(275, 44);
+			this.btnStart.Size = new System.Drawing.Size(287, 44);
 			this.btnStart.StateNormal.Back.Color1 = System.Drawing.Color.SeaGreen;
 			this.btnStart.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnStart.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -326,17 +331,16 @@
 			this.ucPcInfo.IsRun = false;
 			this.ucPcInfo.Location = new System.Drawing.Point(0, 0);
 			this.ucPcInfo.Name = "ucPcInfo";
-			this.ucPcInfo.Size = new System.Drawing.Size(294, 82);
+			this.ucPcInfo.Size = new System.Drawing.Size(306, 82);
 			this.ucPcInfo.TabIndex = 0;
 			// 
 			// panelMenu
 			// 
 			this.panelMenu.BackColor = System.Drawing.SystemColors.Control;
 			this.panelMenu.Controls.Add(this.btnKeyboard);
-			this.panelMenu.Controls.Add(this.btnPrinter);
-			this.panelMenu.Controls.Add(this.btnPlcSetting);
 			this.panelMenu.Controls.Add(this.btnSetting);
 			this.panelMenu.Controls.Add(this.btnData);
+			this.panelMenu.Controls.Add(this.btnLogin);
 			this.panelMenu.Controls.Add(this.btnHome);
 			this.panelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelMenu.Location = new System.Drawing.Point(1, 1);
@@ -355,47 +359,13 @@
 			this.btnKeyboard.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnKeyboard.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnKeyboard.ForeColor = System.Drawing.Color.White;
-			this.btnKeyboard.Location = new System.Drawing.Point(0, 275);
+			this.btnKeyboard.Location = new System.Drawing.Point(0, 220);
 			this.btnKeyboard.Margin = new System.Windows.Forms.Padding(0);
 			this.btnKeyboard.Name = "btnKeyboard";
 			this.btnKeyboard.Size = new System.Drawing.Size(60, 55);
-			this.btnKeyboard.TabIndex = 61;
+			this.btnKeyboard.TabIndex = 65;
 			this.btnKeyboard.UseVisualStyleBackColor = false;
 			this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
-			// 
-			// btnPrinter
-			// 
-			this.btnPrinter.BackColor = System.Drawing.Color.Teal;
-			this.btnPrinter.BackgroundImage = global::Seoul_Software.Properties.Resources.Printer1;
-			this.btnPrinter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnPrinter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPrinter.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnPrinter.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnPrinter.ForeColor = System.Drawing.Color.White;
-			this.btnPrinter.Location = new System.Drawing.Point(0, 220);
-			this.btnPrinter.Margin = new System.Windows.Forms.Padding(0);
-			this.btnPrinter.Name = "btnPrinter";
-			this.btnPrinter.Size = new System.Drawing.Size(60, 55);
-			this.btnPrinter.TabIndex = 60;
-			this.btnPrinter.UseVisualStyleBackColor = false;
-			this.btnPrinter.Click += new System.EventHandler(this.btnPrinter_Click);
-			// 
-			// btnPlcSetting
-			// 
-			this.btnPlcSetting.BackColor = System.Drawing.Color.Teal;
-			this.btnPlcSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnPlcSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPlcSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnPlcSetting.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnPlcSetting.ForeColor = System.Drawing.Color.White;
-			this.btnPlcSetting.Location = new System.Drawing.Point(0, 165);
-			this.btnPlcSetting.Margin = new System.Windows.Forms.Padding(0);
-			this.btnPlcSetting.Name = "btnPlcSetting";
-			this.btnPlcSetting.Size = new System.Drawing.Size(60, 55);
-			this.btnPlcSetting.TabIndex = 59;
-			this.btnPlcSetting.Text = "PLC";
-			this.btnPlcSetting.UseVisualStyleBackColor = false;
-			this.btnPlcSetting.Click += new System.EventHandler(this.btnPlcSetting_Click);
 			// 
 			// btnSetting
 			// 
@@ -404,58 +374,115 @@
 			this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnSetting.Location = new System.Drawing.Point(0, 110);
+			this.btnSetting.Location = new System.Drawing.Point(0, 165);
 			this.btnSetting.Margin = new System.Windows.Forms.Padding(0);
 			this.btnSetting.Name = "btnSetting";
 			this.btnSetting.Size = new System.Drawing.Size(60, 55);
-			this.btnSetting.TabIndex = 57;
+			this.btnSetting.TabIndex = 64;
 			this.btnSetting.UseVisualStyleBackColor = false;
 			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+			// 
+			// contextMenuStripSetting
+			// 
+			this.contextMenuStripSetting.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.contextMenuStripSetting.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.contextMenuStripSetting.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printerToolStripMenuItem,
+            this.pLCToolStripMenuItem,
+            this.systemToolStripMenuItem,
+            this.userManagerToolStripMenuItem});
+			this.contextMenuStripSetting.Name = "contextMenuStripSetting";
+			this.contextMenuStripSetting.Size = new System.Drawing.Size(175, 116);
+			// 
+			// printerToolStripMenuItem
+			// 
+			this.printerToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.printerToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.Printer;
+			this.printerToolStripMenuItem.Name = "printerToolStripMenuItem";
+			this.printerToolStripMenuItem.Size = new System.Drawing.Size(174, 28);
+			this.printerToolStripMenuItem.Text = "Printer";
+			this.printerToolStripMenuItem.Click += new System.EventHandler(this.printerToolStripMenuItem_Click);
+			// 
+			// pLCToolStripMenuItem
+			// 
+			this.pLCToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.pLCToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.UsbConnector;
+			this.pLCToolStripMenuItem.Name = "pLCToolStripMenuItem";
+			this.pLCToolStripMenuItem.Size = new System.Drawing.Size(174, 28);
+			this.pLCToolStripMenuItem.Text = "PLC";
+			this.pLCToolStripMenuItem.Click += new System.EventHandler(this.pLCToolStripMenuItem_Click);
+			// 
+			// systemToolStripMenuItem
+			// 
+			this.systemToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.systemToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.SystemSetting;
+			this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
+			this.systemToolStripMenuItem.Size = new System.Drawing.Size(174, 28);
+			this.systemToolStripMenuItem.Text = "System";
+			this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
 			// 
 			// btnData
 			// 
 			this.btnData.BackColor = System.Drawing.Color.Teal;
 			this.btnData.BackgroundImage = global::Seoul_Software.Properties.Resources.DatabaseView;
 			this.btnData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnData.ContextMenuStrip = this.contextMenuStrip;
 			this.btnData.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnData.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnData.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnData.ForeColor = System.Drawing.Color.White;
-			this.btnData.Location = new System.Drawing.Point(0, 55);
+			this.btnData.Location = new System.Drawing.Point(0, 110);
 			this.btnData.Margin = new System.Windows.Forms.Padding(0);
 			this.btnData.Name = "btnData";
 			this.btnData.Size = new System.Drawing.Size(60, 55);
-			this.btnData.TabIndex = 54;
+			this.btnData.TabIndex = 63;
 			this.btnData.UseVisualStyleBackColor = false;
 			this.btnData.Click += new System.EventHandler(this.btnData_Click);
 			// 
-			// contextMenuStrip
+			// contextMenuStripData
 			// 
-			this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.contextMenuStripData.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.contextMenuStripData.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.contextMenuStripData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lotDataToolStripMenuItem,
             this.ringDataToolStripMenuItem});
-			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(149, 56);
+			this.contextMenuStripData.Name = "contextMenuStrip";
+			this.contextMenuStripData.Size = new System.Drawing.Size(159, 60);
 			// 
 			// lotDataToolStripMenuItem
 			// 
 			this.lotDataToolStripMenuItem.BackgroundImage = global::Seoul_Software.Properties.Resources.DatabaseView;
+			this.lotDataToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
 			this.lotDataToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.Chart;
 			this.lotDataToolStripMenuItem.Name = "lotDataToolStripMenuItem";
-			this.lotDataToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
+			this.lotDataToolStripMenuItem.Size = new System.Drawing.Size(158, 28);
 			this.lotDataToolStripMenuItem.Text = "Lot Data";
 			this.lotDataToolStripMenuItem.Click += new System.EventHandler(this.lotDataToolStripMenuItem_Click);
 			// 
 			// ringDataToolStripMenuItem
 			// 
+			this.ringDataToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
 			this.ringDataToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.Chart;
 			this.ringDataToolStripMenuItem.Name = "ringDataToolStripMenuItem";
-			this.ringDataToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
+			this.ringDataToolStripMenuItem.Size = new System.Drawing.Size(158, 28);
 			this.ringDataToolStripMenuItem.Text = "Ring Data";
 			this.ringDataToolStripMenuItem.Click += new System.EventHandler(this.ringDataToolStripMenuItem_Click);
+			// 
+			// btnLogin
+			// 
+			this.btnLogin.BackColor = System.Drawing.Color.Teal;
+			this.btnLogin.BackgroundImage = global::Seoul_Software.Properties.Resources.UserGroup;
+			this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnLogin.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnLogin.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnLogin.ForeColor = System.Drawing.Color.White;
+			this.btnLogin.Location = new System.Drawing.Point(0, 55);
+			this.btnLogin.Margin = new System.Windows.Forms.Padding(0);
+			this.btnLogin.Name = "btnLogin";
+			this.btnLogin.Size = new System.Drawing.Size(60, 55);
+			this.btnLogin.TabIndex = 62;
+			this.btnLogin.UseVisualStyleBackColor = false;
+			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
 			// 
 			// btnHome
 			// 
@@ -586,7 +613,7 @@
 			this.tabControl.Location = new System.Drawing.Point(466, 4);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(805, 603);
+			this.tabControl.Size = new System.Drawing.Size(793, 603);
 			this.tabControl.TabIndex = 8;
 			// 
 			// tabPage1
@@ -595,7 +622,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 25);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(797, 574);
+			this.tabPage1.Size = new System.Drawing.Size(785, 574);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Operation";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -606,7 +633,7 @@
 			this.panelMain.Location = new System.Drawing.Point(3, 3);
 			this.panelMain.Margin = new System.Windows.Forms.Padding(0);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(791, 568);
+			this.panelMain.Size = new System.Drawing.Size(779, 568);
 			this.panelMain.TabIndex = 8;
 			// 
 			// tabPage2
@@ -615,7 +642,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 25);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(798, 574);
+			this.tabPage2.Size = new System.Drawing.Size(786, 574);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Error & Alarm";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -626,7 +653,7 @@
 			this.panelAlarm.Location = new System.Drawing.Point(3, 3);
 			this.panelAlarm.Margin = new System.Windows.Forms.Padding(0);
 			this.panelAlarm.Name = "panelAlarm";
-			this.panelAlarm.Size = new System.Drawing.Size(792, 568);
+			this.panelAlarm.Size = new System.Drawing.Size(780, 568);
 			this.panelAlarm.TabIndex = 9;
 			// 
 			// lbTitle
@@ -767,6 +794,14 @@
 			this.tableLayoutPanel.Size = new System.Drawing.Size(1582, 853);
 			this.tableLayoutPanel.TabIndex = 1;
 			// 
+			// userManagerToolStripMenuItem
+			// 
+			this.userManagerToolStripMenuItem.Image = global::Seoul_Software.Properties.Resources.UserGroup;
+			this.userManagerToolStripMenuItem.Name = "userManagerToolStripMenuItem";
+			this.userManagerToolStripMenuItem.Size = new System.Drawing.Size(174, 28);
+			this.userManagerToolStripMenuItem.Text = "User Manager";
+			this.userManagerToolStripMenuItem.Click += new System.EventHandler(this.userManagerToolStripMenuItem_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -784,7 +819,8 @@
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panelMenu.ResumeLayout(false);
-			this.contextMenuStrip.ResumeLayout(false);
+			this.contextMenuStripSetting.ResumeLayout(false);
+			this.contextMenuStripData.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
@@ -840,18 +876,22 @@
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Panel panelAlarm;
 		private System.Windows.Forms.Button btnHome;
-		private System.Windows.Forms.Button btnKeyboard;
-		private System.Windows.Forms.Button btnPrinter;
-		private System.Windows.Forms.Button btnPlcSetting;
-		private System.Windows.Forms.Button btnSetting;
-		private System.Windows.Forms.Button btnData;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStripData;
 		private System.Windows.Forms.ToolStripMenuItem lotDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ringDataToolStripMenuItem;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.ListBox listBoxEventLog;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.ListBox listBoxAlarm;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStripSetting;
+		private System.Windows.Forms.ToolStripMenuItem printerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pLCToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
+		private System.Windows.Forms.Button btnKeyboard;
+		private System.Windows.Forms.Button btnSetting;
+		private System.Windows.Forms.Button btnData;
+		private System.Windows.Forms.Button btnLogin;
+		private System.Windows.Forms.ToolStripMenuItem userManagerToolStripMenuItem;
 	}
 }
 

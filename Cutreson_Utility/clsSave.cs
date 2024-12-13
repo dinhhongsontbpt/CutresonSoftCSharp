@@ -113,7 +113,7 @@ namespace Cutreson_Utility
         #endregion
 
         #region Export to Excel
-        public void ExportToExcel(DataGridView dataGridView, string fileName, string sheet)
+        public static void ExportToExcel(DataGridView dataGridView, string fileName, string sheet)
         {
             if (dataGridView.RowCount == 0)
             {

@@ -1,5 +1,6 @@
 ﻿using Cutreson_Utility;
 using Seoul_Software.Log;
+using Seoul_Software.User;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,8 +38,14 @@ namespace Seoul_Software
 		public bool IsSaveImageLog;
 		//SQL
 		public string ConnectionString;
-		public static MySetting Setting = new MySetting();
+		//Login
+		public string OperatorPassword;
+		public string EngineerPassword;
+		public string AdminPassword;
+		public eRole AutoLoginAs;
 
+		public static MySetting Setting = new MySetting();
+		
 		public MySetting()
 		{
 			Title = "Auto UV Tape Mount Machine";
@@ -62,7 +69,11 @@ namespace Seoul_Software
 			IsSaveImageLog = true;
 			ShowIdBarcode = false;
 			ConnectionString = "Server=CUTRESON;Database=Seoul_01;Trusted_Connection=True;";
-	}
+			OperatorPassword = "1";
+			EngineerPassword = "123";
+			AdminPassword = "1234";
+			AutoLoginAs = eRole.ADMIN;
+		}
 
 		public void SaveSetting()
 		{

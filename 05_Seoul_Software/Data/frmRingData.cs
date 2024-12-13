@@ -1,4 +1,5 @@
-﻿using Seoul_Software.SQL;
+﻿using Cutreson_Utility;
+using Seoul_Software.SQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,7 +85,7 @@ namespace Seoul_Software.Data
 		{
 			var timeStart = dateTimePickerFrom.Value;
 			var timeEnd = dateTimePickerTo.Value;
-			listSearch = db.Rings.Where(l => l.TimeOutput >= timeStart && l.TimeOutput < timeEnd).OrderBy(l => l.TimeOutput).ToList();
+			listSearch = db.Rings.Where(l => l.TimeOutput >= timeStart && l.TimeOutput < timeEnd).OrderByDescending(l => l.TimeOutput).ToList();
 			currentPage = 0;
 			ViewData();
 		}
@@ -95,7 +96,7 @@ namespace Seoul_Software.Data
 		}
 		private void btnSearchLot_Click(object sender, EventArgs e)
 		{
-			listSearch = db.Rings.Where(l => l.LotNo == txtLot.Text).OrderBy(l => l.TimeOutput).ToList();
+			listSearch = db.Rings.Where(l => l.LotNo == txtLot.Text).OrderByDescending(l => l.TimeOutput).ToList();
 			currentPage = 0;
 			ViewData();
 		}
@@ -119,6 +120,11 @@ namespace Seoul_Software.Data
 		{
 			currentPage++;
 			ViewData();
+		}
+
+		private void btnExport_Click(object sender, EventArgs e)
+		{
+			clsSave.ExportToExcel(tbData, "Ring Data", DateTime.Now.ToString("yyyyMMdd"));
 		}
 	}
 }

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_Robotech_VisionMonitor",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS_MergeCommentPLC", "MS_MergeCommentPLC\MS_MergeCommentPLC.csproj", "{2896A669-3EDE-40D6-ABCF-3FEED49F9679}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_Terumo", "06_Terumo\06_Terumo.csproj", "{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,14 @@ Global
 		{2896A669-3EDE-40D6-ABCF-3FEED49F9679}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2896A669-3EDE-40D6-ABCF-3FEED49F9679}.Release|x64.ActiveCfg = Release|Any CPU
 		{2896A669-3EDE-40D6-ABCF-3FEED49F9679}.Release|x64.Build.0 = Release|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B3C4D80-7D54-445B-87C6-9B6A55831FEF}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

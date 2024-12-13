@@ -47,6 +47,7 @@
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.tbData = new System.Windows.Forms.DataGridView();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnExport = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tbData)).BeginInit();
@@ -295,6 +296,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btnExport);
 			this.panel1.Controls.Add(this.lbSearchResult);
 			this.panel1.Controls.Add(this.btnPrevious);
 			this.panel1.Controls.Add(this.btnNext);
@@ -311,6 +313,20 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(1121, 92);
 			this.panel1.TabIndex = 2;
+			// 
+			// btnExport
+			// 
+			this.btnExport.BackColor = System.Drawing.Color.Teal;
+			this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnExport.Location = new System.Drawing.Point(811, 9);
+			this.btnExport.Margin = new System.Windows.Forms.Padding(4);
+			this.btnExport.Name = "btnExport";
+			this.btnExport.Size = new System.Drawing.Size(121, 73);
+			this.btnExport.TabIndex = 20;
+			this.btnExport.Text = "Export to Excel";
+			this.btnExport.UseVisualStyleBackColor = false;
+			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
 			// 
 			// frmRingData
 			// 
@@ -353,5 +369,6 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
 		private System.Windows.Forms.DataGridView tbData;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button btnExport;
 	}
 }

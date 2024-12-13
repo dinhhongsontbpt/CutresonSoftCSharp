@@ -96,7 +96,7 @@ namespace Seoul_Software
 					{
 						AlarmModel alarmModel = new AlarmModel();
 						alarmModel.No = Convert.ToInt32(worksheetAlarm.Cells[i, 1].Text);
-						alarmModel.AlarmLevel = worksheetAlarm.Cells[i, 2].Text == "Light" ? eLogLevel.WARNING : eLogLevel.ERROR;
+						alarmModel.AlarmLevel = worksheetAlarm.Cells[i, 2].Text == "Alarm" ? eLogLevel.ALARM : eLogLevel.ERROR;
 						alarmModel.Index = Convert.ToInt32(worksheetAlarm.Cells[i, 3].Text);
 						alarmModel.Unit = worksheetAlarm.Cells[i, 4].Text;
 						alarmModel.Description = worksheetAlarm.Cells[i, 5].Text;

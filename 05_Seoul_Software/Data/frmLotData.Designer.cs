@@ -47,6 +47,7 @@
 			this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
 			this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+			this.btnExport = new System.Windows.Forms.Button();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tbData)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -179,6 +180,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btnExport);
 			this.panel1.Controls.Add(this.lbSearchResult);
 			this.panel1.Controls.Add(this.btnPrevious);
 			this.panel1.Controls.Add(this.btnNext);
@@ -312,6 +314,20 @@
 			this.dateTimePickerFrom.Size = new System.Drawing.Size(181, 26);
 			this.dateTimePickerFrom.TabIndex = 0;
 			// 
+			// btnExport
+			// 
+			this.btnExport.BackColor = System.Drawing.Color.Teal;
+			this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnExport.Location = new System.Drawing.Point(804, 10);
+			this.btnExport.Margin = new System.Windows.Forms.Padding(4);
+			this.btnExport.Name = "btnExport";
+			this.btnExport.Size = new System.Drawing.Size(121, 73);
+			this.btnExport.TabIndex = 19;
+			this.btnExport.Text = "Export to Excel";
+			this.btnExport.UseVisualStyleBackColor = false;
+			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+			// 
 			// frmLotData
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -353,5 +369,6 @@
 		private System.Windows.Forms.Button btnNext;
 		private System.Windows.Forms.Label lbSearchResult;
 		private System.Windows.Forms.Button btnPrevious;
+		private System.Windows.Forms.Button btnExport;
 	}
 }

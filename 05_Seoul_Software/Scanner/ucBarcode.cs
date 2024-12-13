@@ -57,7 +57,7 @@ namespace Seoul_Software.Scanner
 
 		private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.KeyCode == Keys.Enter)
+		if (e.KeyCode == Keys.Enter)
 			{
 				string enteredText = txtBarcode.Text;
 				if (string.IsNullOrEmpty(enteredText)) return;
@@ -72,33 +72,34 @@ namespace Seoul_Software.Scanner
 						clsMessageBox.Warning($"Barcode {enteredText} overlap");
 						return;
 					}
-					barcode.Data = enteredText;
-					barcode.TimeScan = DateTime.Now;
-					barcode.Index = index;
-					if (barcode.IsIdExist())
+				}
+				barcode.Data = enteredText;
+				barcode.TimeScan = DateTime.Now;
+				barcode.Index = index;
+				if (barcode.IsIdExist())
+				{
+					Global.Barcodes.RemoveAll(b => b.Id == barcode.Id);
+				}
+				if (barcode.Id != 0)
+				{
+					Global.Barcodes.Add(barcode);
+					if (Global.Barcodes.Count >= 100)
 					{
-						Global.Barcodes.RemoveAll(b => b.Id == barcode.Id);
+						Global.Barcodes.RemoveAt(Global.Barcodes.Count - 1);
 					}
-					if (barcode.Id != 0)
-					{
-						Global.Barcodes.Add(barcode);
-						if(Global.Barcodes.Count >= 100)
-						{
-							Global.Barcodes.RemoveAt(Global.Barcodes.Count - 1);
-						}
-						clsBarcodeManager.Save();
+					clsBarcodeManager.Save();
 
-						if (Global.PLC.WriteBarcode(barcode))
-						{
-							Global.Log.Operation($"Write barcode {barcode.Index + 1}:{barcode.Data},Id={barcode.Id}");
-							OnBarcodeWritten();
-						}
-						else
-						{
-							Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}");
-						}
+					if (Global.PLC.WriteBarcode(barcode))
+					{
+						Global.Log.Operation($"Write barcode {barcode.Index + 1}:{barcode.Data},Id={barcode.Id}");
+						OnBarcodeWritten();
+					}
+					else
+					{
+						Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}");
 					}
 				}
+
 			}
 		}
 		protected virtual void OnBarcodeWritten()

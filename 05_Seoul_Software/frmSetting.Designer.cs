@@ -33,6 +33,7 @@
 			this.txtPath = new System.Windows.Forms.TextBox();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnSelect = new System.Windows.Forms.Button();
+			this.cbBarcode = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -56,7 +57,7 @@
 			this.btnSave.BackColor = System.Drawing.Color.Teal;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.btnSave.Location = new System.Drawing.Point(628, 65);
+			this.btnSave.Location = new System.Drawing.Point(628, 103);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(106, 35);
 			this.btnSave.TabIndex = 12;
@@ -77,11 +78,22 @@
 			this.btnSelect.UseVisualStyleBackColor = false;
 			this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
 			// 
+			// cbBarcode
+			// 
+			this.cbBarcode.AutoSize = true;
+			this.cbBarcode.Location = new System.Drawing.Point(85, 73);
+			this.cbBarcode.Name = "cbBarcode";
+			this.cbBarcode.Size = new System.Drawing.Size(170, 20);
+			this.cbBarcode.TabIndex = 14;
+			this.cbBarcode.Text = "Check barcode overlap";
+			this.cbBarcode.UseVisualStyleBackColor = true;
+			// 
 			// frmSetting
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(753, 116);
+			this.ClientSize = new System.Drawing.Size(753, 150);
+			this.Controls.Add(this.cbBarcode);
 			this.Controls.Add(this.btnSelect);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.txtPath);
@@ -101,5 +113,6 @@
 		private System.Windows.Forms.TextBox txtPath;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.Button btnSelect;
+		private System.Windows.Forms.CheckBox cbBarcode;
 	}
 }

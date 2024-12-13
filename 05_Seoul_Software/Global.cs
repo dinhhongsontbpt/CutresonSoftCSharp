@@ -6,6 +6,7 @@ using Seoul_Software.Scanner;
 using System.Collections.Generic;
 using Seoul_Software.MachineMonitor;
 using Seoul_Software.SQL;
+using Seoul_Software.User;
 
 namespace Seoul_Software
 {
@@ -22,5 +23,6 @@ namespace Seoul_Software
         public static long TotalLot;
         public static long TotalRing;
         public static long TotalChipLed;
+        public static eRole Role;
 	}
 }

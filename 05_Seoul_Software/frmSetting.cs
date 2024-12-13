@@ -17,6 +17,7 @@ namespace Seoul_Software
 		{
 			InitializeComponent();
 			txtPath.Text = MySetting.Setting.LogPathFolder;
+			cbBarcode.Checked = MySetting.Setting.CheckBarcodeOverlap;
 		}
 
 		private void btnSelect_Click(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace Seoul_Software
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			MySetting.Setting.LogPathFolder = txtPath.Text;
+			MySetting.Setting.CheckBarcodeOverlap = cbBarcode.Checked;
 			MySetting.Setting.SaveSetting();
 			clsMessageBox.Info("Save successfully..!!");
 		}

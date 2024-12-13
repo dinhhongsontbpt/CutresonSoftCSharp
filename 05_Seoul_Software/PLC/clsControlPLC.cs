@@ -383,7 +383,7 @@ namespace Seoul_Software
 						Array.Copy(arr1, 0, result, 0, arr1.Length);
 						Array.Copy(arr2, 0, result, arr1.Length, arr2.Length);
 						Array.Copy(arr3, 0, result, arr1.Length + arr2.Length, arr3.Length);
-						bool b = client.WriteWords(PlcDeviceType.ZR, 10, 12, result);
+						bool b = client.WriteWords(PlcDeviceType.ZR, 20, 12, result);
 						return b;
 					}
 					else

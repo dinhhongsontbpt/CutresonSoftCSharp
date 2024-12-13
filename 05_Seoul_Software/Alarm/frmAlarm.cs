@@ -75,7 +75,7 @@ namespace Seoul_Software.Alarm
 				{
 					if(blink)
 					{
-						if (alarm.AlarmLevel == Log.eLogLevel.WARNING)
+						if (alarm.AlarmLevel == Log.eLogLevel.ALARM)
 						{
 							clsInvokeControl.ControlBackColorInvoke(lbAlarm, Color.Yellow);
 						}

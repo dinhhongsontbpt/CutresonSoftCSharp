@@ -169,6 +169,19 @@
     <Compile Include="SQL\DbManager.cs" />
     <Compile Include="SQL\LotModel.cs" />
     <Compile Include="SQL\SeoulDbContext.cs" />
+    <Compile Include="User\eRole.cs" />
+    <Compile Include="User\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmUserManager.Designer.cs">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vision\frmVisionMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +249,12 @@
     <EmbeddedResource Include="Scanner\frmBarcodes.resx">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmUserManager.resx">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vision\frmVisionMonitor.resx">
       <DependentUpon>frmVisionMonitor.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +309,10 @@
   <ItemGroup>
     <Content Include="Add.ico" />
     <Content Include="ArrowRight.ico" />
+    <None Include="Resources\UserGroup.ico" />
+    <None Include="Resources\worker.png" />
+    <None Include="Resources\SystemSetting.ico" />
+    <None Include="Resources\UsbConnector.ico" />
     <None Include="Resources\Layout2.jpg" />
     <None Include="Resources\Layout1.jpg" />
     <None Include="Resources\DatabaseView.ico" />
