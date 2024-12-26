@@ -17,8 +17,10 @@ namespace Seoul_Software
         //Log
         public static bool IsSaveLog = true;
 		public static int ListBoxLogMaxRow = 100;
+		public static string WarningHistoryFile = "warning history.json";
+		public static string AlarmHistoryFile = "alarm history.json";
 		//Database
-        public static string DatabasePathFolder = "data";
+		public static string DatabasePathFolder = "data";
         public static string BarcodeFile = "barcode.xml";
         //Id Max
         public static int IdBarcodeMax = 10000;
@@ -96,7 +98,7 @@ namespace Seoul_Software
 					{
 						AlarmModel alarmModel = new AlarmModel();
 						alarmModel.No = Convert.ToInt32(worksheetAlarm.Cells[i, 1].Text);
-						alarmModel.AlarmLevel = worksheetAlarm.Cells[i, 2].Text == "Alarm" ? eLogLevel.ALARM : eLogLevel.ERROR;
+						alarmModel.Level = worksheetAlarm.Cells[i, 2].Text == "Alarm" ? eLogLevel.WARNING : eLogLevel.ALARM;
 						alarmModel.Index = Convert.ToInt32(worksheetAlarm.Cells[i, 3].Text);
 						alarmModel.Unit = worksheetAlarm.Cells[i, 4].Text;
 						alarmModel.Description = worksheetAlarm.Cells[i, 5].Text;
@@ -106,8 +108,9 @@ namespace Seoul_Software
 						if(File.Exists(path))
 						{
 							alarmModel.Image = Image.FromFile(path);
+							alarmModel.ImageLink = path;
 						}
-						alarmModel.ErrorHelp = worksheetAlarm.Cells[i, 8].Text;
+						alarmModel.Help = worksheetAlarm.Cells[i, 8].Text;
 						alarms.Add(alarmModel);
 						Global.Alarms = alarms;
 					}

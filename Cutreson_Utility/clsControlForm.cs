@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Cutreson_Utility
 {
@@ -6,8 +7,6 @@ namespace Cutreson_Utility
     {
         public static void LoadFormInPanel(Panel panel, Form form)
         {
-            //int panelWidth = panel.Width;
-            //int panelHeight = panel.Height;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
@@ -15,10 +14,9 @@ namespace Cutreson_Utility
             panel.Controls.Add(form);
             form.Show();
         }
+
         public static void LoadFormInControl(Control control, Form form)
         {
-            //int panelWidth = panel.Width;
-            //int panelHeight = panel.Height;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;

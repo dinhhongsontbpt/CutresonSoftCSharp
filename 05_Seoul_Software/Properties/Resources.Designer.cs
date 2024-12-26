@@ -73,6 +73,16 @@ namespace Seoul_Software.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Code {
+            get {
+                object obj = ResourceManager.GetObject("Code", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DatabaseView {
             get {
                 object obj = ResourceManager.GetObject("DatabaseView", resourceCulture);
@@ -187,6 +197,16 @@ namespace Seoul_Software.Properties {
         internal static System.Drawing.Bitmap Printer1 {
             get {
                 object obj = ResourceManager.GetObject("Printer1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Refresh {
+            get {
+                object obj = ResourceManager.GetObject("Refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

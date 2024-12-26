@@ -62,8 +62,9 @@
 			this.btnTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.btnTest.Location = new System.Drawing.Point(28, 102);
+			this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btnTest.Name = "btnTest";
-			this.btnTest.Size = new System.Drawing.Size(464, 35);
+			this.btnTest.Size = new System.Drawing.Size(464, 34);
 			this.btnTest.TabIndex = 7;
 			this.btnTest.Text = "TEST";
 			this.btnTest.UseVisualStyleBackColor = false;
@@ -71,14 +72,15 @@
 			// 
 			// txtPort
 			// 
-			this.txtPort.Location = new System.Drawing.Point(406, 28);
+			this.txtPort.Location = new System.Drawing.Point(405, 28);
+			this.txtPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtPort.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
 			this.txtPort.Name = "txtPort";
-			this.txtPort.Size = new System.Drawing.Size(86, 22);
+			this.txtPort.Size = new System.Drawing.Size(85, 23);
 			this.txtPort.TabIndex = 6;
 			this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.txtPort.Value = new decimal(new int[] {
@@ -89,9 +91,10 @@
 			// 
 			// txtIp
 			// 
-			this.txtIp.Location = new System.Drawing.Point(118, 28);
+			this.txtIp.Location = new System.Drawing.Point(117, 28);
+			this.txtIp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtIp.Name = "txtIp";
-			this.txtIp.Size = new System.Drawing.Size(145, 22);
+			this.txtIp.Size = new System.Drawing.Size(145, 23);
 			this.txtIp.TabIndex = 5;
 			this.txtIp.Text = "192.168.3.123";
 			this.txtIp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -101,7 +104,7 @@
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(25, 31);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(73, 16);
+			this.label1.Size = new System.Drawing.Size(76, 17);
 			this.label1.TabIndex = 4;
 			this.label1.Text = "IP Address";
 			// 
@@ -110,7 +113,7 @@
 			this.label2.AutoSize = true;
 			this.label2.Location = new System.Drawing.Point(357, 31);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(31, 16);
+			this.label2.Size = new System.Drawing.Size(34, 17);
 			this.label2.TabIndex = 8;
 			this.label2.Text = "Port";
 			// 
@@ -119,16 +122,17 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(25, 74);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(79, 16);
+			this.label3.Size = new System.Drawing.Size(83, 17);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "Command 1";
 			// 
 			// txtCommand1
 			// 
-			this.txtCommand1.Location = new System.Drawing.Point(118, 71);
+			this.txtCommand1.Location = new System.Drawing.Point(117, 71);
+			this.txtCommand1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtCommand1.Multiline = true;
 			this.txtCommand1.Name = "txtCommand1";
-			this.txtCommand1.Size = new System.Drawing.Size(374, 74);
+			this.txtCommand1.Size = new System.Drawing.Size(375, 74);
 			this.txtCommand1.TabIndex = 10;
 			this.txtCommand1.Text = "^XA^FO20,20^ADN,30,25^FDLot:0123456789^FS^FO20,80^ADN,30,25^FDTotal:5pcs^FS^XZ";
 			// 
@@ -138,8 +142,9 @@
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.btnSave.Location = new System.Drawing.Point(28, 254);
+			this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(464, 35);
+			this.btnSave.Size = new System.Drawing.Size(464, 34);
 			this.btnSave.TabIndex = 11;
 			this.btnSave.Text = "SAVE";
 			this.btnSave.UseVisualStyleBackColor = false;
@@ -157,18 +162,21 @@
 			this.groupBox1.Controls.Add(this.txtPort);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(518, 304);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.groupBox1.Size = new System.Drawing.Size(517, 304);
 			this.groupBox1.TabIndex = 12;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Setting";
 			// 
 			// txtCommand2
 			// 
-			this.txtCommand2.Location = new System.Drawing.Point(118, 162);
+			this.txtCommand2.Location = new System.Drawing.Point(117, 162);
+			this.txtCommand2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtCommand2.Multiline = true;
 			this.txtCommand2.Name = "txtCommand2";
-			this.txtCommand2.Size = new System.Drawing.Size(374, 74);
+			this.txtCommand2.Size = new System.Drawing.Size(375, 74);
 			this.txtCommand2.TabIndex = 13;
 			this.txtCommand2.Text = "^XA^FO20,20^ADN,30,25^FDLot:0123456789^FS^FO20,80^ADN,30,25^FDTotal:5pcs^FS^XZ";
 			// 
@@ -177,7 +185,7 @@
 			this.label5.AutoSize = true;
 			this.label5.Location = new System.Drawing.Point(25, 165);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(79, 16);
+			this.label5.Size = new System.Drawing.Size(83, 17);
 			this.label5.TabIndex = 12;
 			this.label5.Text = "Command 2";
 			// 
@@ -193,8 +201,10 @@
 			this.groupBox2.Controls.Add(this.txtTotal1);
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Location = new System.Drawing.Point(12, 325);
+			this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(518, 153);
+			this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.groupBox2.Size = new System.Drawing.Size(517, 153);
 			this.groupBox2.TabIndex = 13;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Test";
@@ -202,31 +212,33 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(26, 68);
+			this.label7.Location = new System.Drawing.Point(27, 68);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(59, 16);
+			this.label7.Size = new System.Drawing.Size(66, 17);
 			this.label7.TabIndex = 9;
 			this.label7.Text = "Lot No. 2";
 			// 
 			// txtLotNo2
 			// 
 			this.txtLotNo2.Location = new System.Drawing.Point(119, 65);
+			this.txtLotNo2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtLotNo2.Name = "txtLotNo2";
-			this.txtLotNo2.Size = new System.Drawing.Size(214, 22);
+			this.txtLotNo2.Size = new System.Drawing.Size(215, 23);
 			this.txtLotNo2.TabIndex = 10;
 			this.txtLotNo2.Text = "9876543210";
 			this.txtLotNo2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// txtTotal2
 			// 
-			this.txtTotal2.Location = new System.Drawing.Point(414, 66);
+			this.txtTotal2.Location = new System.Drawing.Point(413, 66);
+			this.txtTotal2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtTotal2.Maximum = new decimal(new int[] {
             4,
             0,
             0,
             0});
 			this.txtTotal2.Name = "txtTotal2";
-			this.txtTotal2.Size = new System.Drawing.Size(79, 22);
+			this.txtTotal2.Size = new System.Drawing.Size(79, 23);
 			this.txtTotal2.TabIndex = 11;
 			this.txtTotal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.txtTotal2.Value = new decimal(new int[] {
@@ -241,7 +253,7 @@
 			this.label8.AutoSize = true;
 			this.label8.Location = new System.Drawing.Point(339, 68);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(69, 16);
+			this.label8.Size = new System.Drawing.Size(76, 17);
 			this.label8.TabIndex = 12;
 			this.label8.Text = "Total Lot 2";
 			// 
@@ -250,22 +262,24 @@
 			this.label4.AutoSize = true;
 			this.label4.Location = new System.Drawing.Point(25, 31);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(59, 16);
+			this.label4.Size = new System.Drawing.Size(66, 17);
 			this.label4.TabIndex = 4;
 			this.label4.Text = "Lot No. 1";
 			// 
 			// txtLotNo1
 			// 
-			this.txtLotNo1.Location = new System.Drawing.Point(118, 28);
+			this.txtLotNo1.Location = new System.Drawing.Point(117, 28);
+			this.txtLotNo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtLotNo1.Name = "txtLotNo1";
-			this.txtLotNo1.Size = new System.Drawing.Size(214, 22);
+			this.txtLotNo1.Size = new System.Drawing.Size(215, 23);
 			this.txtLotNo1.TabIndex = 5;
 			this.txtLotNo1.Text = "0123456789";
 			this.txtLotNo1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// txtTotal1
 			// 
-			this.txtTotal1.Location = new System.Drawing.Point(413, 29);
+			this.txtTotal1.Location = new System.Drawing.Point(413, 30);
+			this.txtTotal1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtTotal1.Maximum = new decimal(new int[] {
             5,
             0,
@@ -277,7 +291,7 @@
             0,
             0});
 			this.txtTotal1.Name = "txtTotal1";
-			this.txtTotal1.Size = new System.Drawing.Size(79, 22);
+			this.txtTotal1.Size = new System.Drawing.Size(79, 23);
 			this.txtTotal1.TabIndex = 6;
 			this.txtTotal1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.txtTotal1.Value = new decimal(new int[] {
@@ -290,9 +304,9 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(338, 34);
+			this.label6.Location = new System.Drawing.Point(339, 34);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(69, 16);
+			this.label6.Size = new System.Drawing.Size(76, 17);
 			this.label6.TabIndex = 8;
 			this.label6.Text = "Total Lot 1";
 			// 
@@ -300,13 +314,15 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(542, 480);
+			this.ClientSize = new System.Drawing.Size(541, 480);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
+			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "frmPrinterSetting";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Printer Setting";
+			this.Text = "PRINTER";
 			((System.ComponentModel.ISupportInitialize)(this.txtPort)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

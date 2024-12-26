@@ -46,6 +46,31 @@ namespace Seoul_Software
 
 
 			Global.PLC.PropertyChanged += PLC_PropertyChanged;
+
+			if (Global.PLC.TTLRed)
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampRed, Color.Red);
+			}
+			else
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampRed, Color.LightGray);
+			}
+			if (Global.PLC.TTLYellow)
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampYellow, Color.Yellow);
+			}
+			else
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampYellow, Color.LightGray);
+			}
+			if (Global.PLC.TTLGreen)
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampGreen, Color.Lime);
+			}
+			else
+			{
+				clsInvokeControl.ControlBackColorInvoke(lampGreen, Color.LightGray);
+			}
 		}
 		public void UpdateData()
 		{
@@ -74,6 +99,39 @@ namespace Seoul_Software
 				{
 					clsInvokeControl.ControlTextInvoke(lbAlarmDate, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 
+				}
+			}
+			if (e.PropertyName == "TTLRed")
+			{
+				if (Global.PLC.TTLRed)
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampRed, Color.Red);
+				}
+				else
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampRed, Color.LightGray);
+				}
+			}
+			if (e.PropertyName == "TTLYellow")
+			{
+				if (Global.PLC.TTLYellow)
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampYellow, Color.Yellow);
+				}
+				else
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampYellow, Color.LightGray);
+				}
+			}
+			if (e.PropertyName == "TTLGreen")
+			{
+				if (Global.PLC.TTLGreen)
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampGreen, Color.Lime);
+				}
+				else
+				{
+					clsInvokeControl.ControlBackColorInvoke(lampGreen, Color.LightGray);
 				}
 			}
 		}

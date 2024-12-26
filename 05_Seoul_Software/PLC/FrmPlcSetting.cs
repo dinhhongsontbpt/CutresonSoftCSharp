@@ -28,5 +28,25 @@ namespace Seoul_Software.PLC
 			Global.Log.Operation($"Save PLC setting IP:{txtIp.Text},Port:{txtPort.Value}");
 			clsMessageBox.Info($"Save PLC setting IP:{txtIp.Text},Port:{txtPort.Value}");
 		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtIp_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtPort_ValueChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

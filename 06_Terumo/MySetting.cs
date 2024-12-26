@@ -19,7 +19,7 @@ namespace _06_Terumo
 		public string Parity;
 		public int DataBit;
 		public string StopBit;
-
+		public string DeviceName;
 		public MySetting()
 		{
 			CommandKeys = new string[] { "KEY=NUL", "Spare", "Spare", "Spare", "KEY=MEMORY", "KEY=A", "KEY=MAIN", "PLC COMMAND MODEL NO." }; //"PRC=1"
@@ -29,6 +29,7 @@ namespace _06_Terumo
 			Parity = "None";
 			DataBit = 8;
 			StopBit = "One";
+			DeviceName = "DIO000";
 		}
 		public void SaveSetting()
 		{

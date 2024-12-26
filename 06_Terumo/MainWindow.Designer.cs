@@ -34,9 +34,6 @@
 			this.btnSetting = new System.Windows.Forms.ToolStripButton();
 			this.btnExit = new System.Windows.Forms.ToolStripButton();
 			this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanelFooter = new System.Windows.Forms.TableLayoutPanel();
-			this.labelVersion = new System.Windows.Forms.Label();
-			this.labelBuildDate = new System.Windows.Forms.Label();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.groupBoxLog = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -45,12 +42,15 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tbInput = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLampInput = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanelFooter = new System.Windows.Forms.TableLayoutPanel();
+			this.labelVersion = new System.Windows.Forms.Label();
+			this.labelBuildDate = new System.Windows.Forms.Label();
 			this.toolStrip1.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
-			this.tableLayoutPanelFooter.SuspendLayout();
 			this.tableLayoutPanel.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			this.tableLayoutPanelFooter.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// toolStrip1
@@ -112,50 +112,6 @@
 			this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanelMain.Size = new System.Drawing.Size(978, 660);
 			this.tableLayoutPanelMain.TabIndex = 8;
-			// 
-			// tableLayoutPanelFooter
-			// 
-			this.tableLayoutPanelFooter.BackColor = System.Drawing.SystemColors.Control;
-			this.tableLayoutPanelFooter.ColumnCount = 2;
-			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanelFooter.Controls.Add(this.labelVersion, 0, 0);
-			this.tableLayoutPanelFooter.Controls.Add(this.labelBuildDate, 0, 0);
-			this.tableLayoutPanelFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanelFooter.Location = new System.Drawing.Point(3, 633);
-			this.tableLayoutPanelFooter.Name = "tableLayoutPanelFooter";
-			this.tableLayoutPanelFooter.RowCount = 1;
-			this.tableLayoutPanelFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelFooter.Size = new System.Drawing.Size(972, 24);
-			this.tableLayoutPanelFooter.TabIndex = 8;
-			// 
-			// labelVersion
-			// 
-			this.labelVersion.AutoSize = true;
-			this.labelVersion.BackColor = System.Drawing.SystemColors.Control;
-			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.labelVersion.Location = new System.Drawing.Point(489, 0);
-			this.labelVersion.Name = "labelVersion";
-			this.labelVersion.Size = new System.Drawing.Size(480, 24);
-			this.labelVersion.TabIndex = 14;
-			this.labelVersion.Text = "Version: V1.0";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// labelBuildDate
-			// 
-			this.labelBuildDate.AutoSize = true;
-			this.labelBuildDate.BackColor = System.Drawing.SystemColors.Control;
-			this.labelBuildDate.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labelBuildDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelBuildDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.labelBuildDate.Location = new System.Drawing.Point(3, 0);
-			this.labelBuildDate.Name = "labelBuildDate";
-			this.labelBuildDate.Size = new System.Drawing.Size(480, 24);
-			this.labelBuildDate.TabIndex = 13;
-			this.labelBuildDate.Text = "Built: 2024/10/18";
-			this.labelBuildDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// tableLayoutPanel
 			// 
@@ -272,6 +228,50 @@
 			this.tbLampInput.Size = new System.Drawing.Size(50, 274);
 			this.tbLampInput.TabIndex = 0;
 			// 
+			// tableLayoutPanelFooter
+			// 
+			this.tableLayoutPanelFooter.BackColor = System.Drawing.SystemColors.Control;
+			this.tableLayoutPanelFooter.ColumnCount = 2;
+			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanelFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanelFooter.Controls.Add(this.labelVersion, 0, 0);
+			this.tableLayoutPanelFooter.Controls.Add(this.labelBuildDate, 0, 0);
+			this.tableLayoutPanelFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanelFooter.Location = new System.Drawing.Point(3, 633);
+			this.tableLayoutPanelFooter.Name = "tableLayoutPanelFooter";
+			this.tableLayoutPanelFooter.RowCount = 1;
+			this.tableLayoutPanelFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanelFooter.Size = new System.Drawing.Size(972, 24);
+			this.tableLayoutPanelFooter.TabIndex = 8;
+			// 
+			// labelVersion
+			// 
+			this.labelVersion.AutoSize = true;
+			this.labelVersion.BackColor = System.Drawing.SystemColors.Control;
+			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.labelVersion.Location = new System.Drawing.Point(489, 0);
+			this.labelVersion.Name = "labelVersion";
+			this.labelVersion.Size = new System.Drawing.Size(480, 24);
+			this.labelVersion.TabIndex = 14;
+			this.labelVersion.Text = "Version: V1.0";
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// labelBuildDate
+			// 
+			this.labelBuildDate.AutoSize = true;
+			this.labelBuildDate.BackColor = System.Drawing.SystemColors.Control;
+			this.labelBuildDate.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelBuildDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelBuildDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.labelBuildDate.Location = new System.Drawing.Point(3, 0);
+			this.labelBuildDate.Name = "labelBuildDate";
+			this.labelBuildDate.Size = new System.Drawing.Size(480, 24);
+			this.labelBuildDate.TabIndex = 13;
+			this.labelBuildDate.Text = "Built: 2024/10/18";
+			this.labelBuildDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -291,11 +291,11 @@
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.tableLayoutPanelMain.ResumeLayout(false);
-			this.tableLayoutPanelFooter.ResumeLayout(false);
-			this.tableLayoutPanelFooter.PerformLayout();
 			this.tableLayoutPanel.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
+			this.tableLayoutPanelFooter.ResumeLayout(false);
+			this.tableLayoutPanelFooter.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

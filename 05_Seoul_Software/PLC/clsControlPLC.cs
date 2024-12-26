@@ -84,6 +84,27 @@ namespace Seoul_Software
 			get { return _autoRunning; }
 			set { Set(ref _autoRunning, value); }
 		}
+		//TTL Red
+		private bool _ttlRed;
+		public bool TTLRed
+		{
+			get { return _ttlRed; }
+			set { Set(ref _ttlRed, value); }
+		}
+		//TTL Yellow
+		private bool _ttlYellow;
+		public bool TTLYellow
+		{
+			get { return _ttlYellow; }
+			set { Set(ref _ttlYellow, value); }
+		}
+		//TTL Green
+		private bool _ttlGreen;
+		public bool TTLGreen
+		{
+			get { return _ttlGreen; }
+			set { Set(ref _ttlGreen, value); }
+		}
 		private bool[] ref_AlarmArr = new bool[clsConfig.AlarmCount];		
 		public event EventHandler<EventParam> AlarmEvent;
 		//Operating event
@@ -112,8 +133,11 @@ namespace Seoul_Software
 						Initial = m0_m299[107];
                         AlarmSignal = m0_m299[113];
 						AutoRunning = m0_m299[103];
-                        //-----------------------Alarm----------------------------------------------------
-                        bool[] b_arrALarm = client.ReadBits(clsConfig.AlarmDeviceType, clsConfig.AlarmStartAddress, clsConfig.AlarmCount);
+						TTLRed = m0_m299[40];
+						TTLYellow = m0_m299[41];
+						TTLGreen = m0_m299[42];
+						//-----------------------Alarm----------------------------------------------------
+						bool[] b_arrALarm = client.ReadBits(clsConfig.AlarmDeviceType, clsConfig.AlarmStartAddress, clsConfig.AlarmCount);
                         for (int i = 0; i < b_arrALarm.Length; i++)
                         {
                             if(b_arrALarm[i] != ref_AlarmArr[i])
@@ -220,6 +244,24 @@ namespace Seoul_Software
 				{
 					if (client.IsConnect())
 					{
+						return client.ReadWords(PlcDeviceType.ZR, 15051, 5);
+					}
+				}
+				catch (Exception ex)
+				{
+					Global.Log.Error(ex.Message, Log.eLogLevel.FATAL);
+				}
+				return null;
+			}
+		}
+		public int[] ReadOutputData()
+		{
+			lock (_Lock)
+			{
+				try
+				{
+					if (client.IsConnect())
+					{
 						return client.ReadWords(PlcDeviceType.ZR, 16051, 5);
 					}
 				}
@@ -229,7 +271,6 @@ namespace Seoul_Software
 				}
 				return null;
 			}
-
 		}
 		public int[] ReadVisionData()
 		{

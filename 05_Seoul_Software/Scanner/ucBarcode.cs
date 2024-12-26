@@ -19,11 +19,18 @@ namespace Seoul_Software.Scanner
 		public ucBarcode()
 		{
 			InitializeComponent();
-#if DEBUG
-			tableLayoutPanel1.ColumnStyles[1].Width = 40;
-#else
-			tableLayoutPanel1.ColumnStyles[1].Width = 0;
-#endif
+		}
+		public void EnableControl(bool enable)
+		{
+			txtBarcode.ReadOnly = !enable;
+			if (enable)
+			{
+				this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
+			}
+			else
+			{
+				this.txtBarcode.KeyDown -= new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
+			}
 		}
 		public void SetModel(BarcodeModel barcode)
 		{
@@ -34,9 +41,17 @@ namespace Seoul_Software.Scanner
 
 		public void UpdateView()
 		{
-			clsInvokeControl.ControlTextInvoke(lbId, barcode.Id.ToString());
+			//clsInvokeControl.ControlTextInvoke(lbId, barcode.Id.ToString());
 			clsInvokeControl.ControlTextInvoke(lbIndex, (barcode.Index + 1).ToString());
 			clsInvokeControl.ControlTextInvoke(txtBarcode, barcode.Data);
+			if (string.IsNullOrEmpty(barcode.Data))
+			{
+				clsInvokeControl.ControlBackColorInvoke(lbIndex, Color.Teal);
+			}
+			else
+			{
+				clsInvokeControl.ControlBackColorInvoke(lbIndex, Color.DarkGreen);
+			}
 		}
 		public void FocusAndSelectAll()
 		{
@@ -57,49 +72,58 @@ namespace Seoul_Software.Scanner
 
 		private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
 		{
-		if (e.KeyCode == Keys.Enter)
+			if (e.KeyCode == Keys.Enter)
 			{
-				string enteredText = txtBarcode.Text;
-				if (string.IsNullOrEmpty(enteredText)) return;
-				Global.Log.Operation("Scan: " + enteredText);
-				if (MySetting.Setting.CheckBarcodeOverlap)
+				Enter();
+			}
+		}
+		public void SetCode(string strCode)
+		{
+			txtBarcode.Text = strCode;
+		}
+		public void Enter()
+		{
+			string enteredText = txtBarcode.Text;
+			clsInvokeControl.ControlBackColorInvoke(lbIndex, Color.Teal);
+			if (string.IsNullOrEmpty(enteredText)) return;
+			clsInvokeControl.ControlBackColorInvoke(lbIndex, Color.DarkGreen);
+			Global.Log.Operation("Scan: " + enteredText);
+			if (MySetting.Setting.CheckBarcodeOverlap)
+			{
+				BarcodeModel check = Global.Barcodes.Find(f => f.Data == enteredText && f.Index != index);
+				if (check != null)
 				{
-					BarcodeModel check = Global.Barcodes.Find(f => f.Data == enteredText && f.Index != index);
-					if (check != null)
-					{
-						Global.Log.Alarm($"Barcode {enteredText} overlap");
-						FocusAndSelectAll();
-						clsMessageBox.Warning($"Barcode {enteredText} overlap");
-						return;
-					}
+					Global.Log.Alarm($"Barcode {enteredText} overlap");
+					FocusAndSelectAll();
+					clsMessageBox.Warning($"Barcode {enteredText} overlap");
+					return;
 				}
-				barcode.Data = enteredText;
-				barcode.TimeScan = DateTime.Now;
-				barcode.Index = index;
-				if (barcode.IsIdExist())
+			}
+			barcode.Data = enteredText;
+			barcode.TimeScan = DateTime.Now;
+			barcode.Index = index;
+			if (barcode.IsIdExist())
+			{
+				Global.Barcodes.RemoveAll(b => b.Id == barcode.Id);
+			}
+			if (barcode.Id != 0)
+			{
+				Global.Barcodes.Add(barcode);
+				if (Global.Barcodes.Count >= 100)
 				{
-					Global.Barcodes.RemoveAll(b => b.Id == barcode.Id);
+					Global.Barcodes.RemoveAt(Global.Barcodes.Count - 1);
 				}
-				if (barcode.Id != 0)
-				{
-					Global.Barcodes.Add(barcode);
-					if (Global.Barcodes.Count >= 100)
-					{
-						Global.Barcodes.RemoveAt(Global.Barcodes.Count - 1);
-					}
-					clsBarcodeManager.Save();
+				clsBarcodeManager.Save();
 
-					if (Global.PLC.WriteBarcode(barcode))
-					{
-						Global.Log.Operation($"Write barcode {barcode.Index + 1}:{barcode.Data},Id={barcode.Id}");
-						OnBarcodeWritten();
-					}
-					else
-					{
-						Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}");
-					}
+				if (Global.PLC.WriteBarcode(barcode))
+				{
+					Global.Log.Operation($"Write barcode {barcode.Index + 1}:{barcode.Data},Id={barcode.Id}");
+					OnBarcodeWritten();
 				}
-
+				else
+				{
+					Global.Log.Alarm($"Write barcode {barcode.Index + 1}: {barcode.Data},Id={barcode.Id}");
+				}
 			}
 		}
 		protected virtual void OnBarcodeWritten()

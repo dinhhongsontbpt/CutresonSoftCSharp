@@ -49,6 +49,14 @@
 			this.groupBox7 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.lbTotalChipLed = new System.Windows.Forms.Label();
+			this.groupBox8 = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanelTTL = new System.Windows.Forms.TableLayoutPanel();
+			this.panel5 = new System.Windows.Forms.Panel();
+			this.lampGreen = new System.Windows.Forms.Panel();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.lampYellow = new System.Windows.Forms.Panel();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.lampRed = new System.Windows.Forms.Panel();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -63,6 +71,11 @@
 			this.tableLayoutPanel6.SuspendLayout();
 			this.groupBox7.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
+			this.groupBox8.SuspendLayout();
+			this.tableLayoutPanelTTL.SuspendLayout();
+			this.panel5.SuspendLayout();
+			this.panel3.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -97,7 +110,7 @@
 			this.lbStartupDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbStartupDate.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbStartupDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbStartupDate.ForeColor = System.Drawing.Color.Brown;
+			this.lbStartupDate.ForeColor = System.Drawing.Color.DarkGreen;
 			this.lbStartupDate.Location = new System.Drawing.Point(3, 0);
 			this.lbStartupDate.Name = "lbStartupDate";
 			this.lbStartupDate.Size = new System.Drawing.Size(240, 39);
@@ -137,7 +150,7 @@
 			this.lbStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbStartDate.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbStartDate.ForeColor = System.Drawing.Color.Green;
+			this.lbStartDate.ForeColor = System.Drawing.Color.DarkGreen;
 			this.lbStartDate.Location = new System.Drawing.Point(3, 0);
 			this.lbStartDate.Name = "lbStartDate";
 			this.lbStartDate.Size = new System.Drawing.Size(240, 39);
@@ -345,11 +358,108 @@
 			this.lbTotalChipLed.Text = "0000000000000";
 			this.lbTotalChipLed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// groupBox8
+			// 
+			this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox8.Controls.Add(this.tableLayoutPanelTTL);
+			this.groupBox8.Location = new System.Drawing.Point(0, 420);
+			this.groupBox8.Name = "groupBox8";
+			this.groupBox8.Size = new System.Drawing.Size(252, 196);
+			this.groupBox8.TabIndex = 8;
+			this.groupBox8.TabStop = false;
+			this.groupBox8.Text = "Tower Lamp";
+			// 
+			// tableLayoutPanelTTL
+			// 
+			this.tableLayoutPanelTTL.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+			this.tableLayoutPanelTTL.ColumnCount = 3;
+			this.tableLayoutPanelTTL.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+			this.tableLayoutPanelTTL.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+			this.tableLayoutPanelTTL.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+			this.tableLayoutPanelTTL.Controls.Add(this.panel5, 2, 0);
+			this.tableLayoutPanelTTL.Controls.Add(this.panel3, 1, 0);
+			this.tableLayoutPanelTTL.Controls.Add(this.panel1, 0, 0);
+			this.tableLayoutPanelTTL.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanelTTL.Location = new System.Drawing.Point(3, 18);
+			this.tableLayoutPanelTTL.Name = "tableLayoutPanelTTL";
+			this.tableLayoutPanelTTL.RowCount = 1;
+			this.tableLayoutPanelTTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanelTTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanelTTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanelTTL.Size = new System.Drawing.Size(246, 175);
+			this.tableLayoutPanelTTL.TabIndex = 0;
+			// 
+			// panel5
+			// 
+			this.panel5.BackColor = System.Drawing.Color.Lime;
+			this.panel5.Controls.Add(this.lampGreen);
+			this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel5.Location = new System.Drawing.Point(166, 6);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(74, 163);
+			this.panel5.TabIndex = 2;
+			// 
+			// lampGreen
+			// 
+			this.lampGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lampGreen.BackColor = System.Drawing.Color.LightGray;
+			this.lampGreen.Location = new System.Drawing.Point(4, 4);
+			this.lampGreen.Name = "lampGreen";
+			this.lampGreen.Size = new System.Drawing.Size(67, 156);
+			this.lampGreen.TabIndex = 0;
+			// 
+			// panel3
+			// 
+			this.panel3.BackColor = System.Drawing.Color.Yellow;
+			this.panel3.Controls.Add(this.lampYellow);
+			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel3.Location = new System.Drawing.Point(86, 6);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(71, 163);
+			this.panel3.TabIndex = 1;
+			// 
+			// lampYellow
+			// 
+			this.lampYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lampYellow.BackColor = System.Drawing.Color.LightGray;
+			this.lampYellow.Location = new System.Drawing.Point(4, 4);
+			this.lampYellow.Name = "lampYellow";
+			this.lampYellow.Size = new System.Drawing.Size(64, 156);
+			this.lampYellow.TabIndex = 0;
+			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.Color.Red;
+			this.panel1.Controls.Add(this.lampRed);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Location = new System.Drawing.Point(6, 6);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(71, 163);
+			this.panel1.TabIndex = 0;
+			// 
+			// lampRed
+			// 
+			this.lampRed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lampRed.BackColor = System.Drawing.Color.LightGray;
+			this.lampRed.Location = new System.Drawing.Point(4, 4);
+			this.lampRed.Name = "lampRed";
+			this.lampRed.Size = new System.Drawing.Size(64, 156);
+			this.lampRed.TabIndex = 0;
+			// 
 			// frmInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(252, 432);
+			this.ClientSize = new System.Drawing.Size(252, 618);
+			this.Controls.Add(this.groupBox8);
 			this.Controls.Add(this.groupBox7);
 			this.Controls.Add(this.groupBox6);
 			this.Controls.Add(this.groupBox5);
@@ -380,6 +490,11 @@
 			this.groupBox7.ResumeLayout(false);
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
+			this.groupBox8.ResumeLayout(false);
+			this.tableLayoutPanelTTL.ResumeLayout(false);
+			this.panel5.ResumeLayout(false);
+			this.panel3.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -406,5 +521,13 @@
 		private System.Windows.Forms.GroupBox groupBox7;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label lbTotalChipLed;
+		private System.Windows.Forms.GroupBox groupBox8;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTTL;
+		private System.Windows.Forms.Panel panel5;
+		private System.Windows.Forms.Panel lampGreen;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Panel lampYellow;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel lampRed;
 	}
 }

@@ -30,5 +30,45 @@ namespace Seoul_Software.User
 			MySetting.Setting.SaveSetting();
 			this.Close();
 		}
+
+		private void txtAdmin_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtEngineer_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtOperator_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

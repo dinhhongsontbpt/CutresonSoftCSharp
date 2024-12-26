@@ -214,7 +214,7 @@ namespace Cutreson_Utility
         {
 			if ((data == null))
 			{
-                return new int[data.Length / 2];
+                return null;
 			}
 			try
             {

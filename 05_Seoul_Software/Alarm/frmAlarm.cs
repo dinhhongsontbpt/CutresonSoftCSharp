@@ -28,10 +28,10 @@ namespace Seoul_Software.Alarm
 		public void ViewAlarm(AlarmModel _alarm)
 		{
 			this.alarm = _alarm;
-			clsInvokeControl.ControlTextInvoke(txtErrorCode, alarm.ErrorCode);
+			clsInvokeControl.ControlTextInvoke(txtErrorCode, alarm.Code);
 			clsInvokeControl.ControlTextInvoke(txtUnit, alarm.Unit);
 			clsInvokeControl.ControlTextInvoke(txtDescription, alarm.Description);
-			clsInvokeControl.ControlTextInvoke(lbErrorHelp, alarm.ErrorHelp);
+			clsInvokeControl.ControlTextInvoke(lbErrorHelp, alarm.Help);
 			clsInvokeControl.ControlTextInvoke(lbAlarm, alarm.Text);
 			if (imageBox.InvokeRequired)
 			{
@@ -56,7 +56,7 @@ namespace Seoul_Software.Alarm
 				listBox.Items.Clear();
 				foreach(var item in Global.CurrentAlarms)
 				{
-					listBox.Items.Add($"[{item.ErrorCode}]{item.Text}");
+					listBox.Items.Add($"[{item.Code}]{item.Text}");
 				}
 			}
 			if(Global.CurrentAlarms.Count == 0)
@@ -75,7 +75,7 @@ namespace Seoul_Software.Alarm
 				{
 					if(blink)
 					{
-						if (alarm.AlarmLevel == Log.eLogLevel.ALARM)
+						if (alarm.Level == Log.eLogLevel.WARNING)
 						{
 							clsInvokeControl.ControlBackColorInvoke(lbAlarm, Color.Yellow);
 						}

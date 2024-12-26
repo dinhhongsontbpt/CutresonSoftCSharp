@@ -24,5 +24,8 @@ namespace Seoul_Software
         public static long TotalRing;
         public static long TotalChipLed;
         public static eRole Role;
+        //History
+        public static List<AlarmModel> AlarmHistory = new List<AlarmModel>();
+        public static List<AlarmModel> ErrorHistory = new List<AlarmModel>();
 	}
 }

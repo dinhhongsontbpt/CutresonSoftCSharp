@@ -76,6 +76,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Cutreson_Utility\dll\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -100,6 +101,12 @@
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </Compile>
     <Compile Include="clsConfig.cs" />
+    <Compile Include="Data\frmData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\frmData.Designer.cs">
+      <DependentUpon>frmData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\frmLotData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +119,42 @@
     <Compile Include="Data\frmRingData.Designer.cs">
       <DependentUpon>frmRingData.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAuto.Designer.cs">
+      <DependentUpon>frmAuto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInfo.Designer.cs">
       <DependentUpon>frmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettingMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettingMenu.Designer.cs">
+      <DependentUpon>frmSettingMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History\clsHistoryManager.cs" />
+    <Compile Include="History\frmAlarmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History\frmAlarmHistory.Designer.cs">
+      <DependentUpon>frmAlarmHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History\frmErrorHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History\frmErrorHistory.Designer.cs">
+      <DependentUpon>frmErrorHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History\frmHistoryMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History\frmHistoryMenu.Designer.cs">
+      <DependentUpon>frmHistoryMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Log\frmViewLog.cs">
       <SubType>Form</SubType>
@@ -125,6 +163,12 @@
       <DependentUpon>frmViewLog.cs</DependentUpon>
     </Compile>
     <Compile Include="MachineMonitor\ControlMonitorModel.cs" />
+    <Compile Include="MachineMonitor\frmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachineMonitor\frmProgress.Designer.cs">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineMonitor\ucMachineMonitor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,11 +183,11 @@
     <Compile Include="MachineMonitor\frmMachineMonitor.Designer.cs">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSetting.cs">
+    <Compile Include="frmSystemSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSetting.Designer.cs">
-      <DependentUpon>frmSetting.cs</DependentUpon>
+    <Compile Include="frmSystemSetting.Designer.cs">
+      <DependentUpon>frmSystemSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="PLC\FrmPlcSetting.cs">
       <SubType>Form</SubType>
@@ -165,6 +209,12 @@
     </Compile>
     <Compile Include="Scanner\frmBarcodes.Designer.cs">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scanner\frmScanLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scanner\frmScanLot.Designer.cs">
+      <DependentUpon>frmScanLot.cs</DependentUpon>
     </Compile>
     <Compile Include="SQL\DbManager.cs" />
     <Compile Include="SQL\LotModel.cs" />
@@ -219,14 +269,32 @@
     <EmbeddedResource Include="Alarm\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Data\frmData.resx">
+      <DependentUpon>frmData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Data\frmLotData.resx">
       <DependentUpon>frmLotData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Data\frmRingData.resx">
       <DependentUpon>frmRingData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAuto.resx">
+      <DependentUpon>frmAuto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInfo.resx">
       <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettingMenu.resx">
+      <DependentUpon>frmSettingMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History\frmAlarmHistory.resx">
+      <DependentUpon>frmAlarmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History\frmErrorHistory.resx">
+      <DependentUpon>frmErrorHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History\frmHistoryMenu.resx">
+      <DependentUpon>frmHistoryMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log\frmViewLog.resx">
       <DependentUpon>frmViewLog.cs</DependentUpon>
@@ -234,8 +302,11 @@
     <EmbeddedResource Include="MachineMonitor\frmMachineMonitor.resx">
       <DependentUpon>frmMachineMonitor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSetting.resx">
-      <DependentUpon>frmSetting.cs</DependentUpon>
+    <EmbeddedResource Include="frmSystemSetting.resx">
+      <DependentUpon>frmSystemSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineMonitor\frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MachineMonitor\ucMachineMonitor.resx">
       <DependentUpon>ucMachineMonitor.cs</DependentUpon>
@@ -248,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Scanner\frmBarcodes.resx">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scanner\frmScanLot.resx">
+      <DependentUpon>frmScanLot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -309,6 +383,8 @@
   <ItemGroup>
     <Content Include="Add.ico" />
     <Content Include="ArrowRight.ico" />
+    <None Include="Resources\Code.gif" />
+    <None Include="Resources\Refresh.ico" />
     <None Include="Resources\UserGroup.ico" />
     <None Include="Resources\worker.png" />
     <None Include="Resources\SystemSetting.ico" />

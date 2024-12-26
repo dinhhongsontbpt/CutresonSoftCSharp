@@ -1,4 +1,5 @@
-﻿using Seoul_Software.Scanner;
+﻿using Seoul_Software.MachineMonitor;
+using Seoul_Software.Scanner;
 using Seoul_Software.SQL;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace Seoul_Software
         private List<ucBarcode> ucBarcodeDisplays = new List<ucBarcode>();
         private SeoulDbContext db = new SeoulDbContext();
         frmInfo frmInfo;
-		public frmBarcodes(frmInfo frmInfo)
+        frmProgress frmProgress;
+		public frmBarcodes(frmInfo frmInfo, frmProgress frmProgress)
         {
             InitializeComponent();
             this.frmInfo = frmInfo;
+            this.frmProgress = frmProgress;
             Init();
 
 		}
@@ -35,7 +38,7 @@ namespace Seoul_Software
                 uc.SetModel(barcode);
                 uc.Dock = DockStyle.Fill;
                 ucBarcodeDisplays.Add(uc);
-				tableLayoutPanel1.Controls.Add(uc);
+				tableLayoutPanelBarcode.Controls.Add(uc);
 				uc.BarcodeWritten += Uc_BarcodeWritten;
             }
 
@@ -49,7 +52,7 @@ namespace Seoul_Software
 						if (!BarcodeModel.IsIdExist(idBarcodesIP[i]))
 						{
 							Global.Log.Error($"Barcode Id={idBarcodesIP[i]} is not exist in software. Please initial system");
-                            tableLayoutPanel1.Visible = false;
+                            tableLayoutPanelBarcode.Visible = false;
                             return;
 						}
                         else
@@ -77,6 +80,8 @@ namespace Seoul_Software
             }
 			//Event
 			Global.PLC.PropertyChanged += PLC_PropertyChanged;
+            //
+            EnableControl(false);
         }
         
 		private void PLC_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -103,6 +108,7 @@ namespace Seoul_Software
 							Global.TotalLot++;
 							frmInfo.UpdateData();
 							Global.PLC.WriteGetBarcodeComplete();
+                            frmProgress.UpdateData();
 						}
                         else
                         {
@@ -176,5 +182,40 @@ namespace Seoul_Software
             }
             return id;
 		}
+
+        public void EnableControl(bool enable)
+        {
+			foreach (var item in ucBarcodeDisplays)
+			{
+				item.EnableControl(enable);
+			}
+		}
+        public void AutoGenerate(int count)
+        {
+            string first = ucBarcodeDisplays[0].barcode.Data;
+            if(!string.IsNullOrEmpty(first))
+            {
+                if (first.Length >= 3)
+                {
+					string lastThreeChars = first.Substring(first.Length - 3);
+                    string head = first.Substring(0, first.Length - 3);
+					if (int.TryParse(lastThreeChars, out int result))
+					{
+                        int end = result;
+						for(int i = 0; i < count; i++)
+                        {
+                            end++;
+                            string code = head + end.ToString("D3");
+                            ucBarcodeDisplays[1 + i].SetCode(code);
+                            ucBarcodeDisplays[1 + i].Enter();
+						}    
+					}
+					else
+					{
+						Global.Log.Alarm("Không thể chuyển đổi 3 ký tự cuối sang số");
+					}
+				}
+            }
+        }
     }
 }

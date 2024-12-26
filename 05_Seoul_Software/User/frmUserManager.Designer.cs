@@ -48,6 +48,7 @@
 			this.label1.Size = new System.Drawing.Size(135, 20);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Admin Password";
+			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// txtAdmin
 			// 
@@ -56,6 +57,7 @@
 			this.txtAdmin.Size = new System.Drawing.Size(189, 26);
 			this.txtAdmin.TabIndex = 1;
 			this.txtAdmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txtAdmin.TextChanged += new System.EventHandler(this.txtAdmin_TextChanged);
 			// 
 			// cboRole
 			// 
@@ -70,6 +72,7 @@
 			this.cboRole.Size = new System.Drawing.Size(189, 28);
 			this.cboRole.TabIndex = 2;
 			this.cboRole.TabStop = false;
+			this.cboRole.SelectedIndexChanged += new System.EventHandler(this.cboRole_SelectedIndexChanged);
 			// 
 			// txtEngineer
 			// 
@@ -78,6 +81,7 @@
 			this.txtEngineer.Size = new System.Drawing.Size(189, 26);
 			this.txtEngineer.TabIndex = 4;
 			this.txtEngineer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txtEngineer.TextChanged += new System.EventHandler(this.txtEngineer_TextChanged);
 			// 
 			// label2
 			// 
@@ -87,6 +91,7 @@
 			this.label2.Size = new System.Drawing.Size(154, 20);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Engineer Password";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// txtOperator
 			// 
@@ -95,6 +100,7 @@
 			this.txtOperator.Size = new System.Drawing.Size(189, 26);
 			this.txtOperator.TabIndex = 6;
 			this.txtOperator.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txtOperator.TextChanged += new System.EventHandler(this.txtOperator_TextChanged);
 			// 
 			// label3
 			// 
@@ -104,6 +110,7 @@
 			this.label3.Size = new System.Drawing.Size(154, 20);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Operator Password";
+			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// label4
 			// 
@@ -113,6 +120,7 @@
 			this.label4.Size = new System.Drawing.Size(106, 20);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Auto login as";
+			this.label4.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// btnSave
 			// 
@@ -148,7 +156,7 @@
 			this.MinimumSize = new System.Drawing.Size(430, 300);
 			this.Name = "frmUserManager";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "User Manager";
+			this.Text = "USER MANAGER";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -34,7 +34,7 @@ namespace _06_Terumo
 			try
 			{
 				int Ret;
-				Ret = dio.Init("DIO000", out m_Id);
+				Ret = dio.Init(MySetting.Setting.DeviceName, out m_Id);
 				string ErrorString;
 				dio.GetErrorString(Ret, out ErrorString);
 				if (Ret == 0)

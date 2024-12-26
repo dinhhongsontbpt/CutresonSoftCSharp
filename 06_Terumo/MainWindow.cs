@@ -313,7 +313,7 @@ namespace _06_Terumo
 		{
 			try
 			{
-				string data = RS232.Port.ReadExisting();
+				string data = RS232.Port.ReadLine();
 				data = data.Trim().ToUpper();
 				Global.Common.LogInfor($"Receive data from PLC: {data}");
 				Global.CommandKeys[7] = data;

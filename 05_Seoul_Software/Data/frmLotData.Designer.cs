@@ -37,6 +37,8 @@
 			this.lbToday = new System.Windows.Forms.Label();
 			this.lbTotal = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnReload = new System.Windows.Forms.Button();
+			this.btnExport = new System.Windows.Forms.Button();
 			this.lbSearchResult = new System.Windows.Forms.Label();
 			this.btnPrevious = new System.Windows.Forms.Button();
 			this.btnNext = new System.Windows.Forms.Button();
@@ -47,7 +49,6 @@
 			this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
 			this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-			this.btnExport = new System.Windows.Forms.Button();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tbData)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -69,7 +70,7 @@
 			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
 			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-			this.tableLayoutPanel.Size = new System.Drawing.Size(979, 543);
+			this.tableLayoutPanel.Size = new System.Drawing.Size(1077, 543);
 			this.tableLayoutPanel.TabIndex = 0;
 			// 
 			// tbData
@@ -81,7 +82,7 @@
 			this.tbData.Name = "tbData";
 			this.tbData.RowHeadersWidth = 51;
 			this.tbData.RowTemplate.Height = 24;
-			this.tbData.Size = new System.Drawing.Size(971, 391);
+			this.tbData.Size = new System.Drawing.Size(1069, 391);
 			this.tbData.TabIndex = 0;
 			// 
 			// tableLayoutPanel1
@@ -105,7 +106,7 @@
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(971, 36);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(1069, 36);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// lbYear
@@ -114,10 +115,10 @@
 			this.lbYear.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbYear.ForeColor = System.Drawing.Color.MediumVioletRed;
-			this.lbYear.Location = new System.Drawing.Point(781, 1);
+			this.lbYear.Location = new System.Drawing.Point(857, 1);
 			this.lbYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbYear.Name = "lbYear";
-			this.lbYear.Size = new System.Drawing.Size(185, 34);
+			this.lbYear.Size = new System.Drawing.Size(207, 34);
 			this.lbYear.TabIndex = 4;
 			this.lbYear.Text = "Year";
 			this.lbYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -128,10 +129,10 @@
 			this.lbMonth.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbMonth.ForeColor = System.Drawing.Color.MediumVioletRed;
-			this.lbMonth.Location = new System.Drawing.Point(587, 1);
+			this.lbMonth.Location = new System.Drawing.Point(644, 1);
 			this.lbMonth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbMonth.Name = "lbMonth";
-			this.lbMonth.Size = new System.Drawing.Size(185, 34);
+			this.lbMonth.Size = new System.Drawing.Size(204, 34);
 			this.lbMonth.TabIndex = 3;
 			this.lbMonth.Text = "Month";
 			this.lbMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,10 +143,10 @@
 			this.lbWeek.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbWeek.ForeColor = System.Drawing.Color.MediumVioletRed;
-			this.lbWeek.Location = new System.Drawing.Point(393, 1);
+			this.lbWeek.Location = new System.Drawing.Point(431, 1);
 			this.lbWeek.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbWeek.Name = "lbWeek";
-			this.lbWeek.Size = new System.Drawing.Size(185, 34);
+			this.lbWeek.Size = new System.Drawing.Size(204, 34);
 			this.lbWeek.TabIndex = 2;
 			this.lbWeek.Text = "Week";
 			this.lbWeek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,10 +157,10 @@
 			this.lbToday.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbToday.ForeColor = System.Drawing.Color.MediumVioletRed;
-			this.lbToday.Location = new System.Drawing.Point(199, 1);
+			this.lbToday.Location = new System.Drawing.Point(218, 1);
 			this.lbToday.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbToday.Name = "lbToday";
-			this.lbToday.Size = new System.Drawing.Size(185, 34);
+			this.lbToday.Size = new System.Drawing.Size(204, 34);
 			this.lbToday.TabIndex = 1;
 			this.lbToday.Text = "Today";
 			this.lbToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -173,13 +174,14 @@
 			this.lbTotal.Location = new System.Drawing.Point(5, 1);
 			this.lbTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbTotal.Name = "lbTotal";
-			this.lbTotal.Size = new System.Drawing.Size(185, 34);
+			this.lbTotal.Size = new System.Drawing.Size(204, 34);
 			this.lbTotal.TabIndex = 0;
 			this.lbTotal.Text = "Total";
 			this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btnReload);
 			this.panel1.Controls.Add(this.btnExport);
 			this.panel1.Controls.Add(this.lbSearchResult);
 			this.panel1.Controls.Add(this.btnPrevious);
@@ -195,8 +197,38 @@
 			this.panel1.Location = new System.Drawing.Point(4, 4);
 			this.panel1.Margin = new System.Windows.Forms.Padding(4);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(971, 92);
+			this.panel1.Size = new System.Drawing.Size(1069, 92);
 			this.panel1.TabIndex = 2;
+			// 
+			// btnReload
+			// 
+			this.btnReload.BackColor = System.Drawing.Color.Teal;
+			this.btnReload.BackgroundImage = global::Seoul_Software.Properties.Resources.Refresh;
+			this.btnReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnReload.Location = new System.Drawing.Point(793, 10);
+			this.btnReload.Margin = new System.Windows.Forms.Padding(4);
+			this.btnReload.Name = "btnReload";
+			this.btnReload.Size = new System.Drawing.Size(78, 73);
+			this.btnReload.TabIndex = 20;
+			this.btnReload.Text = "Reload";
+			this.btnReload.UseVisualStyleBackColor = false;
+			this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+			// 
+			// btnExport
+			// 
+			this.btnExport.BackColor = System.Drawing.Color.Teal;
+			this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.btnExport.Location = new System.Drawing.Point(881, 10);
+			this.btnExport.Margin = new System.Windows.Forms.Padding(4);
+			this.btnExport.Name = "btnExport";
+			this.btnExport.Size = new System.Drawing.Size(121, 73);
+			this.btnExport.TabIndex = 19;
+			this.btnExport.Text = "Export to Excel";
+			this.btnExport.UseVisualStyleBackColor = false;
+			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
 			// 
 			// lbSearchResult
 			// 
@@ -204,7 +236,7 @@
 			this.lbSearchResult.Location = new System.Drawing.Point(604, 14);
 			this.lbSearchResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbSearchResult.Name = "lbSearchResult";
-			this.lbSearchResult.Size = new System.Drawing.Size(81, 20);
+			this.lbSearchResult.Size = new System.Drawing.Size(69, 17);
 			this.lbSearchResult.TabIndex = 18;
 			this.lbSearchResult.Text = "Search: 0";
 			// 
@@ -256,7 +288,7 @@
 			this.txtLot.ForeColor = System.Drawing.Color.Blue;
 			this.txtLot.Location = new System.Drawing.Point(392, 11);
 			this.txtLot.Name = "txtLot";
-			this.txtLot.Size = new System.Drawing.Size(196, 26);
+			this.txtLot.Size = new System.Drawing.Size(196, 23);
 			this.txtLot.TabIndex = 14;
 			this.txtLot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -280,7 +312,7 @@
 			this.label2.Location = new System.Drawing.Point(16, 59);
 			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(28, 20);
+			this.label2.Size = new System.Drawing.Size(25, 17);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "To";
 			// 
@@ -291,7 +323,7 @@
 			this.dateTimePickerTo.Location = new System.Drawing.Point(67, 57);
 			this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4);
 			this.dateTimePickerTo.Name = "dateTimePickerTo";
-			this.dateTimePickerTo.Size = new System.Drawing.Size(181, 26);
+			this.dateTimePickerTo.Size = new System.Drawing.Size(181, 23);
 			this.dateTimePickerTo.TabIndex = 2;
 			// 
 			// label1
@@ -300,7 +332,7 @@
 			this.label1.Location = new System.Drawing.Point(16, 16);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(48, 20);
+			this.label1.Size = new System.Drawing.Size(40, 17);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "From";
 			// 
@@ -311,33 +343,19 @@
 			this.dateTimePickerFrom.Location = new System.Drawing.Point(67, 14);
 			this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4);
 			this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-			this.dateTimePickerFrom.Size = new System.Drawing.Size(181, 26);
+			this.dateTimePickerFrom.Size = new System.Drawing.Size(181, 23);
 			this.dateTimePickerFrom.TabIndex = 0;
-			// 
-			// btnExport
-			// 
-			this.btnExport.BackColor = System.Drawing.Color.Teal;
-			this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.btnExport.Location = new System.Drawing.Point(804, 10);
-			this.btnExport.Margin = new System.Windows.Forms.Padding(4);
-			this.btnExport.Name = "btnExport";
-			this.btnExport.Size = new System.Drawing.Size(121, 73);
-			this.btnExport.TabIndex = 19;
-			this.btnExport.Text = "Export to Excel";
-			this.btnExport.UseVisualStyleBackColor = false;
-			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
 			// 
 			// frmLotData
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(979, 543);
+			this.ClientSize = new System.Drawing.Size(1077, 543);
 			this.Controls.Add(this.tableLayoutPanel);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmLotData";
-			this.Text = "Lot Data";
+			this.Text = "LOT DATA";
 			this.tableLayoutPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.tbData)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -370,5 +388,6 @@
 		private System.Windows.Forms.Label lbSearchResult;
 		private System.Windows.Forms.Button btnPrevious;
 		private System.Windows.Forms.Button btnExport;
+		private System.Windows.Forms.Button btnReload;
 	}
 }

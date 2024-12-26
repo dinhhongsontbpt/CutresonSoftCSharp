@@ -28,34 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanelBarcode = new System.Windows.Forms.TableLayoutPanel();
 			this.SuspendLayout();
 			// 
-			// tableLayoutPanel1
+			// tableLayoutPanelBarcode
 			// 
-			this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-			this.tableLayoutPanel1.ColumnCount = 5;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(922, 157);
-			this.tableLayoutPanel1.TabIndex = 0;
+			this.tableLayoutPanelBarcode.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+			this.tableLayoutPanelBarcode.ColumnCount = 1;
+			this.tableLayoutPanelBarcode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanelBarcode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.tableLayoutPanelBarcode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.tableLayoutPanelBarcode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.tableLayoutPanelBarcode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.tableLayoutPanelBarcode.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanelBarcode.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanelBarcode.Margin = new System.Windows.Forms.Padding(2);
+			this.tableLayoutPanelBarcode.Name = "tableLayoutPanelBarcode";
+			this.tableLayoutPanelBarcode.RowCount = 10;
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanelBarcode.Size = new System.Drawing.Size(261, 487);
+			this.tableLayoutPanelBarcode.TabIndex = 2;
 			// 
-			// frmScanner
+			// frmBarcodes
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(922, 157);
-			this.Controls.Add(this.tableLayoutPanel1);
-			this.Name = "frmScanner";
+			this.ClientSize = new System.Drawing.Size(261, 487);
+			this.Controls.Add(this.tableLayoutPanelBarcode);
+			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Name = "frmBarcodes";
 			this.Text = "\\";
 			this.ResumeLayout(false);
 
@@ -63,6 +73,6 @@
 
 		#endregion
 
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanelBarcode;
 	}
 }

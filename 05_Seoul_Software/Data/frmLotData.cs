@@ -27,6 +27,8 @@ namespace Seoul_Software.Data
 		}
 		private void Init()
 		{
+			var topLeftHeaderCell = tbData.TopLeftHeaderCell;
+
 			lbTotal.Text = $"Total: {db.Lots.LongCount()}";
 
 			var today = DateTime.Today;
@@ -126,6 +128,12 @@ namespace Seoul_Software.Data
 		private void btnExport_Click(object sender, EventArgs e)
 		{
 			clsSave.ExportToExcel(tbData, "Lot Data", DateTime.Now.ToString("yyyyMMdd"));
+		}
+
+		private void btnReload_Click(object sender, EventArgs e)
+		{
+			currentPage = 0;
+			SearchByTime();
 		}
 	}
 }

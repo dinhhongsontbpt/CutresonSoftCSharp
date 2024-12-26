@@ -43,7 +43,9 @@ namespace Seoul_Software
 		public string EngineerPassword;
 		public string AdminPassword;
 		public eRole AutoLoginAs;
-
+		//History
+		public int MaxAlarm;
+		public int MaxError;
 		public static MySetting Setting = new MySetting();
 		
 		public MySetting()
@@ -73,6 +75,8 @@ namespace Seoul_Software
 			EngineerPassword = "123";
 			AdminPassword = "1234";
 			AutoLoginAs = eRole.ADMIN;
+			MaxAlarm = 1000;
+			MaxError = 1000;
 		}
 
 		public void SaveSetting()
